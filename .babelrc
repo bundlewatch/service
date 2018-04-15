@@ -1,0 +1,9 @@
+{
+  "plugins": [
+      "transform-runtime",
+      ["module-resolver", {
+          "root": ["./src"]
+      }]
+  ],
+  "presets": ["env", "stage-3"]
+}

@@ -1,0 +1,46 @@
+{
+    "name": "bundlesize-service",
+    "version": "0.0.1",
+    "license": "UNLICENSED",
+    "scripts": {
+        "precommit": "./scripts/check-versions.sh && lint-staged"
+    },
+    "lint-staged": {
+        "*.js": [
+            "node_modules/.bin/eslint"
+        ]
+    },
+    "moduleRoots": [
+        "src"
+    ],
+    "dependencies": {
+        "aws-sdk": "^2.198.0",
+        "babel-runtime": "^6.26.0",
+        "body-parser": "^1.18.2",
+        "express": "^4.16.3",
+        "serverless-http": "^1.5.5"
+    },
+    "devDependencies": {
+        "babel-core": "^6.26.0",
+        "babel-loader": "^7.1.2",
+        "babel-plugin-module-resolver": "^3.1.0",
+        "babel-plugin-transform-runtime": "^6.23.0",
+        "babel-preset-env": "^1.6.1",
+        "babel-preset-stage-3": "^6.24.1",
+        "eslint": "^4.9.0",
+        "eslint-config-airbnb-base": "^12.1.0",
+        "eslint-config-prettier": "^2.9.0",
+        "eslint-plugin-import": "^2.7.0",
+        "eslint-plugin-jest": "^21.12.2",
+        "eslint-plugin-prettier": "^2.6.0",
+        "file-loader": "^1.1.11",
+        "husky": "^0.14.3",
+        "lint-staged": "^7.0.0",
+        "prettier": "^1.10.2",
+        "serverless": "^1.26.1",
+        "serverless-offline": "^3.18.0",
+        "serverless-webpack": "^4.3.0",
+        "webpack": "^3.11.0",
+        "webpack-node-externals": "^1.6.0"
+    }
+}
