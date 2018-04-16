@@ -30,6 +30,7 @@ package: check-versions node_modules
 
 .PHONY: start
 start: check-versions node_modules
+	-serverless dynamodb install
 	serverless offline start
 
 # -------------- Linting --------------
@@ -62,9 +63,14 @@ check-versions:
 	@./scripts/check-versions.sh
 
 .PHONY: clean
-clean:
+clean: clean-dynamodb
+	@pkill -f dynamodb
 	@rm -rf ${ARTIFACT_DIR}
 	@rm -rf node_modules
+
+.PHONY: clean-dynamodb
+clean-dynamodb:
+	@pkill -f dynamodb
 
 ${ARTIFACT_DIR}:
 	@mkdir -p ${ARTIFACT_DIR}/test_results/eslint
