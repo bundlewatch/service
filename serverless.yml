@@ -72,13 +72,18 @@ resources:
           -
             AttributeName: repoBranch
             KeyType: RANGE
+        LocalSecondaryIndexes:
           -
-            AttributeName: timestamp
-            KeyType: RANGE
-        IndexName: timestamp
-        Projection:
-          -
-            ProjectionType: KEYS_ONLY
+            IndexName: timestamp
+            KeySchema:
+                -
+                    AttributeName: repoOwner
+                    KeyType: HASH
+                -
+                    AttributeName: timestamp
+                    KeyType: RANGE
+            Projection:
+                ProjectionType: KEYS_ONLY
         ProvisionedThroughput:
           ReadCapacityUnits: 1
           WriteCapacityUnits: 1

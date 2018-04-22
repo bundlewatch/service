@@ -12,7 +12,7 @@ function createServerlessApp() {
     app.get('/', (req, res) => {
         res.json({ message: 'hello world' })
     })
-    app.post('/store/', (req, res) => {
+    app.post('/store', (req, res) => {
         const {
             commitSha,
             fileDetailsByPath,
@@ -29,10 +29,10 @@ function createServerlessApp() {
             timestamp: Date.now(),
         })
         newStore.save()
-        res.json({ result: res.body })
+        res.json(newStore)
     })
     app.post('/store/lookup', (req, res) => {
-        const { repoBranch, repoName, repoOwner } = req.body // eslint-disable-line no-unused-vars
+        const { repoBranch, repoName, repoOwner } = req.body
         Store.get(
             {
                 repoBranch,
