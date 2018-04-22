@@ -17,7 +17,7 @@ const store = dynamoose.model('Store', {
         type: String,
     },
     timestamp: {
-        type: Date,
+        type: String,
     },
 })
 
