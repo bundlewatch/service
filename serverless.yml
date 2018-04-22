@@ -57,12 +57,28 @@ resources:
       Properties:
         AttributeDefinitions:
           -
-            AttributeName: id
+            AttributeName: repoOwner
+            AttributeType: S
+          -
+            AttributeName: repoBranch
+            AttributeType: S
+          -
+            AttributeName: timestamp
             AttributeType: S
         KeySchema:
           -
-            AttributeName: id
+            AttributeName: repoOwner
             KeyType: HASH
+          -
+            AttributeName: repoBranch
+            KeyType: RANGE
+          -
+            AttributeName: timestamp
+            KeyType: RANGE
+        IndexName: timestamp
+        Projection:
+          -
+            ProjectionType: KEYS_ONLY
         ProvisionedThroughput:
           ReadCapacityUnits: 1
           WriteCapacityUnits: 1

@@ -1,14 +1,23 @@
 import dynamoose from 'dynamoose'
 
 const store = dynamoose.model('Store', {
-    repo: {
+    commitSha: {
         type: String,
     },
-    sha: {
+    fileDetailsByPath: {
+        type: Object,
+    },
+    repoBranch: {
         type: String,
     },
-    files: {
-        type: Array,
+    repoName: {
+        type: String,
+    },
+    repoOwner: {
+        type: String,
+    },
+    timestamp: {
+        type: Date,
     },
 })
 
