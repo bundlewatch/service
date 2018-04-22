@@ -64,13 +64,12 @@ check-versions:
 
 .PHONY: clean
 clean: clean-dynamodb
-	@pkill -f dynamodb
 	@rm -rf ${ARTIFACT_DIR}
 	@rm -rf node_modules
 
 .PHONY: clean-dynamodb
 clean-dynamodb:
-	@pkill -f dynamodb
+	@-pkill -f dynamodb
 
 ${ARTIFACT_DIR}:
 	@mkdir -p ${ARTIFACT_DIR}/test_results/eslint
