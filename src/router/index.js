@@ -1,8 +1,12 @@
 import express from 'express'
 import bodyParser from 'body-parser'
 import serverless from 'serverless-http'
-require('./models/dynamo-db')
-import Store from './models/store'
+
+require('../models/dynamo-db')
+import Store from '../models/store'
+import generateAccessToken from '../helpers/github/generateAccessToken'
+
+import asyncMiddleware from './middleware/asyncMiddleware'
 
 function createServerlessApp() {
     const app = express()
@@ -44,6 +48,28 @@ function createServerlessApp() {
             },
         )
     })
+    app.get(
+        '/github-token',
+        asyncMiddleware(async (req, res) => {
+            const { code } = req.query
+            if (!code) {
+                res.status(400).json({ message: `No code` })
+                return
+            }
+
+            const result = await generateAccessToken(code)
+            if (result.error) {
+                res.status(500).json({
+                    error: result.error,
+                })
+                return
+            }
+
+            res.json({
+                token: result,
+            })
+        }),
+    )
 
     return serverless(app)
 }

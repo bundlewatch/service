@@ -15,6 +15,14 @@ custom:
       port: 8000
       migrate: true
       inMemory: true
+  githubClientId:
+    dev: '04fcf325dd26ca2a159f'
+    stage: '04fcf325dd26ca2a159f'
+    prod: '04fcf325dd26ca2a159f'
+  githubClientSecret:
+    dev: ${env:GITHUB_CLIENT_SECRET}
+    stage: ${env:GITHUB_CLIENT_SECRET}
+    prod: ${env:GITHUB_CLIENT_SECRET}
 
 provider:
   name: aws
@@ -35,12 +43,13 @@ provider:
         - { "Fn::GetAtt": ["StoreTable", "Arn" ] }
   environment:
     STORE_TABLE: ${self:custom.storeTable}
-    LAMBDA_PREFIX: 'bundlesize-service-${opt:stage, self:provider.stage}-'
+    GITHUB_CLIENT_ID: ${self:custom.githubClientId.${self:custom.stage}}
+    GITHUB_CLIENT_SECRET: ${self:custom.githubClientSecret.${self:custom.stage}}
 
 functions:
   # Endpoints
   keyword:
-    handler: src/router.app
+    handler: src/router/index.app
     events:
       - http:
           path: /
@@ -48,6 +57,9 @@ functions:
       - http:
           path: /store
           method: post
+      - http:
+          path: /github-token
+          method: get
 
 resources:
   Resources:
