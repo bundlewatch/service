@@ -2,7 +2,7 @@ import express from 'express'
 import bodyParser from 'body-parser'
 import serverless from 'serverless-http'
 
-require('../models/dynamo-db')
+// require('../models/dynamo-db')
 import Store from '../models/store'
 import generateAccessToken from '../helpers/github/generateAccessToken'
 
@@ -41,19 +41,19 @@ function createServerlessApp() {
             return res.json(newStore)
         }),
     )
-    app.post('/store/lookup', protectedMiddleware, (req, res) => {
-        const { repoBranch, repoName, repoOwner } = req.body
-        Store.get(
-            {
+    app.post(
+        '/store/lookup',
+        protectedMiddleware,
+        asyncMiddleware(async (req, res) => {
+            const { repoBranch, repoName, repoOwner } = req.body
+            const store = await Store.get({
                 repoBranch,
                 repoName,
                 repoOwner,
-            },
-            store => {
-                res.json({ fileDetailsByPath: store.fileDetailsByPath })
-            },
-        )
-    })
+            })
+            res.json({ fileDetailsByPath: store.fileDetailsByPath })
+        }),
+    )
     app.get(
         '/github-token',
         asyncMiddleware(async (req, res) => {

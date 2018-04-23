@@ -58,6 +58,9 @@ functions:
           path: /store
           method: post
       - http:
+          path: /store/lookup
+          method: post
+      - http:
           path: /github-token
           method: get
 
