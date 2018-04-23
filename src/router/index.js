@@ -7,6 +7,7 @@ import Store from '../models/store'
 import generateAccessToken from '../helpers/github/generateAccessToken'
 
 import asyncMiddleware from './middleware/asyncMiddleware'
+import protectedMiddleware from './middleware/protectedMiddleware'
 
 function createServerlessApp() {
     const app = express()
@@ -16,26 +17,31 @@ function createServerlessApp() {
     app.get('/', (req, res) => {
         res.json({ message: 'hello world' })
     })
-    app.post('/store', (req, res) => {
-        const {
-            commitSha,
-            fileDetailsByPath,
-            repoBranch,
-            repoName,
-            repoOwner,
-        } = req.body
-        const newStore = new Store({
-            commitSha,
-            fileDetailsByPath,
-            repoBranch,
-            repoName,
-            repoOwner,
-            timestamp: Date.now(),
-        })
-        newStore.save()
-        res.json(newStore)
-    })
-    app.post('/store/lookup', (req, res) => {
+    app.post(
+        '/store',
+        protectedMiddleware,
+        asyncMiddleware(async (req, res) => {
+            const {
+                commitSha,
+                fileDetailsByPath,
+                repoBranch,
+                repoName,
+                repoOwner,
+            } = req.body
+
+            const newStore = new Store({
+                commitSha,
+                fileDetailsByPath,
+                repoBranch,
+                repoName,
+                repoOwner,
+                timestamp: Date.now(),
+            })
+            newStore.save()
+            return res.json(newStore)
+        }),
+    )
+    app.post('/store/lookup', protectedMiddleware, (req, res) => {
         const { repoBranch, repoName, repoOwner } = req.body
         Store.get(
             {
