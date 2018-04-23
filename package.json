@@ -3,7 +3,16 @@
     "version": "0.0.1",
     "license": "UNLICENSED",
     "scripts": {
-        "precommit": "./scripts/check-versions.sh && lint-staged"
+        "precommit": "./scripts/check-versions.sh && lint-staged",
+        "test": "jest"
+    },
+    "jest": {
+        "testEnvironment": "node",
+        "noStackTrace": true,
+        "testPathIgnorePatterns": [
+            "/node_modules/",
+            "/app/"
+        ]
     },
     "lint-staged": {
         "*.js": [
@@ -25,6 +34,7 @@
     },
     "devDependencies": {
         "babel-core": "^6.26.0",
+        "babel-jest": "^22.4.3",
         "babel-loader": "^7.1.2",
         "babel-plugin-module-resolver": "^3.1.0",
         "babel-plugin-transform-runtime": "^6.23.0",
@@ -38,11 +48,14 @@
         "eslint-plugin-prettier": "^2.6.0",
         "file-loader": "^1.1.11",
         "husky": "^0.14.3",
+        "jest": "^22.4.3",
         "lint-staged": "^7.0.0",
         "prettier": "^1.10.2",
+        "regenerator-runtime": "^0.11.1",
         "serverless": "^1.26.1",
         "serverless-offline": "^3.18.0",
         "serverless-webpack": "^4.3.0",
+        "supertest": "^3.0.0",
         "webpack": "^3.11.0",
         "webpack-node-externals": "^1.6.0"
     }
