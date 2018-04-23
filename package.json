@@ -53,6 +53,7 @@
         "prettier": "^1.10.2",
         "regenerator-runtime": "^0.11.1",
         "serverless": "^1.26.1",
+        "serverless-domain-manager": "^2.3.6",
         "serverless-offline": "^3.18.0",
         "serverless-webpack": "^4.3.0",
         "supertest": "^3.0.0",
