@@ -2,7 +2,6 @@ import express from 'express'
 import bodyParser from 'body-parser'
 import serverless from 'serverless-http'
 
-// require('../models/dynamo-db')
 import Store from '../models/store'
 import generateAccessToken from '../helpers/github/generateAccessToken'
 
@@ -51,6 +50,9 @@ function createServerlessApp() {
                 repoName,
                 repoOwner,
             })
+            if (!store) {
+                res.status(404).send()
+            }
             res.json({ fileDetailsByPath: store.fileDetailsByPath })
         }),
     )

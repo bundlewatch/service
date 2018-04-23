@@ -8,6 +8,24 @@ const canTokenAccessRepo = ({
     commitSha,
     githubAccessToken,
 }) => {
+    // TODO: clean this up
+    if (!repoOwner) {
+        console.log(`[WARNING] No repoOwner supplied`)
+        return Promise.resolve(false)
+    }
+    if (!repoName) {
+        console.log(`[WARNING] No repoName supplied`)
+        return Promise.resolve(false)
+    }
+    if (!commitSha) {
+        console.log(`[WARNING] No commitSha supplied`)
+        return Promise.resolve(false)
+    }
+    if (!githubAccessToken) {
+        console.log(`[WARNING] No githubAccessToken supplied`)
+        return Promise.resolve(false)
+    }
+
     const url = `https://api.github.com/repos/${repoOwner}/${repoName}/statuses/${commitSha}`
     return axios({
         method: 'GET',
@@ -25,6 +43,7 @@ const canTokenAccessRepo = ({
                     `GitHubService HTTP_${error.response.status} :: ${
                         error.response.data ? error.response.data.message : ''
                     }`,
+                    error,
                 )
                 return false
             }

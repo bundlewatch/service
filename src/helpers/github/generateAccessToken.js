@@ -27,9 +27,10 @@ const generateAccessToken = code =>
                     : response.data,
             }
         })
-        .catch(response => {
+        .catch(error => {
+            console.error(error) // eslint-disable-line no-console
             return {
-                error: response.status,
+                error: error.response.status || error.message,
             }
         })
 
