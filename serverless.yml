@@ -45,6 +45,7 @@ provider:
         - dynamodb:PutItem
         - dynamodb:UpdateItem
         - dynamodb:DeleteItem
+        - dynamodb:DescribeTable
       Resource:
         - { "Fn::GetAtt": ["StoreTable", "Arn" ] }
   environment:
@@ -53,8 +54,7 @@ provider:
     GITHUB_CLIENT_SECRET: ${self:custom.githubClientSecret.${self:custom.stage}}
 
 functions:
-  # Endpoints
-  keyword:
+  expressRouter:
     handler: src/router/index.app
     events:
       - http:
