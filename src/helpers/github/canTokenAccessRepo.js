@@ -33,6 +33,7 @@ const canTokenAccessRepo = ({
         headers: {
             Authorization: `token ${githubAccessToken}`,
         },
+        timeout: 5000,
     })
         .then(response => {
             return response.data

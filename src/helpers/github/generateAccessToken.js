@@ -15,6 +15,7 @@ const generateAccessToken = code =>
             client_id: env.GITHUB_CLIENT_ID,
             client_secret: env.GITHUB_CLIENT_SECRET,
         },
+        timeout: 10000,
     })
         .then(response => {
             if (response.data.access_token) {
