@@ -55,7 +55,7 @@ jobs:
 
       - run:
           name: Deploy Production
-          command: STAGE=prod sls create_domain && make deploy
+          command: STAGE=prod sls make deploy
 
 workflows:
   version: 2
