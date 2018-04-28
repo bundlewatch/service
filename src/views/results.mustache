@@ -1,0 +1,60 @@
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <link href="/static/styles.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+</head>
+<body>
+<header>
+    <div class="logo">
+        <object type="image/svg+xml" data="/static/logo-large.svg">
+          Your browser does not support SVG
+        </object>
+    </div>
+</header>
+
+<div class="build-info">
+    <div>
+        <span class="big dark">{{results.summary}}</span> <br/>
+        <span class="big dark">Overall Status: {{ results.status }}</span> <br/>
+        <span class="big light">{{details.commitSha}}</span>
+    </div>
+    <div class="light">{{details.repoOwner}}/{{details.repoName}}/{{details.repoCurrentBranch}} merging
+        into {{details.repoBranchBase}}</div>
+</div>
+
+<div class="card">
+    <table>
+        <thead>
+        <tr>
+            <th>Status</th>
+            <th>File</th>
+            <th>Bundle</th>
+            <th>Now</th>
+            <th>Diff to {{details.repoBranchBase}}</th>
+            <th>Max</th>
+        </tr>
+        </thead>
+        <tbody>
+        {{#results.fullResults}}
+            <tr>
+                <td>
+                    {{status}}
+                </td>
+                <td>
+                    {{filePath}} <br />
+                    {{ message }}
+                </td>
+                <td>
+                    TODO progress bar
+                </td>
+                <td>{{prettySize}}</td>
+                <td>{{prettyDiffSize}}</td>
+                <td> {{prettyMaxSize}}</td>
+            </tr>
+        {{/results.fullResults}}
+        </tbody>
+    </table>
+</div>
+</body>
+</html>
