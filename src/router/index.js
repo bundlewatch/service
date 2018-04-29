@@ -97,7 +97,6 @@ function createServerlessApp() {
         asyncMiddleware(async (req, res) => {
             let { d } = req.query
             const { results, details } = jsonpack.unpack(d)
-            console.log(results)
 
             details.commitSha = details.commitSha.slice(0, 8)
             results.fullResults.map(fileResult => {
@@ -107,9 +106,7 @@ function createServerlessApp() {
                 if (fileResult.baseBranchSize) {
                     newFileResult.diff =
                         fileResult.size - fileResult.baseBranchSize
-                    newFileResult.prettyDiffSize = bytes(
-                        newFileResult.diff,
-                    )
+                    newFileResult.prettyDiffSize = bytes(newFileResult.diff)
                     if (newFileResult.diff > 0) {
                         newFileResult.prettyDiffSize = `+${
                             newFileResult.prettyDiffSize
@@ -121,10 +118,30 @@ function createServerlessApp() {
                     fileResult.size,
                     fileResult.maxSize,
                 )
-
+                if (fileResult.status === STATUS.PASS) {
+                    newFileResult.pass = true
+                } else if (fileResult.status === STATUS.WARN) {
+                    newFileResult.warn = true
+                } else if (fileResult.status === STATUS.FAIL) {
+                    newFileResult.fail = true
+                } else {
+                    newFileResult.removed = true
+                }
+                newFileResult.baseBranchSizePercentage =
+                    fileResult.baseBranchSize /
+                    newFileResult.barTotalLength *
+                    100
+                newFileResult.diffPercentage =
+                    Math.abs(newFileResult.diff) /
+                    newFileResult.barTotalLength *
+                    100
+                newFileResult.remainingPercentage =
+                    100 -
+                    newFileResult.baseBranchSizePercentage -
+                    newFileResult.diffPercentage
                 return newFileResult
             })
-
+            results.status = results.status.toUpperCase()
             res.render('results', { results, details })
         }),
     )
