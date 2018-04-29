@@ -86,7 +86,7 @@ resources:
       Properties:
         AttributeDefinitions:
           -
-            AttributeName: repoOwner
+            AttributeName: repo
             AttributeType: S
           -
             AttributeName: repoBranch
@@ -96,7 +96,7 @@ resources:
             AttributeType: S
         KeySchema:
           -
-            AttributeName: repoOwner
+            AttributeName: repo
             KeyType: HASH
           -
             AttributeName: repoBranch
@@ -106,7 +106,7 @@ resources:
             IndexName: timestamp
             KeySchema:
                 -
-                    AttributeName: repoOwner
+                    AttributeName: repo
                     KeyType: HASH
                 -
                     AttributeName: timestamp

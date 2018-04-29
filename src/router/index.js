@@ -38,13 +38,15 @@ const getMustachePropsFromStatus = status => {
     }
 }
 
+const ROOT_DIR = process.env.IS_OFFLINE ? '.webpack/service/' : ''
+
 function createServerlessApp() {
     const app = express()
     app.disable('x-powered-by')
     app.engine('mustache', mustacheExpress())
     app.set('view engine', 'mustache')
-    app.set('views', path.join(process.cwd(), 'src/views'))
-    app.use('/static', express.static(path.join(process.cwd(), 'src/static')))
+    app.set('views', path.join(ROOT_DIR, 'src/views'))
+    app.use('/static', express.static(path.join(ROOT_DIR, 'src/static')))
     app.use(bodyParser.json({ strict: false }))
     app.get('/', (req, res) => {
         res.json({ message: 'hello world' })
@@ -78,13 +80,14 @@ function createServerlessApp() {
         protectedMiddleware,
         asyncMiddleware(async (req, res) => {
             const { repoBranch, repoName, repoOwner } = req.body
+            const repo = `${repoOwner}/${repoName}`
             const store = await Store.get({
                 repoBranch,
-                repoName,
-                repoOwner,
+                repo,
             })
             if (!store) {
                 res.status(404).send()
+                return
             }
             res.json({ fileDetailsByPath: store.fileDetailsByPath })
         }),

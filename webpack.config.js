@@ -1,5 +1,6 @@
 const slsw = require('serverless-webpack')
 const nodeExternals = require('webpack-node-externals')
+const CopyWebpackPlugin = require('copy-webpack-plugin')
 
 const config = {
     entry: slsw.lib.entries,
@@ -15,7 +16,7 @@ const config = {
             },
         ],
     },
-    plugins: [],
+    plugins: [new CopyWebpackPlugin(['src/static/*', 'src/views/*'])],
 }
 
 module.exports = config

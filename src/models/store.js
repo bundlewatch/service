@@ -19,6 +19,11 @@ const store = dynamoose.model(
         fileDetailsByPath: {
             type: Object,
         },
+        repo: {
+            type: String,
+            hashKey: true,
+            default: model => `${model.repoOwner}/${model.repoName}`,
+        },
         repoBranch: {
             type: String,
             rangeKey: true,
@@ -28,7 +33,6 @@ const store = dynamoose.model(
         },
         repoOwner: {
             type: String,
-            hashKey: true,
         },
         timestamp: {
             type: String,
