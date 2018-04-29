@@ -1,10 +1,17 @@
+html {
+  box-sizing: border-box;
+}
+*, *:before, *:after {
+  box-sizing: inherit;
+}
 html, body {
     margin: 0;
     padding: 0;
-    font-family: 'Source Sans Pro', sans-serif;
+    font-family: "Source Sans Pro", "Helvetica Neue", Arial, sans-serif;
+    color: rgb(54, 69, 79);
 }
 body {
-    background: #F5F7FA;
+    background: linear-gradient(to left bottom, rgb(213, 68, 0) 0%, rgb(255, 205, 82) 100%);
 }
 table {
     border-collapse: collapse;
@@ -17,17 +24,48 @@ td {
 }
 .logo {
     display: block;
-    height: 100px;
     margin: 50px auto;
     width: 20%;
+}
+.container {
+    margin: 0 auto;
+    width: 70%;
 }
 .big {
     font-size: 25px;
 }
-.build-info {
-    margin: 0 auto;
-    width: 70%;
+.big-icon {
+    font-size: 32px!important;
+    margin-right: 8px;
 }
+.build-info {
+    padding: 12px;
+    background: rgba(255, 255, 255, 0.9);
+    height: 56px;
+    clear:left;
+}
+.info-left {
+    float: left;
+    width: 50%;
+}
+.info-left-text {
+    display: inline-flex;
+    vertical-align: middle;
+}
+.info-right {
+    float: left;
+    width: 50%;
+    text-align: right;
+}
+.info-right-text {
+    display: inline-flex;
+    vertical-align: middle;
+    line-height: 32px;
+}
+.info-right-text a {
+    color: #d54400;
+}
+
 .column-header {
     padding: 10px 0;
     text-align: left;
@@ -57,6 +95,7 @@ td {
     height: 50px;
 }
 .cell-status {
+    padding: 12px;
     text-align: center;
 }
 .cell-pass {
@@ -78,11 +117,8 @@ td {
     color: #969FA5;
 }
 .card {
-    width: 70%;
-    margin: 0 auto;
-    padding: 25px;
+    margin-bottom: 24px;
     background: #FFF;
-    border-radius: 5px;
     box-shadow: 0px 3px 5px 2px rgba(201, 214, 255, 0.15);
 }
 .progress-bar-container {

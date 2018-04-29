@@ -17,73 +17,89 @@
     </div>
 </header>
 
-<div class="build-info">
-    <div>
-        <span class="big dark">{{results.summary}}</span> <br/>
-        <span>Overall Status: {{ results.status }}
-        </span> <br/>
-        <span class="light">{{details.commitSha}}</span>
+<article class="container">
+    <div class="build-info">
+        <div class="info-left">
+            <span class="info-left-text big dark">
+                {{#results.pass}}
+                    <i class="big-icon cell-pass material-icons">check</i>
+                {{/results.pass}}
+                {{#results.warn}}
+                    <i class="cell-warn material-icons">warning</i>
+                {{/results.warn}}
+                {{#results.fail}}
+                    <i class="cell-fail material-icons">close</i>
+                {{/results.fail}}
+                {{results.summary}}
+            </span> <br />
+        </div>
+        <div class="info-right light">
+            <div class="info-right-text">
+                <a href="https://github.com/{{details.repoOwner}}/{{details.repoName}}/commit/{{details.commitSha}}">{{details.commitShaPretty}}</a>
+                &nbsp; on {{details.repoOwner}}/{{details.repoName}}/{{details.repoCurrentBranch}}
+                <i class="cell-pass material-icons" title="Merging into {{details.repoBranchBase}}">call_merge</i>
+                {{details.repoBranchBase}}
+                <span class="light">
+                   </span>
+            </div>
+        </div>
     </div>
-    <div class="light">{{details.repoOwner}}/{{details.repoName}}/{{details.repoCurrentBranch}}
-        <i class="cell-pass material-icons">call_merge</i>
-        {{details.repoBranchBase}}
-    </div>
-</div>
 
-<div class="card">
-    <table>
-        <thead>
-            <tr class="row-header">
-                <th class="column-status column-header">Status</th>
-                <th class="column-file column-header">File</th>
-                <th class="column-bundle column-header">Bundle</th>
-                <th class="column-now column-header">Now</th>
-                <th class="column-diff column-header">Diff</th>
-                <th class="column-max column-header">Max</th>
-            </tr>
-        </thead>
-        <tbody>
-        {{#results.fullResults}}
-            <tr>
-                <td class="cell-status">
-                    {{#pass}}
-                        <i class="cell-pass material-icons">check</i>
-                    {{/pass}}
-                    {{#warn}}
-                        <i class="cell-warn material-icons">warning</i>
-                    {{/warn}}
-                    {{#fail}}
-                        <i class="cell-fail material-icons">close</i>
-                    {{/fail}}
-                    {{#removed}}
-                        <i class="cell-removed material-icons">remove_circle</i>
-                    {{/removed}}
-                </td>
-                <td>
-                    {{filePath}} <br />
-                </td>
-                <td>
-                    <div class="progress-bar-container">
-                        <div class="progress-bar progress-bar-last-size" style="width:{{baseBranchSizePercentage}}%"></div>
+    <div class="card">
+        <table>
+            <thead>
+                <tr class="row-header">
+                    <th class="column-status column-header">Status</th>
+                    <th class="column-file column-header">File</th>
+                    <th class="column-bundle column-header">Bundle</th>
+                    <th class="column-now column-header">Now</th>
+                    <th class="column-diff column-header">Diff</th>
+                    <th class="column-max column-header">Max</th>
+                </tr>
+            </thead>
+            <tbody>
+            {{#results.fullResults}}
+                <tr>
+                    <td class="cell-status">
                         {{#pass}}
-                            <div class="progress-bar progress-bar-pass" style="width:{{diffPercentage}}%"></div>
+                            <i class="cell-pass material-icons">check</i>
                         {{/pass}}
                         {{#warn}}
-                            <div class="progress-bar progress-bar-warn" style="width:{{diffPercentage}}%"></div>
+                            <i class="cell-warn material-icons">warning</i>
                         {{/warn}}
                         {{#fail}}
-                            <div class="progress-bar progress-bar-fail" style="width:{{diffPercentage}}%"></div>
+                            <i class="cell-fail material-icons">close</i>
                         {{/fail}}
-                        <div class="progress-bar progress-bar-remaining" style="width:{{remainingPercentage}}%"></div>
-                    </div>
-                </td>
-                <td>{{prettySize}}</td>
-                <td>{{prettyDiffSize}}</td>
-                <td> {{prettyMaxSize}}</td>
-            </tr>
-        {{/results.fullResults}}
-        </tbody>
-    </table>
-</div>
+                        {{#removed}}
+                            <i class="cell-removed material-icons">remove_circle</i>
+                        {{/removed}}
+                    </td>
+                    <td>
+                        {{filePath}} <br />
+                    </td>
+                    <td>
+                        <div class="progress-bar-container">
+                            <div class="progress-bar progress-bar-last-size" style="width:{{baseBranchSizePercentage}}%"></div>
+                            {{#pass}}
+                                <div class="progress-bar progress-bar-pass" style="width:{{diffPercentage}}%"></div>
+                            {{/pass}}
+                            {{#warn}}
+                                <div class="progress-bar progress-bar-warn" style="width:{{diffPercentage}}%"></div>
+                            {{/warn}}
+                            {{#fail}}
+                                <div class="progress-bar progress-bar-fail" style="width:{{diffPercentage}}%"></div>
+                            {{/fail}}
+                            <div class="progress-bar progress-bar-remaining" style="width:{{remainingPercentage}}%"></div>
+                        </div>
+                    </td>
+                    <td>{{prettySize}}</td>
+                    <td>{{prettyDiffSize}}</td>
+                    <td> {{prettyMaxSize}}</td>
+                </tr>
+            {{/results.fullResults}}
+            </tbody>
+        </table>
+    </div>
+</article>
 </body>
 </html>

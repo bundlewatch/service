@@ -19,6 +19,25 @@ const STATUS = {
     REMOVED: 'removed',
 }
 
+const getMustachePropsFromStatus = status => {
+    if (status === STATUS.PASS) {
+        return {
+            pass: true,
+        }
+    } else if (status === STATUS.WARN) {
+        return {
+            warn: true,
+        }
+    } else if (status === STATUS.FAIL) {
+        return {
+            fail: true,
+        }
+    }
+    return {
+        removed: true,
+    }
+}
+
 function createServerlessApp() {
     const app = express()
     app.disable('x-powered-by')
@@ -96,11 +115,20 @@ function createServerlessApp() {
         '/results',
         asyncMiddleware(async (req, res) => {
             let { d } = req.query
-            const { results, details } = jsonpack.unpack(d)
+            const unpacked = jsonpack.unpack(d)
+            const results = Object.assign(
+                {},
+                unpacked.results,
+                getMustachePropsFromStatus(unpacked.results.status),
+            )
+            const details = unpacked.details
 
-            details.commitSha = details.commitSha.slice(0, 8)
+            details.commitShaPretty = details.commitSha.slice(0, 8)
             results.fullResults.map(fileResult => {
-                const newFileResult = fileResult
+                const newFileResult = Object.assign(
+                    fileResult,
+                    getMustachePropsFromStatus(fileResult.status),
+                )
                 newFileResult.prettySize = bytes(fileResult.size)
                 newFileResult.prettyMaxSize = bytes(fileResult.maxSize)
                 if (fileResult.baseBranchSize) {
@@ -118,15 +146,6 @@ function createServerlessApp() {
                     fileResult.size,
                     fileResult.maxSize,
                 )
-                if (fileResult.status === STATUS.PASS) {
-                    newFileResult.pass = true
-                } else if (fileResult.status === STATUS.WARN) {
-                    newFileResult.warn = true
-                } else if (fileResult.status === STATUS.FAIL) {
-                    newFileResult.fail = true
-                } else {
-                    newFileResult.removed = true
-                }
                 newFileResult.baseBranchSizePercentage =
                     fileResult.baseBranchSize /
                     newFileResult.barTotalLength *
