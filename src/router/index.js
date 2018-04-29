@@ -125,7 +125,6 @@ function createServerlessApp() {
                 details.repoOwner &&
                 details.repoName &&
                 details.repoCurrentBranch &&
-                details.repoBranchBase &&
                 details.commitSha
 
             details.commitShaPretty = details.commitSha
@@ -159,7 +158,7 @@ function createServerlessApp() {
                       100
                     : 0
                 newFileResult.diffPercentage =
-                    (newFileResult.diffPercentage
+                    (newFileResult.baseBranchSize
                         ? Math.abs(newFileResult.diff)
                         : newFileResult.size) /
                     newFileResult.barTotalLength *
