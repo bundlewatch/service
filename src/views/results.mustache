@@ -25,22 +25,23 @@
                     <i class="big-icon cell-pass material-icons">check</i>
                 {{/results.pass}}
                 {{#results.warn}}
-                    <i class="cell-warn material-icons">warning</i>
+                    <i class="big-icon cell-warn material-icons">warning</i>
                 {{/results.warn}}
                 {{#results.fail}}
-                    <i class="cell-fail material-icons">close</i>
+                    <i class="big-icon cell-fail material-icons">close</i>
                 {{/results.fail}}
                 {{results.summary}}
             </span> <br />
         </div>
         <div class="info-right light">
             <div class="info-right-text">
-                <a href="https://github.com/{{details.repoOwner}}/{{details.repoName}}/commit/{{details.commitSha}}">{{details.commitShaPretty}}</a>
-                &nbsp; on {{details.repoOwner}}/{{details.repoName}}/{{details.repoCurrentBranch}}
-                <i class="cell-pass material-icons" title="Merging into {{details.repoBranchBase}}">call_merge</i>
-                {{details.repoBranchBase}}
-                <span class="light">
-                   </span>
+                {{#details.hasDetails}}
+                    <a href="https://github.com/{{details.repoOwner}}/{{details.repoName}}/commit/{{details.commitSha}}">{{details.commitShaPretty}}</a>
+                    &nbsp; on
+                    {{details.repoOwner}}/{{details.repoName}}/{{details.repoCurrentBranch}}
+                        <i class="cell-pass material-icons" title="Merging into {{details.repoBranchBase}}">call_merge</i>
+                    {{details.repoBranchBase}}
+                {{/details.hasDetails}}
             </div>
         </div>
     </div>
@@ -71,7 +72,7 @@
                             <i class="cell-fail material-icons">close</i>
                         {{/fail}}
                         {{#removed}}
-                            <i class="cell-removed material-icons">remove_circle</i>
+                            <i class="cell-removed material-icons" title="This commit removes this file">remove_circle</i>
                         {{/removed}}
                     </td>
                     <td>
@@ -93,8 +94,15 @@
                         </div>
                     </td>
                     <td>{{prettySize}}</td>
-                    <td>{{prettyDiffSize}}</td>
-                    <td> {{prettyMaxSize}}</td>
+                    <td>
+                        {{#prettyDiffSize}}
+                            {{prettyDiffSize}}
+                        {{/prettyDiffSize}}
+                        {{^prettyDiffSize}}
+                            <span title="Not available">n/a</span>
+                        {{/prettyDiffSize}}
+                    </td>
+                    <td>{{prettyMaxSize}}</td>
                 </tr>
             {{/results.fullResults}}
             </tbody>

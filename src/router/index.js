@@ -125,8 +125,16 @@ function createServerlessApp() {
                 getMustachePropsFromStatus(unpacked.results.status),
             )
             const details = unpacked.details
+            details.hasDetails =
+                details.repoOwner &&
+                details.repoName &&
+                details.repoCurrentBranch &&
+                details.repoBranchBase &&
+                details.commitSha
 
-            details.commitShaPretty = details.commitSha.slice(0, 8)
+            details.commitShaPretty = details.commitSha
+                ? details.commitSha.slice(0, 8)
+                : ''
             results.fullResults.map(fileResult => {
                 const newFileResult = Object.assign(
                     fileResult,
@@ -149,14 +157,18 @@ function createServerlessApp() {
                     fileResult.size,
                     fileResult.maxSize,
                 )
-                newFileResult.baseBranchSizePercentage =
-                    fileResult.baseBranchSize /
-                    newFileResult.barTotalLength *
-                    100
+                newFileResult.baseBranchSizePercentage = fileResult.baseBranchSize
+                    ? fileResult.baseBranchSize /
+                      newFileResult.barTotalLength *
+                      100
+                    : 0
                 newFileResult.diffPercentage =
-                    Math.abs(newFileResult.diff) /
+                    (newFileResult.diffPercentage
+                        ? Math.abs(newFileResult.diff)
+                        : newFileResult.size) /
                     newFileResult.barTotalLength *
                     100
+
                 newFileResult.remainingPercentage =
                     100 -
                     newFileResult.baseBranchSizePercentage -
