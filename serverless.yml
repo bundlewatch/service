@@ -69,6 +69,14 @@ functions:
       - http:
           path: /github-token
           method: get
+      - http:
+          path: /results
+          method: get
+      - http:
+          path: /static/styles.css
+          method: get
+
+
 
 resources:
   Resources:
