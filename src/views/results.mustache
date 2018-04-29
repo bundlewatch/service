@@ -1,8 +1,8 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
-    <link href="/static/styles.css" rel="stylesheet" type="text/css">
-    <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+    <title>Bundlesize Build Results</title>
+    <link href="/static/results-styles.css" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro" rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
       rel="stylesheet">
@@ -16,34 +16,27 @@
         </a>
     </div>
 </header>
-
 <article class="container">
+    <div class="repo-info">
+        {{#details.hasDetails}}
+            <a href="https://github.com/{{details.repoOwner}}/{{details.repoName}}">{{details.repoOwner}}/{{details.repoName}}</a>
+            ({{details.repoCurrentBranch}})
+            @ <a href="https://github.com/{{details.repoOwner}}/{{details.repoName}}/commit/{{details.commitSha}}">{{details.commitShaPretty}}</a>
+        {{/details.hasDetails}}
+    </div>
     <div class="build-info">
-        <div class="info-left">
-            <span class="info-left-text big dark">
-                {{#results.pass}}
-                    <i class="big-icon cell-pass material-icons">check</i>
-                {{/results.pass}}
-                {{#results.warn}}
-                    <i class="big-icon cell-warn material-icons">warning</i>
-                {{/results.warn}}
-                {{#results.fail}}
-                    <i class="big-icon cell-fail material-icons">close</i>
-                {{/results.fail}}
-                {{results.summary}}
-            </span> <br />
-        </div>
-        <div class="info-right light">
-            <div class="info-right-text">
-                {{#details.hasDetails}}
-                    <a href="https://github.com/{{details.repoOwner}}/{{details.repoName}}/commit/{{details.commitSha}}">{{details.commitShaPretty}}</a>
-                    &nbsp; on
-                    {{details.repoOwner}}/{{details.repoName}}/{{details.repoCurrentBranch}}
-                        <i class="cell-pass material-icons" title="Merging into {{details.repoBranchBase}}">call_merge</i>
-                    {{details.repoBranchBase}}
-                {{/details.hasDetails}}
-            </div>
-        </div>
+        <span class="build-info-text big dark">
+            {{#results.pass}}
+                <i class="big-icon cell-pass material-icons">check</i>
+            {{/results.pass}}
+            {{#results.warn}}
+                <i class="big-icon cell-warn material-icons">warning</i>
+            {{/results.warn}}
+            {{#results.fail}}
+                <i class="big-icon cell-fail material-icons">close</i>
+            {{/results.fail}}
+            {{results.summary}}
+        </span>
     </div>
 
     <div class="card">

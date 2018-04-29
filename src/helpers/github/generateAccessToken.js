@@ -2,8 +2,12 @@ import axios from 'axios'
 
 const env = process.env
 
-const generateAccessToken = code =>
-    axios({
+const generateAccessToken = code => {
+    if (process.env.IS_OFFLINE) {
+        return Promise.resolve('adfas923n44a8c5c282342sadhjfgdhjag10df0df')
+    }
+
+    return axios({
         method: 'POST',
         url: 'https://github.com/login/oauth/access_token',
         headers: {
@@ -34,5 +38,6 @@ const generateAccessToken = code =>
                 error: error.response.status || error.message,
             }
         })
+}
 
 export default generateAccessToken

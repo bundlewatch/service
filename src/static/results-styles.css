@@ -11,7 +11,7 @@ html, body {
     color: rgb(54, 69, 79);
 }
 body {
-    background: linear-gradient(to left bottom, rgb(213, 68, 0) 0%, rgb(255, 205, 82) 100%);
+    background: #efefef;
 }
 table {
     border-collapse: collapse;
@@ -40,29 +40,18 @@ td {
 }
 .build-info {
     padding: 12px;
-    background: rgba(255, 255, 255, 0.9);
+    background: #fff;
     height: 56px;
     clear:left;
 }
-.info-left {
-    float: left;
-    width: 50%;
-}
-.info-left-text {
+.build-info-text {
     display: inline-flex;
     vertical-align: middle;
 }
-.info-right {
-    float: left;
-    width: 50%;
-    text-align: right;
+.repo-info {
+    padding: 12px;
 }
-.info-right-text {
-    display: inline-flex;
-    vertical-align: middle;
-    line-height: 32px;
-}
-.info-right-text a {
+.repo-info a {
     color: #d54400;
 }
 

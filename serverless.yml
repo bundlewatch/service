@@ -67,13 +67,16 @@ functions:
           path: /store/lookup
           method: post
       - http:
-          path: /github-token
+          path: /setup-github
           method: get
       - http:
           path: /results
           method: get
       - http:
-          path: /static/styles.css
+          path: /static/results-styles.css
+          method: get
+      - http:
+          path: /static/setup-github-styles.css
           method: get
 
 
