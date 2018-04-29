@@ -1,0 +1,41 @@
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <title>Bundlesize</title>
+    <link href="/static/setup-github-styles.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">
+</head>
+<body>
+<header>
+    <div class="logo">
+        <a target="_blank" href="http://bundlesize.io/">
+            <img src="https://cdn.rawgit.com/bundlesize/bundlesize.io/master/docs/_assets/logo-large.svg">
+        </a>
+    </div>
+</header>
+
+<article class="container">
+    <div class="card">
+        <img src="https://cdn.rawgit.com/bundlesize/bundlesize.io/master/docs/_assets/build-status-preview.png" width="800" />
+        <div style="margin: 48px auto">
+            {{#token}}
+                <h3>Your GitHub Bundlesize token</h3>
+                <code>{{token}}</code>
+                <p>Setup bundlesize on your Pull Requests by adding the above token to CI as an environment variable</p>
+                <code>BUNDLESIZE_GITHUB_TOKEN</code>
+            {{/token}}
+            {{^token}}
+                <p>Setup bundlesize on your Pull Requests by Authorizing bundlesize on Github</p>
+                <a class="btn" data-title='Authorize on Github' href="https://github.com/login/oauth/authorize?scope=repo%3Astatus&client_id=04fcf325dd26ca2a159f"></a>
+            {{/token}}
+        </div>
+        <p style="padding-top: 24px; text-align: right;">
+            Additional documentation available at <a href="http://bundlesize.io">bundlesize.io</a>
+        </p>
+     </div>
+</article>
+
+</body>
+</html>

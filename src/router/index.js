@@ -93,25 +93,21 @@ function createServerlessApp() {
         }),
     )
     app.get(
-        '/github-token',
+        '/setup-github',
         asyncMiddleware(async (req, res) => {
             const { code } = req.query
-            if (!code) {
-                res.status(400).json({ message: `No code` })
-                return
+            let result
+            if (code) {
+                result = await generateAccessToken(code)
+                if (result.error) {
+                    res.status(500).json({
+                        error: result.error,
+                    })
+                    return
+                }
             }
 
-            const result = await generateAccessToken(code)
-            if (result.error) {
-                res.status(500).json({
-                    error: result.error,
-                })
-                return
-            }
-
-            res.json({
-                token: result,
-            })
+            res.render('setup-github', { token: result })
         }),
     )
     app.get(
