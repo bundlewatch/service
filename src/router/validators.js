@@ -31,7 +31,7 @@ const fullResultItemSchema = Joi.object().keys({
     baseBranchSize: Joi.number().required(),
     filePath: Joi.string().required(),
     maxSize: Joi.number().required(),
-    message: Joi.string().required(),
+    message: Joi.string().optional(),
     size: Joi.number().required(),
     status: Joi.string().required(),
 })
