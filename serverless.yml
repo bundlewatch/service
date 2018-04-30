@@ -8,6 +8,9 @@ plugins:
   - serverless-offline # must be last
 
 custom:
+  webpack:
+    packager: 'yarn'
+    packagerOptions: {}
   webpackIncludeModules: true
   stage: ${opt:stage, self:provider.stage}
   storeTable: '${self:service}-store-table-${self:custom.stage}'
