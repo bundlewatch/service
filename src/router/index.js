@@ -1,12 +1,20 @@
-import path from 'path'
-import express from 'express'
 import bodyParser from 'body-parser'
-import serverless from 'serverless-http'
-import mustacheExpress from 'mustache-express'
-import jsonpack from 'jsonpack/main'
 import bytes from 'bytes'
+import express from 'express'
+import Joi from 'joi'
+import jsonpack from 'jsonpack/main'
+import mustacheExpress from 'mustache-express'
+import path from 'path'
+import serverless from 'serverless-http'
+import { validationResult } from 'express-validator/check'
 
 import Store from '../models/store'
+import {
+    createStoreValidator,
+    githubTokenValidator,
+    lookupStoreValidator,
+    unpackedJsonSchema,
+} from './validators'
 import generateAccessToken from '../helpers/github/generateAccessToken'
 
 import asyncMiddleware from './middleware/asyncMiddleware'
@@ -40,6 +48,14 @@ const getMustachePropsFromStatus = status => {
 
 const ROOT_DIR = process.env.IS_OFFLINE ? '.webpack/service/' : ''
 
+function validateEndpoint(req, res) {
+    const errors = validationResult(req)
+    if (!errors.isEmpty()) {
+        return res.status(422).json({ errors: errors.mapped() })
+    }
+    return null
+}
+
 function createServerlessApp() {
     const app = express()
     app.disable('x-powered-by')
@@ -53,8 +69,11 @@ function createServerlessApp() {
     })
     app.post(
         '/store',
+        createStoreValidator,
         protectedMiddleware,
         asyncMiddleware(async (req, res) => {
+            const errorStatus = validateEndpoint(req, res)
+            if (errorStatus) return errorStatus
             const {
                 commitSha,
                 fileDetailsByPath,
@@ -77,8 +96,11 @@ function createServerlessApp() {
     )
     app.post(
         '/store/lookup',
+        lookupStoreValidator,
         protectedMiddleware,
         asyncMiddleware(async (req, res) => {
+            const errorStatus = validateEndpoint(req, res)
+            if (errorStatus) return errorStatus
             const { repoBranch, repoName, repoOwner } = req.body
             const repo = `${repoOwner}/${repoName}`
             const store = await Store.get({
@@ -86,28 +108,28 @@ function createServerlessApp() {
                 repo,
             })
             if (!store) {
-                res.status(404).send()
-                return
+                return res.status(404).send()
             }
-            res.json({ fileDetailsByPath: store.fileDetailsByPath })
+            return res.json({ fileDetailsByPath: store.fileDetailsByPath })
         }),
     )
     app.get(
         '/setup-github',
+        githubTokenValidator,
         asyncMiddleware(async (req, res) => {
+            const errorStatus = validateEndpoint(req, res)
+            if (errorStatus) return errorStatus
             const { code } = req.query
             let result
             if (code) {
                 result = await generateAccessToken(code)
                 if (result.error) {
-                    res.status(500).json({
+                    return res.status(500).json({
                         error: result.error,
                     })
-                    return
                 }
             }
-
-            res.render('setup-github', { token: result })
+            return res.render('setup-github', { token: result })
         }),
     )
     app.get(
@@ -115,6 +137,10 @@ function createServerlessApp() {
         asyncMiddleware(async (req, res) => {
             let { d } = req.query
             const unpacked = jsonpack.unpack(d)
+            const validation = Joi.validate(unpacked, unpackedJsonSchema)
+            if (validation.error) {
+                return res.status(422).json({ errors: validation.error })
+            }
             const results = Object.assign(
                 {},
                 unpacked.results,
@@ -171,7 +197,7 @@ function createServerlessApp() {
                 return newFileResult
             })
             results.status = results.status.toUpperCase()
-            res.render('results', { results, details })
+            return res.render('results', { results, details })
         }),
     )
 

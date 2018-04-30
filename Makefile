@@ -60,6 +60,13 @@ install-deployment-deps: check-versions
 deploy: check-versions node_modules
 	./scripts/deploy.sh
 
+.PHONY: test-ci
+test-ci: check-versions node_modules
+	make clean-dynamodb
+	make start &
+	sleep 15
+	make test
+
 # ----------------- Helpers ------------------
 
 .PHONY: check-versions
