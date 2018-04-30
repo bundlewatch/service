@@ -6,13 +6,12 @@ import jsonpack from 'jsonpack/main'
 import mustacheExpress from 'mustache-express'
 import path from 'path'
 import serverless from 'serverless-http'
-import { validationResult } from 'express-validator/check'
 
 import Store from '../models/store'
 import {
-    createStoreValidator,
-    githubTokenValidator,
-    lookupStoreValidator,
+    createStoreSchema,
+    githutTokenSchema,
+    lookupStoreSchema,
     unpackedJsonSchema,
 } from './validators'
 import generateAccessToken from '../helpers/github/generateAccessToken'
@@ -48,10 +47,10 @@ const getMustachePropsFromStatus = status => {
 
 const ROOT_DIR = process.env.IS_OFFLINE ? '.webpack/service/' : ''
 
-function validateEndpoint(req, res) {
-    const errors = validationResult(req)
-    if (!errors.isEmpty()) {
-        return res.status(422).json({ errors: errors.mapped() })
+function validateEndpoint(req, res, schema) {
+    const validation = Joi.validate(req.body, schema)
+    if (validation.error) {
+        return res.status(422).json({ errors: validation.error })
     }
     return null
 }
@@ -69,10 +68,9 @@ function createServerlessApp() {
     })
     app.post(
         '/store',
-        createStoreValidator,
         protectedMiddleware,
         asyncMiddleware(async (req, res) => {
-            const errorStatus = validateEndpoint(req, res)
+            const errorStatus = validateEndpoint(req, res, createStoreSchema)
             if (errorStatus) return errorStatus
             const {
                 commitSha,
@@ -96,10 +94,9 @@ function createServerlessApp() {
     )
     app.post(
         '/store/lookup',
-        lookupStoreValidator,
         protectedMiddleware,
         asyncMiddleware(async (req, res) => {
-            const errorStatus = validateEndpoint(req, res)
+            const errorStatus = validateEndpoint(req, res, lookupStoreSchema)
             if (errorStatus) return errorStatus
             const { repoBranch, repoName, repoOwner } = req.body
             const repo = `${repoOwner}/${repoName}`
@@ -115,9 +112,9 @@ function createServerlessApp() {
     )
     app.get(
         '/setup-github',
-        githubTokenValidator,
         asyncMiddleware(async (req, res) => {
-            const errorStatus = validateEndpoint(req, res)
+            const errorStatus = validateEndpoint(req, res, githutTokenSchema)
+            if (errorStatus) return errorStatus
             if (errorStatus) return errorStatus
             const { code } = req.query
             let result

@@ -1,34 +1,47 @@
-import { check } from 'express-validator/check'
 import Joi from 'joi'
 
-export const createStoreValidator = [
-    check('commitSha').exists(),
-    check('fileDetailsByPath').exists(),
-    check('repoBranch').exists(),
-    check('repoName').exists(),
-    check('repoOwner').exists(),
-]
+export const createStoreSchema = Joi.object().keys({
+    commitSha: Joi.string().optional(),
+    githubAuthToken: Joi.string().required(),
+    repoBranch: Joi.string().required(),
+    repoName: Joi.string().required(),
+    repoOwner: Joi.string().required(),
+    fileDetailsByPath: Joi.object({
+        filePath: Joi.object(),
+    })
+        .pattern(
+            /\w\d/,
+            Joi.object({
+                compression: Joi.string().required(),
+                maxSize: Joi.number().required(),
+                size: Joi.number().required(),
+            }),
+        )
+        .required(),
+})
 
-export const lookupStoreValidator = [
-    check('repoBranch').exists(),
-    check('repoName').exists(),
-    check('repoOwner').exists(),
-]
+export const lookupStoreSchema = Joi.object().keys({
+    repoBranch: Joi.string().required(),
+    repoName: Joi.string().required(),
+    repoOwner: Joi.string().required(),
+})
 
-export const githubTokenValidator = [check('code').optional()]
+export const githutTokenSchema = Joi.object().keys({
+    code: Joi.string().optional(),
+})
 
 const detailsSchema = Joi.object()
     .keys({
-        commitSha: Joi.string().required(),
-        repoBranchBase: Joi.string().required(),
-        repoCurrentBranch: Joi.string().required(),
-        repoName: Joi.string().required(),
-        repoOwner: Joi.string().required(),
+        commitSha: Joi.string().optional(),
+        repoBranchBase: Joi.string().optional(),
+        repoCurrentBranch: Joi.string().optional(),
+        repoName: Joi.string().optional(),
+        repoOwner: Joi.string().optional(),
     })
     .required()
 
 const fullResultItemSchema = Joi.object().keys({
-    baseBranchSize: Joi.number().required(),
+    baseBranchSize: Joi.number().optional(),
     filePath: Joi.string().required(),
     maxSize: Joi.number().required(),
     message: Joi.string().optional(),

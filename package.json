@@ -33,7 +33,6 @@
         "bytes": "^3.0.0",
         "dynamoose": "^0.8.7",
         "express": "^4.16.3",
-        "express-validator": "^5.1.2",
         "joi": "^13.2.0",
         "jsonpack": "^1.1.5",
         "mustache-express": "^1.2.5",
