@@ -72,18 +72,29 @@
                         {{filePath}} <br />
                     </td>
                     <td>
-                        <div class="progress-bar-container">
-                            <div class="progress-bar progress-bar-last-size" style="width:{{baseBranchSizePercentage}}%"></div>
-                            {{#pass}}
-                                <div class="progress-bar progress-bar-pass" style="width:{{diffPercentage}}%"></div>
-                            {{/pass}}
-                            {{#warn}}
-                                <div class="progress-bar progress-bar-warn" style="width:{{diffPercentage}}%"></div>
-                            {{/warn}}
-                            {{#fail}}
-                                <div class="progress-bar progress-bar-fail" style="width:{{diffPercentage}}%"></div>
-                            {{/fail}}
-                            <div class="progress-bar progress-bar-remaining" style="width:{{remainingPercentage}}%"></div>
+                        <div class="progress-bar-cell">
+                            {{#removed}}
+                                This commit removed this file
+                            {{/removed}}
+                            {{^removed}}
+                                <div class="progress-bar-container">
+                                    <div class="progress-bar progress-bar-last-size" style="width:{{baseBranchSizePercentage}}%"></div>
+                                    {{#pass}}
+                                        {{#isDiffNegative}}
+                                            <div class="progress-bar progress-bar-pass-negative" style="width:{{diffPercentage}}%"></div>
+                                        {{/isDiffNegative}}
+                                        {{^isDiffNegative}}
+                                            <div class="progress-bar progress-bar-pass" style="width:{{diffPercentage}}%"></div>
+                                        {{/isDiffNegative}}
+                                    {{/pass}}
+                                    {{#warn}}
+                                        <div class="progress-bar progress-bar-warn" style="width:{{diffPercentage}}%"></div>
+                                    {{/warn}}
+                                    {{#fail}}
+                                        <div class="progress-bar progress-bar-fail" style="width:{{diffPercentage}}%"></div>
+                                    {{/fail}}
+                                </div>
+                            {{/removed}}
                         </div>
                     </td>
                     <td>{{prettySize}}</td>
