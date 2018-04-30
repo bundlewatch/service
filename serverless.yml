@@ -11,7 +11,6 @@ custom:
   webpack:
     includeModules: true
     packager: 'yarn'
-    packagerOptions: {}
   stage: ${opt:stage, self:provider.stage}
   storeTable: '${self:service}-store-table-${self:custom.stage}'
   dynamodb:
