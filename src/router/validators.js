@@ -15,7 +15,7 @@ export const lookupStoreValidator = [
     check('repoOwner').exists(),
 ]
 
-export const githubTokenValidator = [check('code').exists()]
+export const githubTokenValidator = [check('code').optional()]
 
 const detailsSchema = Joi.object()
     .keys({
