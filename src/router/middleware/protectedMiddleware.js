@@ -3,7 +3,7 @@ import canTokenAccessRepo from '../../helpers/github/canTokenAccessRepo'
 import asyncMiddleware from './asyncMiddleware'
 
 const protectedMiddleware = asyncMiddleware(async (req, res, next) => {
-    if (process.env.IS_OFFLINE === 'true') {
+    if (process.env.IS_OFFLINE !== 'true') {
         const { commitSha, repoName, repoOwner, githubAccessToken } = req.body
 
         const hasAccess = await canTokenAccessRepo({
