@@ -148,26 +148,28 @@ function createServerlessApp() {
                     }
                 }
 
-                newFileResult.barTotalLength = Math.max(
+                const barTotalLength = Math.max(
                     fileResult.size,
                     fileResult.maxSize,
                 )
-                newFileResult.baseBranchSizePercentage = fileResult.baseBranchSize
-                    ? fileResult.baseBranchSize /
-                      newFileResult.barTotalLength *
-                      100
-                    : 0
-                newFileResult.diffPercentage =
-                    (newFileResult.baseBranchSize
-                        ? Math.abs(newFileResult.diff)
-                        : newFileResult.size) /
-                    newFileResult.barTotalLength *
-                    100
 
-                newFileResult.remainingPercentage =
-                    100 -
-                    newFileResult.baseBranchSizePercentage -
-                    newFileResult.diffPercentage
+                newFileResult.baseBranchSizePercentage = 0
+                newFileResult.diffPercentage =
+                    newFileResult.size / barTotalLength * 100
+                if (fileResult.baseBranchSize) {
+                    // When the diff is negative, we need to eat into the baseBranchDiff
+                    newFileResult.isDiffNegative = newFileResult.diff < 0
+                    const absDiff = Math.abs(newFileResult.diff)
+
+                    const baseBranchSize = newFileResult.isDiffNegative
+                        ? fileResult.baseBranchSize - absDiff
+                        : fileResult.baseBranchSize
+                    newFileResult.baseBranchSizePercentage =
+                        baseBranchSize / barTotalLength * 100
+
+                    newFileResult.diffPercentage =
+                        absDiff / barTotalLength * 100
+                }
                 return newFileResult
             })
             results.status = results.status.toUpperCase()
