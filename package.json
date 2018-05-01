@@ -1,5 +1,5 @@
 {
-    "name": "bundlesize-service",
+    "name": "bundlewatch-service",
     "version": "0.0.1",
     "license": "UNLICENSED",
     "scripts": {

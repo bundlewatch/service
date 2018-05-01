@@ -1,4 +1,4 @@
-# Bundlesize - Service
-[![CircleCI](https://circleci.com/gh/bundlesize/service.svg?style=svg)](https://circleci.com/gh/bundlesize/service)
+# bundlewatch - Service
+[![CircleCI](https://circleci.com/gh/bundlewatch/service.svg?style=svg)](https://circleci.com/gh/bundlewatch/service)
 
-Service for storing Bundlesize data
+Service for storing bundlewatch data

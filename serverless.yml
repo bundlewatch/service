@@ -1,4 +1,4 @@
-service: bundlesize-service
+service: bundlewatch-service
 frameworkVersion: '=1.26.1'
 
 plugins:
@@ -27,7 +27,7 @@ custom:
     stage: ${env:GITHUB_CLIENT_SECRET}
     prod: ${env:GITHUB_CLIENT_SECRET}
   customDomain:
-    domainName: service.bundlesize.io
+    domainName: service.bundlewatch.io
     basePath: ''
     stage: ${self:custom.stage}
     createRoute53Record: true
