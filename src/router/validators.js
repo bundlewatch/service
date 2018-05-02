@@ -10,7 +10,7 @@ export const createStoreSchema = Joi.object().keys({
         filePath: Joi.object(),
     })
         .pattern(
-            /\w\d/,
+            /.+/,
             Joi.object({
                 compression: Joi.string().required(),
                 maxSize: Joi.number().required(),
