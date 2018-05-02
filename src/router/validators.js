@@ -2,7 +2,7 @@ import Joi from 'joi'
 
 export const createStoreSchema = Joi.object().keys({
     commitSha: Joi.string().optional(),
-    githubAuthToken: Joi.string().required(),
+    githubAccessToken: Joi.string().required(),
     repoBranch: Joi.string().required(),
     repoName: Joi.string().required(),
     repoOwner: Joi.string().required(),
@@ -22,7 +22,7 @@ export const createStoreSchema = Joi.object().keys({
 
 export const lookupStoreSchema = Joi.object().keys({
     commitSha: Joi.string().optional(),
-    githubAuthToken: Joi.string().required(),
+    githubAccessToken: Joi.string().required(),
     repoBranch: Joi.string().required(),
     repoName: Joi.string().required(),
     repoOwner: Joi.string().required(),
