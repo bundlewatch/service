@@ -3,4 +3,4 @@
 
 Service for storing bundlewatch data.
 
-detailed readme coming soon
+Looking for the [BundleWatch](https://github.com/bundlewatch/bundlewatch) app?
