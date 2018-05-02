@@ -21,6 +21,8 @@ export const createStoreSchema = Joi.object().keys({
 })
 
 export const lookupStoreSchema = Joi.object().keys({
+    commitSha: Joi.string().optional(),
+    githubAuthToken: Joi.string().required(),
     repoBranch: Joi.string().required(),
     repoName: Joi.string().required(),
     repoOwner: Joi.string().required(),
