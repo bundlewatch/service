@@ -1,3 +1,13 @@
+@import url("https://fonts.googleapis.com/css?family=Roboto+Mono|Source+Sans+Pro:300,400,600");
+* {
+  -webkit-font-smoothing: antialiased;
+  -webkit-overflow-scrolling: touch;
+  -webkit-tap-highlight-color: rgba(0,0,0,0);
+  -webkit-text-size-adjust: none;
+  -webkit-touch-callout: none;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
 html {
   box-sizing: border-box;
 }
@@ -7,29 +17,41 @@ html {
 html, body {
     margin: 0;
     padding: 0;
-    font-family: "Source Sans Pro", "Helvetica Neue", Arial, sans-serif;
-    color: rgb(54, 69, 79);
 }
 body {
-    background: #efefef;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+    color: #36454f;
+    font-family: 'Source Sans Pro', 'Helvetica Neue', Arial, sans-serif;
+    font-size: 15px;
+    letter-spacing: 0;
+    background: #f7f7f7;
 }
 table {
     border-collapse: collapse;
     font-size: 14px;
     width: 100%
 }
-td {
+td, th {
+    padding: 8px;
     overflow: hidden;
     text-overflow: ellipsis;
+    word-wrap: break-word;
+    max-width: 450px;
 }
 .logo {
     display: block;
     margin: 50px auto;
-    width: 20%;
+    text-align: center;
 }
 .container {
-    margin: 0 auto;
-    width: 70%;
+    margin: 0 12px;
+}
+@media(min-width: 1000px) {
+    .container {
+        margin: 0 auto;
+        width: 70%;
+    }
 }
 .big {
     font-size: 25px;
@@ -39,10 +61,10 @@ td {
     margin-right: 8px;
 }
 .build-info {
+    min-width: 650px;
     padding: 12px;
     background: #fff;
-    height: 56px;
-    clear:left;
+    min-height: 56px;
 }
 .build-info-text {
     display: inline-flex;
@@ -51,12 +73,11 @@ td {
 .repo-info {
     padding: 12px;
 }
-.repo-info a {
+a {
     color: #d54400;
 }
 
 .column-header {
-    padding: 10px 0;
     text-align: left;
 }
 .column-status {
@@ -67,7 +88,6 @@ td {
     width: 37.5%;
 }
 .column-bundle {
-    padding: 0 10px;
     width: 25%;
 }
 .column-now {
@@ -106,12 +126,9 @@ td {
     color: #969FA5;
 }
 .card {
-    margin-bottom: 24px;
+    min-width: 650px;
     background: #FFF;
     box-shadow: 0px 3px 5px 2px rgba(201, 214, 255, 0.15);
-}
-.progress-bar-cell {
-    padding: 0 10px;
 }
 .progress-bar-container {
     background-color: #f4f6f8;
@@ -140,4 +157,21 @@ td {
 .progress-bar-fail {
     background-color: #d54400;
     height: 12px;
+}
+
+footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    height: 80px;
+    margin: 24px;
+}
+
+.footer {
+    color: #d54400;
+}
+
+.footer a {
+    margin: 0 8px;
 }
