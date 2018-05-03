@@ -1,3 +1,13 @@
+@import url("https://fonts.googleapis.com/css?family=Roboto+Mono|Source+Sans+Pro:300,400,600");
+* {
+  -webkit-font-smoothing: antialiased;
+  -webkit-overflow-scrolling: touch;
+  -webkit-tap-highlight-color: rgba(0,0,0,0);
+  -webkit-text-size-adjust: none;
+  -webkit-touch-callout: none;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
 html {
   box-sizing: border-box;
 }
@@ -7,20 +17,29 @@ html {
 html, body {
     margin: 0;
     padding: 0;
-    font-family: "Source Sans Pro", "Helvetica Neue", Arial, sans-serif;
-    color: rgb(54, 69, 79);
 }
 body {
-    background: #efefef;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+    color: #36454f;
+    font-family: 'Source Sans Pro', 'Helvetica Neue', Arial, sans-serif;
+    font-size: 15px;
+    letter-spacing: 0;
+    background: #f7f7f7;
 }
 .logo {
     display: block;
     margin: 50px auto;
-    width: 20%;
+    text-align: center;
 }
 .container {
-    margin: 0 auto;
-    width: 70%;
+    margin: 0 12px;
+}
+@media(min-width: 1000px) {
+    .container {
+        margin: 0 auto;
+        width: 70%;
+    }
 }
 .card {
     text-align: center;
@@ -48,14 +67,14 @@ body {
     left: 0;
     bottom: 0;
     right: 0;
-    background: linear-gradient(135deg, #000050, #d54400);
+    background: #d54400;
     border-radius: 4px;
-    transition: box-shadow .5s ease, transform .2s ease;
+    transition: all .5s ease, transform .2s ease;
     box-shadow: 0 2px 5px rgba(0, 0, 0, .2);
 }
 
 .btn:hover::before {
-    box-shadow: 0 5px 15px rgba(0, 0, 0, .3);
+    opacity: 0.8;
 }
 
 .btn::after {
@@ -66,3 +85,22 @@ body {
     font-weight: bold;
     letter-spacing: .01em;
 }
+
+
+footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    height: 80px;
+    margin: 24px;
+}
+
+.footer {
+    color: #d54400;
+}
+
+.footer a {
+    margin: 0 8px;
+}
+
