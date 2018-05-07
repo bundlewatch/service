@@ -44,10 +44,11 @@ const detailsSchema = Joi.object()
 
 const fullResultItemSchema = Joi.object().keys({
     baseBranchSize: Joi.number().optional(),
+    compression: Joi.string().optional(),
     filePath: Joi.string().required(),
-    maxSize: Joi.number().required(),
+    maxSize: Joi.number().optional(),
     message: Joi.string().optional(),
-    size: Joi.number().required(),
+    size: Joi.number().optional(),
     status: Joi.string().required(),
 })
 
