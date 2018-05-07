@@ -1,6 +1,12 @@
-# bundlewatch - Service
+# BundleWatch - Service
 [![CircleCI](https://circleci.com/gh/bundlewatch/service.svg?style=svg)](https://circleci.com/gh/bundlewatch/service)
 
-Service for storing bundlewatch data.
+This is the BundleWatch Service for storing BundleWatch data.
 
-Looking for the [BundleWatch](https://github.com/bundlewatch/bundlewatch) app?
+##
+The BundleWatch app is at https://github.com/bundlewatch/bundlewatch
+
+The BundleWatch.io documentation site is at https://github.com/bundlewatch/bundlewatch.io
+
+##
+TODO: Add details on how to contribute/use this project
