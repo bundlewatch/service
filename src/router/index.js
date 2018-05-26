@@ -10,7 +10,7 @@ import serverless from 'serverless-http'
 import Store from '../models/store'
 import {
     createStoreSchema,
-    githubTokenSchema,
+    githutTokenSchema,
     lookupStoreSchema,
     unpackedJsonSchema,
 } from './validators'
@@ -113,7 +113,7 @@ function createServerlessApp() {
     app.get(
         '/setup-github',
         asyncMiddleware(async (req, res) => {
-            const errorStatus = validateEndpoint(req, res, githubTokenSchema)
+            const errorStatus = validateEndpoint(req, res, githutTokenSchema)
             if (errorStatus) return errorStatus
             if (errorStatus) return errorStatus
             const { code } = req.query

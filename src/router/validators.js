@@ -28,7 +28,7 @@ export const lookupStoreSchema = Joi.object().keys({
     repoOwner: Joi.string().required(),
 })
 
-export const githubTokenSchema = Joi.object().keys({
+export const githutTokenSchema = Joi.object().keys({
     code: Joi.string().optional(),
 })
 
