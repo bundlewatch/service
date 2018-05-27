@@ -55,7 +55,7 @@ jobs:
 
       - run:
           name: Deploy Production
-          command: STAGE=prod make deploy
+          command: STAGE=dev make deploy
 
 workflows:
   version: 2
@@ -67,4 +67,4 @@ workflows:
             - build
           filters:
             branches:
-              only: master
+              only: convert-to-app

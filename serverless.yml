@@ -26,11 +26,6 @@ custom:
     dev: ${env:GITHUB_CLIENT_SECRET}
     stage: ${env:GITHUB_CLIENT_SECRET}
     prod: ${env:GITHUB_CLIENT_SECRET}
-  customDomain:
-    domainName: service.bundlewatch.io
-    basePath: ''
-    stage: ${self:custom.stage}
-    createRoute53Record: true
 
 provider:
   name: aws
