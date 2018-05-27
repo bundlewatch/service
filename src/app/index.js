@@ -39,7 +39,7 @@ const getResults = async ({
     }
 }
 
-const bundlewatchApi = async ({
+const bundlewatchAsync = async ({
     repoOwner,
     repoName,
     repoBranch,
@@ -68,7 +68,6 @@ const bundlewatchApi = async ({
             repoBranchBase: baseBranchName,
             commitSha,
         })
-        results.summary += Math.random()
         if (results.status === STATUSES.FAIL) {
             await githubService.fail({
                 message: results.summary,
@@ -88,15 +87,10 @@ const bundlewatchApi = async ({
             )
         } else {
             // TODO: add warn
-            await Promise.all([
-                githubService.pass({
-                    message: results.summary,
-                    url: results.url,
-                }),
-                // githubService.createIssueComment({
-                //     body: 'test issue comment',
-                // }),
-            ])
+            await githubService.pass({
+                message: results.summary,
+                url: results.url,
+            })
         }
         return results
     } catch (e) {
@@ -107,5 +101,5 @@ const bundlewatchApi = async ({
     }
 }
 
-export default bundlewatchApi
+export default bundlewatchAsync
 export { STATUSES }

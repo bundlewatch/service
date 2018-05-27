@@ -9,6 +9,7 @@ import serverless from 'serverless-http'
 
 import Store from '../models/store'
 import {
+    analyzeSchema,
     createStoreSchema,
     githutTokenSchema,
     lookupStoreSchema,
@@ -17,9 +18,9 @@ import {
 import generateAccessToken from '../app/github/generateAccessToken'
 
 import asyncMiddleware from './middleware/asyncMiddleware'
+import bundlewatchAsync from '../app'
 import protectedMiddleware from './middleware/protectedMiddleware'
 import getBranchFileDetails from '../app/getBranchFileDetails'
-import bundlewatchApi from '../app'
 
 const STATUS = {
     PASS: 'pass',
@@ -70,22 +71,16 @@ function createServerlessApp() {
     })
     app.post(
         '/analyze',
-        // TODO protectedMiddleware?
+        protectedMiddleware,
         asyncMiddleware(async (req, res) => {
-            // TODO validate req.body
-            /* eslint-disable no-unused-vars */
-            try {
-                const result = await bundlewatchApi({
-                    ...req.body,
-                    bundlewatchServiceHost: req.headers.host,
-                })
-                res.status(202).json(result)
-            } catch (e) {
-                res.status(202).json(e)
+            const errorStatus = validateEndpoint(req, res, analyzeSchema)
+            if (errorStatus) {
+                res.status(errorStatus).send()
+                return
             }
-            // TODO save in DB?
 
-            /* eslint-ensable no-unused-vars */
+            bundlewatchAsync(req.body)
+            res.status(202).send()
         }),
     )
     app.post(
