@@ -74,15 +74,11 @@ function createServerlessApp() {
         asyncMiddleware(async (req, res) => {
             // TODO validate req.body
             /* eslint-disable no-unused-vars */
-            try {
-                bundlewatchApi({
-                    ...req.body,
-                    bundlewatchServiceHost: req.headers.host,
-                })
-                res.status(202).send()
-            } catch (e) {
-                res.status(500).send(e)
-            }
+            bundlewatchApi({
+                ...req.body,
+                bundlewatchServiceHost: req.headers.host,
+            })
+            res.status(202).send()
             // TODO save in DB?
 
             /* eslint-ensable no-unused-vars */
