@@ -4,7 +4,6 @@ const express = require('express')
 const Joi = require('joi')
 const jsonpack = require('jsonpack/main')
 const mustacheExpress = require('mustache-express')
-const path = require('path')
 const serverless = require('serverless-http')
 
 const { Store } = require('../models/store')
@@ -15,9 +14,7 @@ const {
     lookupStoreSchema,
     unpackedJsonSchema,
 } = require('./validators')
-const {
-    generateAccessToken,
-} = require('../app/github/generateAccessToken')
+const { generateAccessToken } = require('../app/github/generateAccessToken')
 const { asyncMiddleware } = require('./middleware/asyncMiddleware')
 const { bundlewatchAsync, STATUSES } = require('../app')
 const { protectedMiddleware } = require('./middleware/protectedMiddleware')
