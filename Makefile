@@ -54,6 +54,10 @@ lint-fix: check-versions node_modules
 .PHONY: install-no-clean
 install-no-clean: check-versions node_modules
 
+.PHONY: install-deployment-deps
+install-deployment-deps: check-versions
+	./infrastructure/deployment/install-deployment-deps.sh
+
 .PHONY: deploy
 deploy: check-versions node_modules
 	./infrastructure/deployment/deploy.sh
