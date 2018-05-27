@@ -6,6 +6,7 @@
   <br>
 
 [![deps][deps]][deps-url]
+[![dev-deps][dev-deps]][dev-deps-url]
 [![builds][builds]][builds-url]
 [![test][test]][test-url]
 <a href="https://github.com/bundlewatch/service/graphs/contributors">
@@ -41,6 +42,9 @@ Contributions of any kind are welcome! [Join us on Slack](https://join.slack.com
 
 [deps]: https://img.shields.io/david/bundlewatch/service.svg
 [deps-url]: https://david-dm.org/bundlewatch/service
+
+[dev-deps]: https://img.shields.io/david/bundlewatch/service/dev-status.svg
+[dev-deps-url]: https://david-dm.org/bundlewatch/service?type=dev
 
 [test]: https://coveralls.io/repos/github/bundlewatch/service/badge.svg?branch=master
 [test-url]: https://coveralls.io/github/bundlewatch/service?branch=master
