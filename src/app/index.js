@@ -68,7 +68,6 @@ const bundlewatchApi = async ({
             repoBranchBase: baseBranchName,
             commitSha,
         })
-        results.summary += Math.random()
         if (results.status === STATUSES.FAIL) {
             await githubService.fail({
                 message: results.summary,
