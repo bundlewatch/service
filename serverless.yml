@@ -57,6 +57,9 @@ functions:
           path: /
           method: get
       - http:
+          path: /analyze
+          method: post
+      - http:
           path: /store
           method: post
       - http:

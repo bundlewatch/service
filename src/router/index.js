@@ -7,6 +7,7 @@ import mustacheExpress from 'mustache-express'
 import path from 'path'
 import serverless from 'serverless-http'
 
+import analyze from '../helpers/analyze'
 import Store from '../models/store'
 import {
     createStoreSchema,
@@ -55,6 +56,14 @@ function validateEndpoint(req, res, schema) {
     return null
 }
 
+function getBranchData(repoOwner, repoName, repoBranch) {
+    const repo = `${repoOwner}/${repoName}`
+    return Store.get({
+        repoBranch,
+        repo,
+    })
+}
+
 function createServerlessApp() {
     const app = express()
     app.disable('x-powered-by')
@@ -66,6 +75,34 @@ function createServerlessApp() {
     app.get('/', (req, res) => {
         res.json({ message: 'hello world' })
     })
+    app.post(
+        '/analyze',
+        // TODO protectedMiddleware?
+        asyncMiddleware(async (req, res) => {
+            // TODO validate req.body
+            /* eslint-disable no-unused-vars */
+            const {
+                repoOwner,
+                repoName,
+                repoBranch,
+                baseBranchName,
+                githubAccessToken,
+                commitSha,
+                currentBranchFileDetails,
+            } = req.body
+            const baseBranchFileDetails =
+                (await getBranchData(repoOwner, repoName, baseBranchName)) || {}
+
+            const result = analyze({
+                currentBranchFileDetails,
+                baseBranchFileDetails,
+                baseBranchName,
+            })
+            // TODO save in DB and post status to github
+            res.status(202).json(result)
+            /* eslint-ensable no-unused-vars */
+        }),
+    )
     app.post(
         '/store',
         protectedMiddleware,
@@ -99,11 +136,7 @@ function createServerlessApp() {
             const errorStatus = validateEndpoint(req, res, lookupStoreSchema)
             if (errorStatus) return errorStatus
             const { repoBranch, repoName, repoOwner } = req.body
-            const repo = `${repoOwner}/${repoName}`
-            const store = await Store.get({
-                repoBranch,
-                repo,
-            })
+            const store = await getBranchData(repoOwner, repoName, repoBranch)
             if (!store) {
                 return res.status(404).send()
             }
