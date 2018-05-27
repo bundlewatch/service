@@ -7,7 +7,6 @@ import mustacheExpress from 'mustache-express'
 import path from 'path'
 import serverless from 'serverless-http'
 
-import analyze from '../helpers/analyze'
 import Store from '../models/store'
 import {
     createStoreSchema,
@@ -15,10 +14,12 @@ import {
     lookupStoreSchema,
     unpackedJsonSchema,
 } from './validators'
-import generateAccessToken from '../helpers/github/generateAccessToken'
+import generateAccessToken from '../app/github/generateAccessToken'
 
 import asyncMiddleware from './middleware/asyncMiddleware'
 import protectedMiddleware from './middleware/protectedMiddleware'
+import getBranchFileDetails from '../app/getBranchFileDetails'
+import bundlewatchApi from '../app'
 
 const STATUS = {
     PASS: 'pass',
@@ -56,14 +57,6 @@ function validateEndpoint(req, res, schema) {
     return null
 }
 
-function getBranchData(repoOwner, repoName, repoBranch) {
-    const repo = `${repoOwner}/${repoName}`
-    return Store.get({
-        repoBranch,
-        repo,
-    })
-}
-
 function createServerlessApp() {
     const app = express()
     app.disable('x-powered-by')
@@ -81,25 +74,17 @@ function createServerlessApp() {
         asyncMiddleware(async (req, res) => {
             // TODO validate req.body
             /* eslint-disable no-unused-vars */
-            const {
-                repoOwner,
-                repoName,
-                repoBranch,
-                baseBranchName,
-                githubAccessToken,
-                commitSha,
-                currentBranchFileDetails,
-            } = req.body
-            const baseBranchFileDetails =
-                (await getBranchData(repoOwner, repoName, baseBranchName)) || {}
+            try {
+                bundlewatchApi({
+                    ...req.body,
+                    bundlewatchServiceHost: req.headers.host,
+                })
+                res.status(202).send()
+            } catch (e) {
+                res.status(500).send(e)
+            }
+            // TODO save in DB?
 
-            const result = analyze({
-                currentBranchFileDetails,
-                baseBranchFileDetails,
-                baseBranchName,
-            })
-            // TODO save in DB and post status to github
-            res.status(202).json(result)
             /* eslint-ensable no-unused-vars */
         }),
     )
@@ -136,7 +121,11 @@ function createServerlessApp() {
             const errorStatus = validateEndpoint(req, res, lookupStoreSchema)
             if (errorStatus) return errorStatus
             const { repoBranch, repoName, repoOwner } = req.body
-            const store = await getBranchData(repoOwner, repoName, repoBranch)
+            const store = await getBranchFileDetails(
+                repoOwner,
+                repoName,
+                repoBranch,
+            )
             if (!store) {
                 return res.status(404).send()
             }
