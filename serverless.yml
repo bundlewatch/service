@@ -80,6 +80,9 @@ functions:
       - http:
           path: /static/setup-github-styles.css
           method: get
+      - http:
+          path: /analyze
+          method: post
 
 
 
