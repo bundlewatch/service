@@ -5,6 +5,8 @@
   <br>
   <br>
 
+[![bundlewatch][bundlewatch]][bundlewatch-url]
+
 [![deps][deps]][deps-url]
 [![dev-deps][dev-deps]][dev-deps-url]
 [![builds][builds]][builds-url]
@@ -43,6 +45,9 @@ Thanks goes to these wonderful people ([emoji key][emojis]):
 Contributions of any kind are welcome! [Join us on Slack](https://join.slack.com/t/bundlewatch/shared_invite/enQtMzUwNjYxNTMwMzcyLWE5NGI4MzZjMjM4MTRlYzllOTMwYzIzZWNjM2MyMjBmMzNjNGM0ZGVhODc2YjFkNzIwMzNkYjk3NzE0MjZkOTc) and start contributing.
 
 &copy; 2018 BundleWatch
+
+[bundlewatch]: https://img.shields.io/badge/bundle-watched-blue.svg
+[bundlewatch-url]: https://bundlewatch.io
 
 [deps]: https://david-dm.org/bundlewatch/service/status.svg
 [deps-url]: https://david-dm.org/bundlewatch/service
