@@ -40,10 +40,10 @@ Contributions of any kind are welcome! [Join us on Slack](https://join.slack.com
 
 &copy; 2018 BundleWatch
 
-[deps]: https://img.shields.io/david/bundlewatch/service.svg
+[deps]: https://david-dm.org/bundlewatch/service/status.svg
 [deps-url]: https://david-dm.org/bundlewatch/service
 
-[dev-deps]: https://img.shields.io/david/bundlewatch/service/dev-status.svg
+[dev-deps]: https://david-dm.org/bundlewatch/service/dev-status.svg
 [dev-deps-url]: https://david-dm.org/bundlewatch/service?type=dev
 
 [test]: https://coveralls.io/repos/github/bundlewatch/service/badge.svg?branch=master
