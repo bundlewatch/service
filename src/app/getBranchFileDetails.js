@@ -1,9 +1,13 @@
-import Store from '../models/store'
+const { Store } = require('../models/store')
 
-export default function(repoOwner, repoName, repoBranch) {
+const getBranchFileDetails = (repoOwner, repoName, repoBranch) => {
     const repo = `${repoOwner}/${repoName}`
     return Store.get({
         repoBranch,
         repo,
     })
+}
+
+module.exports = {
+    getBranchFileDetails,
 }

@@ -1,5 +1,5 @@
-import bytes from 'bytes'
-import analyzeFiles, { STATUSES } from './analyzeFiles'
+const bytes = require('bytes')
+const { analyzeFiles, STATUSES } = require('./analyzeFiles')
 
 const getOverallStatus = fileResults => {
     return fileResults.reduce((status, fileResult) => {
@@ -13,7 +13,7 @@ const getOverallStatus = fileResults => {
     }, STATUSES.PASS)
 }
 
-export const getOverallDifference = fullResults => {
+const getOverallDifference = fullResults => {
     let totalBaseBranchSize = 0
     let totalFileResultSize = 0
     let totalAdded = 0
@@ -40,7 +40,7 @@ export const getOverallDifference = fullResults => {
     }
 }
 
-export const getPercentageChangeString = percentageChange => {
+const getPercentageChangeString = percentageChange => {
     if (percentageChange === null) {
         return ''
     }
@@ -108,4 +108,8 @@ const analyze = ({
     }
 }
 
-export default analyze
+module.exports = {
+    getPercentageChangeString,
+    getOverallDifference,
+    analyze,
+}
