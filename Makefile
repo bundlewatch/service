@@ -54,11 +54,11 @@ install-no-clean: check-versions node_modules
 
 .PHONY: install-deployment-deps
 install-deployment-deps: check-versions
-	./scripts/install-deployment-deps.sh
+	./infrastructure/deployment/install-deployment-deps.sh
 
 .PHONY: deploy
 deploy: check-versions node_modules
-	./scripts/deploy.sh
+	./infrastructure/deployment/deploy.sh
 
 .PHONY: test-ci
 test-ci: check-versions node_modules
@@ -71,7 +71,7 @@ test-ci: check-versions node_modules
 
 .PHONY: check-versions
 check-versions:
-	@./scripts/check-versions.sh
+	@./infrastructure/check-versions.sh
 
 .PHONY: clean
 clean: clean-dynamodb
