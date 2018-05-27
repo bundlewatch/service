@@ -8,8 +8,8 @@
 [![deps][deps]][deps-url]
 [![builds][builds]][builds-url]
 [![test][test]][test-url]
-<a href="https://github.com/bundlewatch/bundlewatch/graphs/contributors">
-    <img src="https://img.shields.io/github/contributors/bundlewatch/bundlewatch.svg">
+<a href="https://github.com/bundlewatch/service/graphs/contributors">
+    <img src="https://img.shields.io/github/contributors/bundlewatch/service.svg">
 </a>
 
   <br>
