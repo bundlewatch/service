@@ -8,9 +8,8 @@
     },
     "jest": {
         "testEnvironment": "node",
-        "noStackTrace": true,
         "setupFiles": [
-            "./jestSetupFile.js"
+            "./infrastructure/testing/jestSetupFile.js"
         ]
     },
     "lint-staged": {
