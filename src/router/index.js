@@ -66,11 +66,7 @@ function createServerlessApp() {
     app.use('/static', express.static(path.join(ROOT_DIR, 'src/static')))
     app.use(bodyParser.json({ strict: false }))
     app.get('/', (req, res) => {
-        res.json({
-            message: 'hello world',
-            headers: req.headers,
-            baseUrl: req.baseUrl,
-        })
+        res.json({ message: 'hello world' })
     })
     app.post(
         '/analyze',
