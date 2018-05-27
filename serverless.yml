@@ -77,8 +77,14 @@ functions:
           path: /static/setup-github-styles.css
           method: get
       - http:
+          path: /static/manage-styles.css
+          method: get
+      - http:
           path: /analyze
           method: post
+      - http:
+          path: /manage
+          method: get
 
 
 

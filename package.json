@@ -10,6 +10,7 @@
         "setupFiles": [
             "./infrastructure/testing/jestSetupFile.js"
         ],
+        "setupTestFrameworkScriptFile": "./infrastructure/testing/jestSetupFramework.js",
         "collectCoverage": true,
         "coverageDirectory": "artifacts/test_results/jest/coverage"
     },
@@ -44,6 +45,7 @@
         "jest": "^22.4.3",
         "jest-junit": "^4.0.0",
         "lint-staged": "^7.0.0",
+        "moxios": "^0.4.0",
         "prettier": "^1.10.2",
         "serverless": "^1.26.1",
         "serverless-domain-manager": "^2.3.6",

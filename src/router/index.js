@@ -19,6 +19,12 @@ const { asyncMiddleware } = require('./middleware/asyncMiddleware')
 const { bundlewatchAsync, STATUSES } = require('../app')
 const { protectedMiddleware } = require('./middleware/protectedMiddleware')
 const { getBranchFileDetails } = require('../app/getBranchFileDetails')
+const {
+    getRepositoriesForUser,
+} = require('../app/github/getRepositoriesForUser')
+const {
+    getRepositoryTokens,
+} = require('../app/authentication/getRepositoryTokens')
 
 const getMustachePropsFromStatus = status => {
     if (status === STATUSES.PASS) {
@@ -121,7 +127,6 @@ function createServerlessApp() {
         asyncMiddleware(async (req, res) => {
             const errorStatus = validateEndpoint(req, res, githutTokenSchema)
             if (errorStatus) return errorStatus
-            if (errorStatus) return errorStatus
             const { code } = req.query
             let result
             if (code) {
@@ -133,6 +138,23 @@ function createServerlessApp() {
                 }
             }
             return res.render('setup-github', { token: result })
+        }),
+    )
+    app.get(
+        '/manage',
+        asyncMiddleware(async (req, res) => {
+            const { code } = req.query
+            if (!code) {
+                const callbackURL = encodeURI(
+                    `https://service.bundlewatch.io/manage`,
+                )
+                const GITHUB_APP_CLIENTID = `Iv1.3392d0790b8f8334`
+                const authURL = `https://github.com/login/oauth/authorize?&client_id=${GITHUB_APP_CLIENTID}&redirect_uri=${callbackURL}`
+                return res.redirect(authURL)
+            }
+            const repositories = await getRepositoriesForUser(code)
+            const repositoriesWithTokens = getRepositoryTokens(repositories)
+            return res.render('manage', { repositoriesWithTokens })
         }),
     )
     app.get(
