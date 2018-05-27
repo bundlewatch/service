@@ -1,9 +1,10 @@
-import Joi from 'joi'
+const Joi = require('joi')
 
-export const analyzeSchema = Joi.object().keys({
+const analyzeSchema = Joi.object().keys({
     commitSha: Joi.string().required(),
     githubAccessToken: Joi.string().required(),
     bundlewatchServiceHost: Joi.string().required(),
+    baseBranchName: Joi.string().required(),
     repoBranch: Joi.string().required(),
     repoName: Joi.string().required(),
     repoOwner: Joi.string().required(),
@@ -21,7 +22,7 @@ export const analyzeSchema = Joi.object().keys({
         .required(),
 })
 
-export const createStoreSchema = Joi.object().keys({
+const createStoreSchema = Joi.object().keys({
     commitSha: Joi.string().required(),
     githubAccessToken: Joi.string().required(),
     repoBranch: Joi.string().required(),
@@ -41,7 +42,7 @@ export const createStoreSchema = Joi.object().keys({
         .required(),
 })
 
-export const lookupStoreSchema = Joi.object().keys({
+const lookupStoreSchema = Joi.object().keys({
     commitSha: Joi.string().required(),
     githubAccessToken: Joi.string().required(),
     repoBranch: Joi.string().required(),
@@ -49,7 +50,7 @@ export const lookupStoreSchema = Joi.object().keys({
     repoOwner: Joi.string().required(),
 })
 
-export const githutTokenSchema = Joi.object().keys({
+const githutTokenSchema = Joi.object().keys({
     code: Joi.string().optional(),
 })
 
@@ -83,7 +84,15 @@ const resultsSchema = Joi.object()
     })
     .required()
 
-export const unpackedJsonSchema = Joi.object().keys({
+const unpackedJsonSchema = Joi.object().keys({
     details: detailsSchema,
     results: resultsSchema,
 })
+
+module.exports = {
+    analyzeSchema,
+    createStoreSchema,
+    lookupStoreSchema,
+    githutTokenSchema,
+    unpackedJsonSchema,
+}

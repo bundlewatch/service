@@ -1,4 +1,4 @@
-import axios from 'axios'
+const axios = require('axios')
 
 const env = process.env
 
@@ -40,4 +40,6 @@ const generateAccessToken = code => {
         })
 }
 
-export default generateAccessToken
+module.exports = {
+    generateAccessToken,
+}

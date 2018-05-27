@@ -1,6 +1,6 @@
 /* eslint-disable no-console */
 
-import axios from 'axios'
+const axios = require('axios')
 
 const canTokenAccessRepo = ({
     repoOwner,
@@ -52,4 +52,6 @@ const canTokenAccessRepo = ({
         })
 }
 
-export default canTokenAccessRepo
+module.exports = {
+    canTokenAccessRepo,
+}

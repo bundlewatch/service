@@ -1,4 +1,4 @@
-import dynamoose from 'dynamoose'
+const dynamoose = require('dynamoose')
 
 const IS_OFFLINE = process.env.IS_OFFLINE
 if (IS_OFFLINE === 'true') {

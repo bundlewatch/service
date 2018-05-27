@@ -1,4 +1,4 @@
-export const mockFileResults = {
+const mockFileResults = {
     oneFileLarger: [
         {
             size: 125,
@@ -31,4 +31,8 @@ export const mockFileResults = {
             baseBranchSize: 700,
         },
     ],
+}
+
+module.exports = {
+    mockFileResults,
 }
