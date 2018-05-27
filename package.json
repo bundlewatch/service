@@ -11,9 +11,6 @@
         "noStackTrace": true,
         "setupFiles": [
             "./jestSetupFile.js"
-        ],
-        "testPathIgnorePatterns": [
-            "/node_modules/"
         ]
     },
     "lint-staged": {
