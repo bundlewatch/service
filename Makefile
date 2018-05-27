@@ -6,11 +6,13 @@ export PATH := $(shell yarn bin):$(PATH)
 ifdef CI
     ESLINT_ARGS=--format junit --output-file $(ARTIFACT_DIR)/test_results/eslint/eslint.junit.xml
 	JEST_ENV_VARIABLES=JEST_SUITE_NAME="Jest Tests" JEST_JUNIT_OUTPUT=$(ARTIFACT_DIR)/test_results/jest/jest.junit.xml
-    JEST_EXTRA_ARGS=--testResultsProcessor ./node_modules/jest-junit
+	JEST_ARGS=--testResultsProcessor ./node_modules/jest-junit --coverageReporters=text-lcov | coveralls
+	YARN_ARGS=--frozen-lockfile
 else
     ESLINT_ARGS=
     JEST_ENV_VARIABLES=
-    JEST_EXTRA_ARGS=
+    JEST_ARGS=
+    YARN_ARGS=
 endif
 
 .PHONY: help
@@ -85,15 +87,15 @@ clean-dynamodb:
 
 .PHONY: test
 test: check-versions node_modules ${ARTIFACT_DIR}
-	@${JEST_ENV_VARIABLES} jest ${JEST_ARGS}
+	${JEST_ENV_VARIABLES} jest ${JEST_ARGS}
 
 .PHONY: test-snapshots
 test-snapshots: check-versions node_modules ${ARTIFACT_DIR}
-	@${JEST_ENV_VARIABLES} jest -u ${JEST_ARGS}
+	${JEST_ENV_VARIABLES} jest -u ${JEST_ARGS}
 
 ${ARTIFACT_DIR}:
-	@mkdir -p ${ARTIFACT_DIR}/test_results/eslint
+	mkdir -p ${ARTIFACT_DIR}/test_results/eslint
 
 node_modules:
-	yarn install
+	yarn install ${YARN_ARGS}
 	@touch node_modules
