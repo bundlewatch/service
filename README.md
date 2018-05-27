@@ -9,8 +9,12 @@
 [![dev-deps][dev-deps]][dev-deps-url]
 [![builds][builds]][builds-url]
 [![test][test]][test-url]
+<br>
 <a href="https://github.com/bundlewatch/service/graphs/contributors">
     <img src="https://img.shields.io/github/contributors/bundlewatch/service.svg">
+</a>
+<a href="https://github.com/bundlewatch/service/blob/master/LICENSE">
+    <img src="https://img.shields.io/npm/l/bundlewatch.svg">
 </a>
 
   <br>
