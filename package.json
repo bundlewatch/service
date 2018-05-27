@@ -9,7 +9,9 @@
         "testEnvironment": "node",
         "setupFiles": [
             "./infrastructure/testing/jestSetupFile.js"
-        ]
+        ],
+        "collectCoverage": true,
+        "coverageDirectory": "artifacts/test_results/jest/coverage"
     },
     "lint-staged": {
         "*.js": [
@@ -31,6 +33,7 @@
         "serverless-http": "^1.5.5"
     },
     "devDependencies": {
+        "coveralls": "^3.0.1",
         "eslint": "^4.9.0",
         "eslint-config-airbnb-base": "^12.1.0",
         "eslint-config-prettier": "^2.9.0",
@@ -39,6 +42,7 @@
         "eslint-plugin-prettier": "^2.6.0",
         "husky": "^0.14.3",
         "jest": "^22.4.3",
+        "jest-junit": "^4.0.0",
         "lint-staged": "^7.0.0",
         "prettier": "^1.10.2",
         "serverless": "^1.26.1",
