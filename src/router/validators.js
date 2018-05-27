@@ -4,6 +4,7 @@ export const analyzeSchema = Joi.object().keys({
     commitSha: Joi.string().required(),
     githubAccessToken: Joi.string().required(),
     bundlewatchServiceHost: Joi.string().required(),
+    baseBranchName: Joi.string().required(),
     repoBranch: Joi.string().required(),
     repoName: Joi.string().required(),
     repoOwner: Joi.string().required(),
