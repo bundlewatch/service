@@ -77,7 +77,8 @@ function createServerlessApp() {
             try {
                 const result = await bundlewatchApi({
                     ...req.body,
-                    bundlewatchServiceHost: req.headers.host,
+                    bundlewatchServiceHost:
+                        'https://hfxjawrewc.execute-api.us-east-1.amazonaws.com/dev/',
                 })
                 res.status(202).json(result)
             } catch (e) {
