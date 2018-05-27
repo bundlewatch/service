@@ -4,7 +4,6 @@ frameworkVersion: '=1.26.1'
 plugins:
   - serverless-webpack
   - serverless-dynamodb-local
-  - serverless-domain-manager
   - serverless-offline # must be last
 
 custom:
