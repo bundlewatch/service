@@ -1,5 +1,5 @@
-import { getOverallDifference, getPercentageChangeString } from '.'
-import { mockFileResults } from './analyze.test.mockdata'
+const { getOverallDifference, getPercentageChangeString } = require('.')
+const { mockFileResults } = require('./analyze.test.mockdata')
 
 describe('getOverallDifference', () => {
     describe('Results match snapshot for the same input', () => {

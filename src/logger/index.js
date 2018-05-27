@@ -42,7 +42,7 @@ const fatal = (messsage, errorStack) => {
     stderr(`[FATAL] ${messsage}`)
 }
 
-export default {
+module.exports = {
     debug,
     log,
     info,

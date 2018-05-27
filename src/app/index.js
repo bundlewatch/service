@@ -1,8 +1,8 @@
-import analyze from './analyze'
-import createURLToResultPage from './resultsPage/createURL'
-import getBranchFileDetails from './getBranchFileDetails'
-import GitHubService from './github/GitHubService'
-import { STATUSES } from './analyze/analyzeFiles'
+const { analyze } = require('./analyze')
+const { createURL: createURLToResultPage } = require('./resultsPage/createURL')
+const { getBranchFileDetails } = require('./getBranchFileDetails')
+const { GitHubService } = require('./github/GitHubService')
+const { STATUSES } = require('./analyze/analyzeFiles')
 
 const getResults = async ({
     bundlewatchServiceHost,
@@ -101,5 +101,8 @@ const bundlewatchAsync = async ({
     }
 }
 
-export default bundlewatchAsync
-export { STATUSES }
+module.exports = {
+    default: bundlewatchAsync,
+    bundlewatchAsync,
+    STATUSES,
+}

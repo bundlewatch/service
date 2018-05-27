@@ -1,44 +1,35 @@
-import bodyParser from 'body-parser'
-import bytes from 'bytes'
-import express from 'express'
-import Joi from 'joi'
-import jsonpack from 'jsonpack/main'
-import mustacheExpress from 'mustache-express'
-import path from 'path'
-import serverless from 'serverless-http'
+const bodyParser = require('body-parser')
+const bytes = require('bytes')
+const express = require('express')
+const Joi = require('joi')
+const jsonpack = require('jsonpack/main')
+const mustacheExpress = require('mustache-express')
+const serverless = require('serverless-http')
 
-import Store from '../models/store'
-import {
+const { Store } = require('../models/store')
+const {
     analyzeSchema,
     createStoreSchema,
     githutTokenSchema,
     lookupStoreSchema,
     unpackedJsonSchema,
-} from './validators'
-import generateAccessToken from '../app/github/generateAccessToken'
-
-import asyncMiddleware from './middleware/asyncMiddleware'
-import bundlewatchAsync from '../app'
-import protectedMiddleware from './middleware/protectedMiddleware'
-import getBranchFileDetails from '../app/getBranchFileDetails'
-
-const STATUS = {
-    PASS: 'pass',
-    WARN: 'warn',
-    FAIL: 'fail',
-    REMOVED: 'removed',
-}
+} = require('./validators')
+const { generateAccessToken } = require('../app/github/generateAccessToken')
+const { asyncMiddleware } = require('./middleware/asyncMiddleware')
+const { bundlewatchAsync, STATUSES } = require('../app')
+const { protectedMiddleware } = require('./middleware/protectedMiddleware')
+const { getBranchFileDetails } = require('../app/getBranchFileDetails')
 
 const getMustachePropsFromStatus = status => {
-    if (status === STATUS.PASS) {
+    if (status === STATUSES.PASS) {
         return {
             pass: true,
         }
-    } else if (status === STATUS.WARN) {
+    } else if (status === STATUSES.WARN) {
         return {
             warn: true,
         }
-    } else if (status === STATUS.FAIL) {
+    } else if (status === STATUSES.FAIL) {
         return {
             fail: true,
         }
@@ -47,8 +38,6 @@ const getMustachePropsFromStatus = status => {
         removed: true,
     }
 }
-
-const ROOT_DIR = process.env.IS_OFFLINE ? '.webpack/service/' : ''
 
 function validateEndpoint(req, res, schema) {
     const validation = Joi.validate(req.body, schema)
@@ -63,8 +52,8 @@ function createServerlessApp() {
     app.disable('x-powered-by')
     app.engine('mustache', mustacheExpress())
     app.set('view engine', 'mustache')
-    app.set('views', path.join(ROOT_DIR, 'src/views'))
-    app.use('/static', express.static(path.join(ROOT_DIR, 'src/static')))
+    app.set('views', 'src/views')
+    app.use('/static', express.static('src/static'))
     app.use(bodyParser.json({ strict: false }))
     app.get('/', (req, res) => {
         res.json({ message: 'hello world' })
@@ -220,4 +209,8 @@ function createServerlessApp() {
     return serverless(app)
 }
 
-export const app = createServerlessApp()
+const app = createServerlessApp()
+
+module.exports = {
+    app,
+}

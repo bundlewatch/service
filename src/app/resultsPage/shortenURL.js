@@ -1,5 +1,5 @@
-import axios from 'axios'
-import logger from '../../logger'
+const axios = require('axios')
+const { logger } = require('../../logger')
 
 const API_KEY = 'AIzaSyBhfxTjDFr98q7w7Us9x0Uxk34PgdkW2WI'
 const DOMAIN_BASE = 'ja2r7.app.goo.gl'
@@ -35,4 +35,6 @@ const shortenURL = url => {
         })
 }
 
-export default shortenURL
+module.exports = {
+    shortenURL,
+}

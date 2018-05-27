@@ -1,6 +1,6 @@
-import bytes from 'bytes'
+const bytes = require('bytes')
 
-export const STATUSES = {
+const STATUSES = {
     PASS: 'pass',
     WARN: 'warn',
     FAIL: 'fail',
@@ -99,4 +99,7 @@ const analyzeFiles = ({
     return results
 }
 
-export default analyzeFiles
+module.exports = {
+    analyzeFiles,
+    STATUSES,
+}
