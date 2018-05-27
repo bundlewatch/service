@@ -1,4 +1,4 @@
-import canTokenAccessRepo from '../../helpers/github/canTokenAccessRepo'
+import canTokenAccessRepo from '../../app/github/canTokenAccessRepo'
 
 import asyncMiddleware from './asyncMiddleware'
 

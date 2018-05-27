@@ -26,6 +26,11 @@ jobs:
           when: always
 
       - run:
+          name: Test
+          command: make test
+          when: always
+
+      - run:
           name: Package functions
           command: make package
           when: always

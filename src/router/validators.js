@@ -1,5 +1,26 @@
 import Joi from 'joi'
 
+export const analyzeSchema = Joi.object().keys({
+    commitSha: Joi.string().required(),
+    githubAccessToken: Joi.string().required(),
+    bundlewatchServiceHost: Joi.string().required(),
+    repoBranch: Joi.string().required(),
+    repoName: Joi.string().required(),
+    repoOwner: Joi.string().required(),
+    currentBranchFileDetails: Joi.object({
+        filePath: Joi.object(),
+    })
+        .pattern(
+            /.+/,
+            Joi.object({
+                compression: Joi.string().required(),
+                maxSize: Joi.number().required(),
+                size: Joi.number().required(),
+            }),
+        )
+        .required(),
+})
+
 export const createStoreSchema = Joi.object().keys({
     commitSha: Joi.string().required(),
     githubAccessToken: Joi.string().required(),

@@ -8,13 +8,8 @@
     },
     "jest": {
         "testEnvironment": "node",
-        "noStackTrace": true,
         "setupFiles": [
-            "./jestSetupFile.js"
-        ],
-        "testPathIgnorePatterns": [
-            "/node_modules/",
-            "/app/"
+            "./infrastructure/testing/jestSetupFile.js"
         ]
     },
     "lint-staged": {
@@ -35,6 +30,7 @@
         "express": "^4.16.3",
         "joi": "^13.2.0",
         "jsonpack": "^1.1.5",
+        "lodash.merge": "^4.6.1",
         "mustache-express": "^1.2.5",
         "serverless-dynamodb-local": "^0.2.30",
         "serverless-http": "^1.5.5"

@@ -9,15 +9,18 @@ import serverless from 'serverless-http'
 
 import Store from '../models/store'
 import {
+    analyzeSchema,
     createStoreSchema,
     githutTokenSchema,
     lookupStoreSchema,
     unpackedJsonSchema,
 } from './validators'
-import generateAccessToken from '../helpers/github/generateAccessToken'
+import generateAccessToken from '../app/github/generateAccessToken'
 
 import asyncMiddleware from './middleware/asyncMiddleware'
+import bundlewatchAsync from '../app'
 import protectedMiddleware from './middleware/protectedMiddleware'
+import getBranchFileDetails from '../app/getBranchFileDetails'
 
 const STATUS = {
     PASS: 'pass',
@@ -67,6 +70,20 @@ function createServerlessApp() {
         res.json({ message: 'hello world' })
     })
     app.post(
+        '/analyze',
+        protectedMiddleware,
+        asyncMiddleware(async (req, res) => {
+            const errorStatus = validateEndpoint(req, res, analyzeSchema)
+            if (errorStatus) {
+                res.status(errorStatus).send()
+                return
+            }
+
+            bundlewatchAsync(req.body)
+            res.status(202).send()
+        }),
+    )
+    app.post(
         '/store',
         protectedMiddleware,
         asyncMiddleware(async (req, res) => {
@@ -99,11 +116,11 @@ function createServerlessApp() {
             const errorStatus = validateEndpoint(req, res, lookupStoreSchema)
             if (errorStatus) return errorStatus
             const { repoBranch, repoName, repoOwner } = req.body
-            const repo = `${repoOwner}/${repoName}`
-            const store = await Store.get({
+            const store = await getBranchFileDetails(
+                repoOwner,
+                repoName,
                 repoBranch,
-                repo,
-            })
+            )
             if (!store) {
                 return res.status(404).send()
             }
