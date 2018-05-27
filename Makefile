@@ -81,6 +81,7 @@ clean: clean-dynamodb
 .PHONY: clean-dynamodb
 clean-dynamodb:
 	@-pkill -f dynamodb
+	serverless dynamodb remove
 
 .PHONY: test
 test: check-versions node_modules ${ARTIFACT_DIR}

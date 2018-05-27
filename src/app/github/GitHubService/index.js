@@ -1,6 +1,6 @@
-import axios from 'axios'
+const axios = require('axios')
 
-import logger from '../../../logger'
+const { logger } = require('../../../logger')
 
 const getContextForFilePath = filePath => {
     let context = 'bundlewatch'
@@ -130,4 +130,6 @@ class GitHubService {
     }
 }
 
-export default GitHubService
+module.exports = {
+    GitHubService,
+}

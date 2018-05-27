@@ -1,6 +1,6 @@
-import lodashMerge from 'lodash.merge'
-import jsonpack from 'jsonpack/main'
-import shortenURL from './shortenURL'
+const lodashMerge = require('lodash.merge')
+const jsonpack = require('jsonpack/main')
+const { shortenURL } = require('./shortenURL')
 
 const createURL = async ({
     results,
@@ -33,4 +33,6 @@ const createURL = async ({
     return shortenURL(longURL)
 }
 
-export default createURL
+module.exports = {
+    createURL,
+}

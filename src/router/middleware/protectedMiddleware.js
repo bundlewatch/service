@@ -1,6 +1,5 @@
-import canTokenAccessRepo from '../../app/github/canTokenAccessRepo'
-
-import asyncMiddleware from './asyncMiddleware'
+const { canTokenAccessRepo } = require('../../app/github/canTokenAccessRepo')
+const { asyncMiddleware } = require('./asyncMiddleware')
 
 const protectedMiddleware = asyncMiddleware(async (req, res, next) => {
     if (process.env.IS_OFFLINE === 'true') {
@@ -25,4 +24,6 @@ const protectedMiddleware = asyncMiddleware(async (req, res, next) => {
     return next()
 })
 
-export default protectedMiddleware
+module.exports = {
+    protectedMiddleware,
+}
