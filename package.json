@@ -3,7 +3,7 @@
     "version": "0.0.1",
     "license": "UNLICENSED",
     "scripts": {
-        "precommit": "./scripts/check-versions.sh && lint-staged",
+        "precommit": "./infrastructure/check-versions.sh && lint-staged",
         "test": "jest"
     },
     "jest": {
