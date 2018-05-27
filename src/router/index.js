@@ -77,20 +77,13 @@ function createServerlessApp() {
         // TODO protectedMiddleware?
         asyncMiddleware(async (req, res) => {
             // TODO validate req.body
-            /* eslint-disable no-unused-vars */
             try {
-                const result = await bundlewatchApi({
-                    ...req.body,
-                    bundlewatchServiceHost:
-                        'https://hfxjawrewc.execute-api.us-east-1.amazonaws.com/dev/',
-                })
+                const result = await bundlewatchApi(req.body)
                 res.status(202).json(result)
             } catch (e) {
                 res.status(202).json(e)
             }
             // TODO save in DB?
-
-            /* eslint-ensable no-unused-vars */
         }),
     )
     app.post(
