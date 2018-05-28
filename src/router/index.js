@@ -6,7 +6,6 @@ const jsonpack = require('jsonpack/main')
 const mustacheExpress = require('mustache-express')
 const serverless = require('serverless-http')
 
-const { Store } = require('../models/store')
 const {
     analyzeSchema,
     createStoreSchema,
@@ -18,7 +17,7 @@ const { generateAccessToken } = require('../app/github/generateAccessToken')
 const { asyncMiddleware } = require('./middleware/asyncMiddleware')
 const { bundlewatchAsync, STATUSES } = require('../app')
 const { protectedMiddleware } = require('./middleware/protectedMiddleware')
-const { getBranchFileDetails } = require('../app/getBranchFileDetails')
+const { getBranchFileDetails } = require('../models/storeUtils')
 const {
     getRepositoriesForUser,
 } = require('../app/github/getRepositoriesForUser')
