@@ -1,18 +1,11 @@
 const axios = require('axios')
 
 const logger = require('../../../logger')
-
-const env = process.env
+const { getEnv } = require('../../getEnv')
 
 const generateUserAccessTokenWithCode = code => {
-    // TODO move this into something where we cna do getEnv to ensure its working
-    if (!env.GITHUB_CLIENT_ID) {
-        logger.error('Missing github client id')
-    }
-
-    if (!env.GITHUB_CLIENT_SECRET) {
-        logger.error('Missing github client secret')
-    }
+    const clientId = getEnv('GITHUB_APP_CLIENT_ID')
+    const clientSecret = getEnv('GITHUB_APP_CLIENT_SECRET')
 
     return axios({
         method: 'POST',
@@ -23,20 +16,23 @@ const generateUserAccessTokenWithCode = code => {
         },
         data: {
             code,
-            client_id: env.GITHUB_CLIENT_ID,
-            client_secret: env.GITHUB_CLIENT_SECRET,
+            client_id: clientId,
+            client_secret: clientSecret,
         },
         timeout: 10000,
     }).then(response => {
+        if (response.data.error) {
+            logger.debug(response.data)
+            throw new Error(response.data.error)
+        }
+
         if (response.data.access_token) {
+            logger.debug(`Token: ${response.data.access_token}`)
             return response.data.access_token
         }
 
-        return {
-            error: response.data.error_description
-                ? response.data.error_description
-                : response.data,
-        }
+        logger.debug(response)
+        throw new Error('Could not get token')
     })
 }
 

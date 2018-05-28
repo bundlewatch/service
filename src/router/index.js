@@ -143,18 +143,30 @@ function createServerlessApp() {
     app.get(
         '/manage',
         asyncMiddleware(async (req, res) => {
+            // const callbackURL = encodeURI(
+            //     `https://service.bundlewatch.io/manage`,
+            // )
+            const callbackURL = encodeURI(`http://localhost:3000/manage`)
+            const GITHUB_APP_CLIENTID = `Iv1.3392d0790b8f8334`
+            const authURL = `https://github.com/login/oauth/authorize?&client_id=${GITHUB_APP_CLIENTID}&redirect_uri=${callbackURL}`
+
             const { code } = req.query
             if (!code) {
-                const callbackURL = encodeURI(
-                    `https://service.bundlewatch.io/manage`,
-                )
-                const GITHUB_APP_CLIENTID = `Iv1.3392d0790b8f8334`
-                const authURL = `https://github.com/login/oauth/authorize?&client_id=${GITHUB_APP_CLIENTID}&redirect_uri=${callbackURL}`
                 return res.redirect(authURL)
             }
-            const repositories = await getRepositoriesForUser(code)
-            const repositoriesWithTokens = getRepositoryTokens(repositories)
-            return res.render('manage', { repositoriesWithTokens })
+            try {
+                const repositories = await getRepositoriesForUser(code)
+                const repositoriesWithTokens = await getRepositoryTokens(
+                    repositories,
+                )
+                return res.render('manage', { repositoriesWithTokens })
+            } catch (error) {
+                if (error.message === 'bad_verification_code') {
+                    return res.redirect(authURL)
+                }
+
+                throw error
+            }
         }),
     )
     app.get(

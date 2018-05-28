@@ -14,14 +14,6 @@ custom:
       port: 8000
       migrate: true
       inMemory: true
-  githubClientId:
-    dev: '04fcf325dd26ca2a159f'
-    stage: '04fcf325dd26ca2a159f'
-    prod: '04fcf325dd26ca2a159f'
-  githubClientSecret:
-    dev: ${env:GITHUB_CLIENT_SECRET}
-    stage: ${env:GITHUB_CLIENT_SECRET}
-    prod: ${env:GITHUB_CLIENT_SECRET}
   customDomain:
     domainName: service.bundlewatch.io
     basePath: ''
@@ -48,8 +40,10 @@ provider:
         - { "Fn::GetAtt": ["StoreTable", "Arn" ] }
   environment:
     STORE_TABLE: ${self:custom.storeTable}
-    GITHUB_CLIENT_ID: ${self:custom.githubClientId.${self:custom.stage}}
-    GITHUB_CLIENT_SECRET: ${self:custom.githubClientSecret.${self:custom.stage}}
+    GITHUB_CLIENT_ID: '04fcf325dd26ca2a159f'
+    GITHUB_CLIENT_SECRET: ${env:GITHUB_CLIENT_SECRET}
+    GITHUB_APP_CLIENT_ID: 'Iv1.3392d0790b8f8334'
+    GITHUB_APP_CLIENT_SECRET: ${env:GITHUB_APP_CLIENT_SECRET}
 
 functions:
   expressRouter:

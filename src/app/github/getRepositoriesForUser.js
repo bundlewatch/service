@@ -1,3 +1,5 @@
+// const logger = require('../../logger')
+
 const {
     generateUserAccessTokenWithCode,
 } = require('./user/generateUserAccessTokenWithCode')

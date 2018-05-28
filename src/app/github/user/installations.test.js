@@ -11,7 +11,7 @@ describe('github/user/installations', () => {
         githubUserAccessToken: MOCK_ACCESS_TOKEN,
     })
     it('getInstallations, Returns correct response', async () => {
-        moxios.stubRequest('https://api.github.com/installations', {
+        moxios.stubRequest('https://api.github.com/user/installations', {
             status: 200,
             response: getInstallationsResponse,
         })
@@ -23,7 +23,7 @@ describe('github/user/installations', () => {
     it('getRepositoriesForInstallation, returns correct response', async () => {
         const mockInstallationId = 1
         moxios.stubRequest(
-            `https://api.github.com/installations/${mockInstallationId}/repositories`,
+            `https://api.github.com/user/installations/${mockInstallationId}/repositories`,
             {
                 status: 200,
                 response: getInstallationRepositoriesResponse,

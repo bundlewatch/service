@@ -19,14 +19,14 @@
     <div class="card">
         <div style="margin: 48px auto">
             {{#repositoriesWithTokens}}
-                {{repoFullName}}
+                <a href="https://github.com/{{repoFullName}}">{{repoFullName}}</a>
                 <input value="{{repoToken}}" readonly="readonly" />
             {{/repositoriesWithTokens}}
         </div>
      </div>
 </article>
 
-<%- include partials/footer.mustache %>
+{{> partials/footer}}
 
 </body>
 </html>
