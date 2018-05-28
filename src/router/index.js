@@ -68,8 +68,8 @@ function createServerlessApp() {
                 return
             }
 
-            bundlewatchAsync(req.body)
-            res.status(202).send()
+            await bundlewatchAsync(req.body)
+            res.sendStatus(202)
         }),
     )
     app.post(
