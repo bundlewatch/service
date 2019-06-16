@@ -56,7 +56,7 @@ Contributions of any kind are welcome! [Join us on Slack](https://join.slack.com
 [test]: https://coveralls.io/repos/github/bundlewatch/service/badge.svg?branch=master
 [test-url]: https://coveralls.io/github/bundlewatch/service?branch=master
 
-[builds]: https://img.shields.io/circleci/project/github/bundlewatch/service.svg
+[builds]: https://img.shields.io/circleci/project/github/bundlewatch/service/master.svg
 [builds-url]: https://circleci.com/gh/bundlewatch/service
 
 [emojis]: https://github.com/kentcdodds/all-contributors#emoji-key
