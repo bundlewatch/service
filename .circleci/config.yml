@@ -2,7 +2,7 @@ version: 2
 jobs:
   build:
     docker:
-      - image: circleci/node:chakracore-8.12.0
+      - image: circleci/node:8.12.0
     working_directory: ~/workspace
     steps:
       - checkout
@@ -46,7 +46,7 @@ jobs:
 
   deploy:
     docker:
-      - image: circleci/node:chakracore-8.12.0
+      - image: circleci/node:8.12.0
     working_directory: ~/workspace
     steps:
       - checkout
