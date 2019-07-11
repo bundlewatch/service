@@ -1,6 +1,6 @@
 const { analyze } = require('./analyze')
 const { createURL: createURLToResultPage } = require('./resultsPage/createURL')
-const { getBranchFileDetails } = require('./getBranchFileDetails')
+const { getBranchFileDetails } = require('../models/storeUtils')
 const { GitHubService } = require('./github/GitHubService')
 const logger = require('../logger')
 const { STATUSES } = require('./analyze/analyzeFiles')

@@ -6,7 +6,6 @@ const jsonpack = require('jsonpack/main')
 const mustacheExpress = require('mustache-express')
 const serverless = require('serverless-http')
 
-const { Store } = require('../models/store')
 const {
     analyzeSchema,
     createStoreSchema,
@@ -18,7 +17,13 @@ const { generateAccessToken } = require('../app/github/generateAccessToken')
 const { asyncMiddleware } = require('./middleware/asyncMiddleware')
 const { bundlewatchAsync, STATUSES } = require('../app')
 const { protectedMiddleware } = require('./middleware/protectedMiddleware')
-const { getBranchFileDetails } = require('../app/getBranchFileDetails')
+const { getBranchFileDetails } = require('../models/storeUtils')
+const {
+    getRepositoriesForUser,
+} = require('../app/github/getRepositoriesForUser')
+const {
+    getRepositoryTokens,
+} = require('../app/authentication/getRepositoryTokens')
 
 const getMustachePropsFromStatus = status => {
     if (status === STATUSES.PASS) {
@@ -121,7 +126,6 @@ function createServerlessApp() {
         asyncMiddleware(async (req, res) => {
             const errorStatus = validateEndpoint(req, res, githutTokenSchema)
             if (errorStatus) return errorStatus
-            if (errorStatus) return errorStatus
             const { code } = req.query
             let result
             if (code) {
@@ -133,6 +137,35 @@ function createServerlessApp() {
                 }
             }
             return res.render('setup-github', { token: result })
+        }),
+    )
+    app.get(
+        '/manage',
+        asyncMiddleware(async (req, res) => {
+            // const callbackURL = encodeURI(
+            //     `https://service.bundlewatch.io/manage`,
+            // )
+            const callbackURL = encodeURI(`http://localhost:3000/manage`)
+            const GITHUB_APP_CLIENTID = `Iv1.3392d0790b8f8334`
+            const authURL = `https://github.com/login/oauth/authorize?&client_id=${GITHUB_APP_CLIENTID}&redirect_uri=${callbackURL}`
+
+            const { code } = req.query
+            if (!code) {
+                return res.redirect(authURL)
+            }
+            try {
+                const repositories = await getRepositoriesForUser(code)
+                const repositoriesWithTokens = await getRepositoryTokens(
+                    repositories,
+                )
+                return res.render('manage', { repositoriesWithTokens })
+            } catch (error) {
+                if (error.message === 'bad_verification_code') {
+                    return res.redirect(authURL)
+                }
+
+                throw error
+            }
         }),
     )
     app.get(
