@@ -25,11 +25,13 @@ const getMustachePropsFromStatus = status => {
         return {
             pass: true,
         }
-    } else if (status === STATUSES.WARN) {
+    }
+    if (status === STATUSES.WARN) {
         return {
             warn: true,
         }
-    } else if (status === STATUSES.FAIL) {
+    }
+    if (status === STATUSES.FAIL) {
         return {
             fail: true,
         }

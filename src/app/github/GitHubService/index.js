@@ -117,12 +117,15 @@ class GitHubService {
     async start({ message }) {
         return this.update(message, undefined, 'pending')
     }
+
     async pass({ message, url }) {
         return this.update(message, url, 'success')
     }
+
     async fail({ message, url, filePath }) {
         return this.update(message, url, 'failure', filePath)
     }
+
     async error({ message }) {
         return this.update(message, undefined, 'error')
     }
