@@ -171,9 +171,7 @@ function createServerlessApp() {
                         fileResult.size - fileResult.baseBranchSize
                     newFileResult.prettyDiffSize = bytes(newFileResult.diff)
                     if (newFileResult.diff > 0) {
-                        newFileResult.prettyDiffSize = `+${
-                            newFileResult.prettyDiffSize
-                        }`
+                        newFileResult.prettyDiffSize = `+${newFileResult.prettyDiffSize}`
                     }
                 }
 
@@ -184,7 +182,7 @@ function createServerlessApp() {
 
                 newFileResult.baseBranchSizePercentage = 0
                 newFileResult.diffPercentage =
-                    newFileResult.size / barTotalLength * 100
+                    (newFileResult.size / barTotalLength) * 100
                 if (fileResult.baseBranchSize) {
                     // When the diff is negative, we need to eat into the baseBranchDiff
                     newFileResult.isDiffNegative = newFileResult.diff < 0
@@ -194,10 +192,10 @@ function createServerlessApp() {
                         ? fileResult.baseBranchSize - absDiff
                         : fileResult.baseBranchSize
                     newFileResult.baseBranchSizePercentage =
-                        baseBranchSize / barTotalLength * 100
+                        (baseBranchSize / barTotalLength) * 100
 
                     newFileResult.diffPercentage =
-                        absDiff / barTotalLength * 100
+                        (absDiff / barTotalLength) * 100
                 }
                 return newFileResult
             })
