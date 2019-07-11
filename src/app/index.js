@@ -2,6 +2,7 @@ const { analyze } = require('./analyze')
 const { createURL: createURLToResultPage } = require('./resultsPage/createURL')
 const { getBranchFileDetails } = require('../models/storeUtils')
 const { GitHubService } = require('./github/GitHubService')
+const logger = require('../logger')
 const { STATUSES } = require('./analyze/analyzeFiles')
 
 const getResults = async ({
@@ -55,7 +56,12 @@ const bundlewatchAsync = async ({
         commitSha,
         githubAccessToken,
     })
-    await githubService.start({ message: 'Checking bundlewatch...' })
+
+    try {
+        await githubService.start({ message: 'Checking bundlewatch...' })
+    } catch (e) {
+        logger.error('githubService.start failed', e)
+    }
 
     try {
         const results = await getResults({

@@ -1,6 +1,6 @@
 const axios = require('axios')
 
-const { logger } = require('../../../logger')
+const logger = require('../../../logger')
 
 const getContextForFilePath = filePath => {
     let context = 'bundlewatch'
@@ -42,13 +42,12 @@ class GitHubService {
         )
     }
 
-    update(message, url, status, filePath) {
+    async update(message, url, status, filePath) {
         if (!this.enabled) {
             return Promise.resolve({})
         }
 
         const context = getContextForFilePath(filePath)
-
         if (!this.contexts.has(context) && this.contexts.size >= 5) {
             logger.warn(
                 `Max reported statuses reached, github status will not be reported`,
@@ -57,75 +56,78 @@ class GitHubService {
         }
         this.contexts.add(context)
 
-        return axios({
-            method: 'POST',
-            url: `https://api.github.com/repos/${this.repo}/statuses/${
-                this.commitSha
-            }`,
-            responseType: 'json',
-            data: {
-                state: status,
-                target_url: url,
-                description: message,
-                context,
-            },
-            timeout: 5000,
-            headers: {
-                Authorization: `token ${this.githubAccessToken}`,
-            },
-        }).catch(error => {
-            // dummy
-            // eslint-disable-next-line no-console
-            console.error('update status error', error.response.data.errors)
-            if (error) {
-                logger.error(
-                    `GitHubService HTTP_${error.response.status} :: ${
-                        error.response.data ? error.response.data.message : ''
-                    }`,
-                )
-                return
-            }
-            throw error
-        })
-    }
-
-    createIssueComment({ body }) {
-        return axios({
-            method: 'POST',
-            url: `https://api.github.com/repos/${this.repo}/issues/26/comments`,
-            responseType: 'json',
-            data: {
-                body,
-            },
-            timeout: 5000,
-            headers: {
-                Authorization: `token ${this.githubAccessToken}`,
-            },
-        }).catch(error => {
-            // eslint-disable-next-line no-console
-            console.error('create comment error', error)
+        try {
+            return axios({
+                method: 'POST',
+                url: `https://api.github.com/repos/${this.repo}/statuses/${
+                    this.commitSha
+                }`,
+                responseType: 'json',
+                data: {
+                    state: status,
+                    target_url: url,
+                    description: message,
+                    context,
+                },
+                timeout: 5000,
+                headers: {
+                    Authorization: `token ${this.githubAccessToken}`,
+                },
+            })
+        } catch (error) {
             if (error.response) {
                 logger.error(
                     `GitHubService HTTP_${error.response.status} :: ${
                         error.response.data ? error.response.data.message : ''
                     }`,
                 )
-                return
+            } else {
+                logger.error('GitHubService Other error', error)
             }
-            throw error
-        })
+            return null
+        }
     }
 
-    start({ message }) {
+    async createIssueComment({ body }) {
+        try {
+            return axios({
+                method: 'POST',
+                url: `https://api.github.com/repos/${
+                    this.repo
+                }/issues/26/comments`,
+                responseType: 'json',
+                data: {
+                    body,
+                },
+                timeout: 5000,
+                headers: {
+                    Authorization: `token ${this.githubAccessToken}`,
+                },
+            })
+        } catch (error) {
+            if (error.response) {
+                logger.error(
+                    `GitHubService HTTP_${error.response.status} :: ${
+                        error.response.data ? error.response.data.message : ''
+                    }`,
+                )
+            } else {
+                logger.error('GitHubService Other error', error)
+            }
+            return null
+        }
+    }
+
+    async start({ message }) {
         return this.update(message, undefined, 'pending')
     }
-    pass({ message, url }) {
+    async pass({ message, url }) {
         return this.update(message, url, 'success')
     }
-    fail({ message, url, filePath }) {
+    async fail({ message, url, filePath }) {
         return this.update(message, url, 'failure', filePath)
     }
-    error({ message }) {
+    async error({ message }) {
         return this.update(message, undefined, 'error')
     }
 }

@@ -67,6 +67,7 @@ const detailsSchema = Joi.object()
 const fullResultItemSchema = Joi.object().keys({
     baseBranchSize: Joi.number().optional(),
     compression: Joi.string().optional(),
+    error: Joi.string().optional(),
     filePath: Joi.string().required(),
     maxSize: Joi.number().optional(),
     message: Joi.string().optional(),

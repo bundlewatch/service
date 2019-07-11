@@ -1,11 +1,12 @@
 <div align="center">
-  <a href="http://bundlewatch.io">
+  <a href="https://bundlewatch.io">
     <img src="https://cdn.rawgit.com/bundlewatch/bundlewatch.io/master/docs/_assets/logo-large.svg" height="100px">
   </a>
   <br>
   <br>
 
 [![bundlewatch][bundlewatch]][bundlewatch-url]
+[![All Contributors](https://img.shields.io/badge/all_contributors-5-orange.svg?style=flat-square)](#contributors)
 
 [![deps][deps]][deps-url]
 [![dev-deps][dev-deps]][dev-deps-url]
@@ -38,13 +39,14 @@ The BundleWatch.io documentation site is at https://github.com/bundlewatch/bundl
 
 Thanks goes to these wonderful people ([emoji key][emojis]):
 
-| [<img src="https://avatars.githubusercontent.com/u/3534236?v=3" width="100px;"/><br /><sub><b>Jake Bolam</b></sub>](https://github.com/jakebolam)<br />[💻](https://github.com/bundlewatch/bundlewatch/commits?author=jakebolam) | [<img src="https://avatars.githubusercontent.com/u/6020693?v=3" width="100px;"/><br /><sub><b>Shouvik D'costa</b></sub>](https://github.com/sdcosta)<br />[💻](https://github.com/bundlewatch/bundlewatch/commits?author=sdcosta) | [<img src="https://avatars.githubusercontent.com/u/0000000?v=3" width="100px;"/><br /><sub><b>Tyler Benning</b></sub>](https://github.com/)<br />🎨  | [<img src="https://avatars.githubusercontent.com/u/20323414?v=3" width="100px;"/><br /><sub><b>Lelia Rosenthal</b></sub>](https://github.com/leilarosenthal)<br />[📖](https://github.com/bundlewatch/bundlewatch.io/commits?author=leilarosenthal)  | [<img src="https://avatars.githubusercontent.com/u/3876970?v=3" width="100px;"/><br /><sub><b>Francois Campbell</b></sub>](https://github.com/francoiscampbell)<br />[💻](https://github.com/bundlewatch/bundlewatch/commits?author=francoiscampbell)  |
-| :---: | :---: | :---: | :---: | :---: |
+<!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
+<!-- prettier-ignore -->
+<table><tr><td align="center"><a href="https://jakebolam.com"><img src="https://avatars2.githubusercontent.com/u/3534236?v=4" width="100px;" alt="Jake Bolam"/><br /><sub><b>Jake Bolam</b></sub></a><br /><a href="https://github.com/bundlewatch/service/commits?author=jakebolam" title="Code">💻</a></td><td align="center"><a href="https://opensource.tophat.com"><img src="https://avatars0.githubusercontent.com/u/6020693?v=4" width="100px;" alt="Shouvik DCosta"/><br /><sub><b>Shouvik DCosta</b></sub></a><br /><a href="https://github.com/bundlewatch/service/commits?author=sdcosta" title="Code">💻</a></td><td align="center"><a href="http://www.tylerbenning.com"><img src="https://avatars2.githubusercontent.com/u/7265547?v=4" width="100px;" alt="Tyler Benning"/><br /><sub><b>Tyler Benning</b></sub></a><br /><a href="#design-tbenning" title="Design">🎨</a></td><td align="center"><a href="http://www.6ixsushi.com"><img src="https://avatars3.githubusercontent.com/u/20323414?v=4" width="100px;" alt="Leila Rosenthal"/><br /><sub><b>Leila Rosenthal</b></sub></a><br /><a href="https://github.com/bundlewatch/service/commits?author=leilarosenthal" title="Documentation">📖</a></td><td align="center"><a href="https://github.com/francoiscampbell"><img src="https://avatars3.githubusercontent.com/u/3876970?v=4" width="100px;" alt="Francois Campbell"/><br /><sub><b>Francois Campbell</b></sub></a><br /><a href="https://github.com/bundlewatch/service/commits?author=francoiscampbell" title="Code">💻</a></td></tr></table>
+
+<!-- ALL-CONTRIBUTORS-LIST:END -->
 
 ## Want to Help? Become a Contributor
 Contributions of any kind are welcome! [Join us on Slack](https://join.slack.com/t/bundlewatch/shared_invite/enQtMzUwNjYxNTMwMzcyLWE5NGI4MzZjMjM4MTRlYzllOTMwYzIzZWNjM2MyMjBmMzNjNGM0ZGVhODc2YjFkNzIwMzNkYjk3NzE0MjZkOTc) and start contributing.
-
-&copy; 2018 BundleWatch
 
 [bundlewatch]: https://img.shields.io/badge/bundle-watched-blue.svg
 [bundlewatch-url]: https://bundlewatch.io
@@ -58,7 +60,7 @@ Contributions of any kind are welcome! [Join us on Slack](https://join.slack.com
 [test]: https://coveralls.io/repos/github/bundlewatch/service/badge.svg?branch=master
 [test-url]: https://coveralls.io/github/bundlewatch/service?branch=master
 
-[builds]: https://img.shields.io/circleci/project/github/bundlewatch/service.svg
+[builds]: https://img.shields.io/circleci/project/github/bundlewatch/service/master.svg
 [builds-url]: https://circleci.com/gh/bundlewatch/service
 
 [emojis]: https://github.com/kentcdodds/all-contributors#emoji-key
