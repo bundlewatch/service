@@ -1,4 +1,4 @@
-const Joi = require('joi')
+const Joi = require('@hapi/joi')
 
 const analyzeSchema = Joi.object().keys({
     commitSha: Joi.string().required(),
