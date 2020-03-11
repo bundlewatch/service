@@ -36,7 +36,7 @@
     },
     "devDependencies": {
         "babel-eslint": "^10.0.2",
-        "coveralls": "^3.0.4",
+        "coveralls": "^3.0.9",
         "eslint": "^5.16.0",
         "eslint-config-airbnb-base": "^13.2.0",
         "eslint-config-prettier": "^6.0.0",
