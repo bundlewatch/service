@@ -1,7 +1,6 @@
 const bodyParser = require('body-parser')
 const bytes = require('bytes')
 const express = require('express')
-const Joi = require('@hapi/joi')
 const jsonpack = require('jsonpack/main')
 const mustacheExpress = require('mustache-express')
 const serverless = require('serverless-http')
@@ -42,7 +41,7 @@ const getMustachePropsFromStatus = status => {
 }
 
 function validateEndpoint(req, res, schema) {
-    const validation = Joi.validate(req.body, schema)
+    const validation = schema.validate(req.body)
     if (validation.error) {
         return res.status(422).json({ errors: validation.error })
     }
@@ -142,7 +141,7 @@ function createServerlessApp() {
         asyncMiddleware(async (req, res) => {
             let { d } = req.query
             const unpacked = jsonpack.unpack(d)
-            const validation = Joi.validate(unpacked, unpackedJsonSchema)
+            const validation = unpackedJsonSchema.validate(unpacked)
             if (validation.error) {
                 return res.status(422).json({ errors: validation.error })
             }

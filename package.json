@@ -21,7 +21,7 @@
         ]
     },
     "dependencies": {
-        "@hapi/joi": "^15.1.0",
+        "@hapi/joi": "^17.1.0",
         "aws-sdk": "^2.638.0",
         "axios": "^0.19.2",
         "body-parser": "^1.18.2",
@@ -48,7 +48,7 @@
         "jest-junit": "^10.0.0",
         "lint-staged": "^10.0.8",
         "prettier": "^1.19.1",
-        "serverless": "^1.47.0",
+        "serverless": "^1.66.0",
         "serverless-domain-manager": "^3.3.1",
         "serverless-offline": "^5.12.1",
         "yarn-deduplicate": "^2.0.0"
