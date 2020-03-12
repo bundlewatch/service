@@ -37,19 +37,20 @@
     "devDependencies": {
         "babel-eslint": "^10.1.0",
         "coveralls": "^3.0.9",
-        "eslint": "^5.16.0",
-        "eslint-config-airbnb-base": "^13.2.0",
+        "eslint": "^6.8.0",
+        "eslint-config-airbnb-base": "^14.0.0",
         "eslint-config-prettier": "^6.10.0",
         "eslint-plugin-import": "^2.20.1",
-        "eslint-plugin-jest": "^22.7.2",
+        "eslint-plugin-jest": "^23.8.2",
         "eslint-plugin-prettier": "^3.1.2",
         "husky": "^4.2.3",
-        "jest": "^24.8.0",
+        "jest": "^25.1.0",
         "jest-junit": "^10.0.0",
         "lint-staged": "^10.0.8",
         "prettier": "^1.19.1",
         "serverless": "^1.47.0",
         "serverless-domain-manager": "^3.2.6",
-        "serverless-offline": "^5.12.1"
+        "serverless-offline": "^5.12.1",
+        "yarn-deduplicate": "^2.0.0"
     }
 }
