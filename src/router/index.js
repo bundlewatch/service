@@ -146,11 +146,10 @@ function createServerlessApp() {
             if (validation.error) {
                 return res.status(422).json({ errors: validation.error })
             }
-            const results = Object.assign(
-                {},
-                unpacked.results,
-                getMustachePropsFromStatus(unpacked.results.status),
-            )
+            const results = {
+                ...unpacked.results,
+                ...getMustachePropsFromStatus(unpacked.results.status),
+            }
             const details = unpacked.details
             details.hasDetails =
                 details.repoOwner &&
