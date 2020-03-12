@@ -50,6 +50,7 @@
         "prettier": "^1.19.1",
         "serverless": "^1.47.0",
         "serverless-domain-manager": "^3.2.6",
-        "serverless-offline": "^5.12.1"
+        "serverless-offline": "^5.12.1",
+        "yarn-deduplicate": "^2.0.0"
     }
 }
