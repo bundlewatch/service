@@ -21,7 +21,7 @@
         ]
     },
     "dependencies": {
-        "@hapi/joi": "^17.1.0",
+        "@hapi/joi": "^17.1.1",
         "aws-sdk": "^2.639.0",
         "axios": "^0.19.2",
         "body-parser": "^1.18.2",
