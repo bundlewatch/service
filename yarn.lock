@@ -7084,10 +7084,10 @@ serverless-http@^2.3.2:
   optionalDependencies:
     "@types/aws-lambda" "^8.10.19"
 
-serverless-offline@^6.1.2:
-  version "6.1.2"
-  resolved "https://registry.yarnpkg.com/serverless-offline/-/serverless-offline-6.1.2.tgz#1c0705adffe1a3868945a9fb2aec56362c0cec34"
-  integrity sha512-uPphAkEWivs6wdSwS2AFmqW0wTy2CU5vlE9Q0GJI4bjheeormasEw40dDWBnODufGPEI8JcKmh2tlnzxkLj/7Q==
+serverless-offline@^6.1.3:
+  version "6.1.3"
+  resolved "https://registry.yarnpkg.com/serverless-offline/-/serverless-offline-6.1.3.tgz#e63921a2581f672ba1d10b749f3f6b159cd41921"
+  integrity sha512-q25+kvn38hTvkZxrvIxp8ANm/SigNXPkGKJUpUO1fV0pwoItD2WSojS3slvdQkxWCAmYIdD9olRfkp9lfrHLTA==
   dependencies:
     "@hapi/boom" "^7.4.11"
     "@hapi/h2o2" "^8.3.2"
