@@ -7082,10 +7082,10 @@ serverless-http@^2.3.2:
   optionalDependencies:
     "@types/aws-lambda" "^8.10.19"
 
-serverless-offline@^6.1.3:
-  version "6.1.3"
-  resolved "https://registry.yarnpkg.com/serverless-offline/-/serverless-offline-6.1.3.tgz#e63921a2581f672ba1d10b749f3f6b159cd41921"
-  integrity sha512-q25+kvn38hTvkZxrvIxp8ANm/SigNXPkGKJUpUO1fV0pwoItD2WSojS3slvdQkxWCAmYIdD9olRfkp9lfrHLTA==
+serverless-offline@^6.1.4:
+  version "6.1.4"
+  resolved "https://registry.yarnpkg.com/serverless-offline/-/serverless-offline-6.1.4.tgz#506662526fdd9d640de5bf802573171ce0df67a3"
+  integrity sha512-HDvFlPFZA0Pwr3EqS6bQ0zakxcF94+GyEJNM8TRsneOqDr1Wx6kFxBt5cCCzkCUt5RVsmFoHBSAu942N5XVEUg==
   dependencies:
     "@hapi/boom" "^7.4.11"
     "@hapi/h2o2" "^8.3.2"
