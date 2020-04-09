@@ -1,18 +1,16 @@
-@import url("https://fonts.googleapis.com/css?family=Roboto+Mono|Source+Sans+Pro:300,400,600");
 * {
-  -webkit-font-smoothing: antialiased;
-  -webkit-overflow-scrolling: touch;
-  -webkit-tap-highlight-color: rgba(0,0,0,0);
-  -webkit-text-size-adjust: none;
-  -webkit-touch-callout: none;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+    -webkit-font-smoothing: antialiased;
+    -webkit-overflow-scrolling: touch;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    -webkit-text-size-adjust: none;
+    -webkit-touch-callout: none;
+    box-sizing: border-box;
 }
 html {
-  box-sizing: border-box;
+    box-sizing: border-box;
 }
-*, *:before, *:after {
-  box-sizing: inherit;
+*, *::before, *::after {
+    box-sizing: inherit;
 }
 html, body {
     margin: 0;
@@ -22,20 +20,26 @@ body {
     -moz-osx-font-smoothing: grayscale;
     -webkit-font-smoothing: antialiased;
     color: #36454f;
-    font-family: 'Source Sans Pro', 'Helvetica Neue', Arial, sans-serif;
+    font-family: "Source Sans Pro", "Helvetica Neue", Arial, sans-serif;
     font-size: 15px;
     letter-spacing: 0;
     background: #f7f7f7;
 }
+img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+    margin: 0 auto;
+}
 .logo {
     display: block;
-    margin: 50px auto;
+    margin: 60px auto;
     text-align: center;
 }
 .container {
     margin: 0 12px;
 }
-@media(min-width: 1000px) {
+@media (min-width: 1000px) {
     .container {
         margin: 0 auto;
         width: 70%;
@@ -45,47 +49,31 @@ body {
     text-align: center;
     margin-bottom: 24px;
     padding: 24px;
-    background: #FFF;
-    box-shadow: 0px 3px 5px 2px rgba(201, 214, 255, 0.15);
+    background: #fff;
+    box-shadow: 0 3px 5px 2px rgba(201, 214, 255, .15);
 }
 
 .btn {
-    position: relative;
     display: inline-block;
     padding: 1.2em 2em;
     text-decoration: none;
     text-align: center;
     cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
     user-select: none;
-    color: white;
-}
-
-.btn::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0;
-    background: #d54400;
+    color: #fff;
+    transition: opacity .2s ease;
+    font-weight: 700;
+    letter-spacing: .01em;
+    background-color: #d54400;
     border-radius: 4px;
-    transition: all .5s ease, transform .2s ease;
     box-shadow: 0 2px 5px rgba(0, 0, 0, .2);
 }
 
-.btn:hover::before {
-    opacity: 0.8;
+.btn:hover {
+    opacity: .8;
 }
-
-.btn::after {
-    position: relative;
-    display: inline-block;
-    content: attr(data-title);
-    transition: transform .2s ease;
-    font-weight: bold;
-    letter-spacing: .01em;
-}
-
 
 footer {
     display: flex;
@@ -104,3 +92,49 @@ footer {
     margin: 0 8px;
 }
 
+.github-corner:hover .octo-arm {
+    -webkit-animation: octocat-wave .56s ease-in-out;
+    animation: octocat-wave .56s ease-in-out;
+}
+
+@-webkit-keyframes octocat-wave {
+    0%,
+    100% {
+        transform: rotate(0);
+    }
+    20%,
+    60% {
+        transform: rotate(-25deg);
+    }
+    40%,
+    80% {
+        transform: rotate(10deg);
+    }
+}
+
+@keyframes octocat-wave {
+    0%,
+    100% {
+        transform: rotate(0);
+    }
+    20%,
+    60% {
+        transform: rotate(-25deg);
+    }
+    40%,
+    80% {
+        transform: rotate(10deg);
+    }
+}
+
+@media (max-width: 500px) {
+    .github-corner:hover .octo-arm {
+        -webkit-animation: none;
+        animation: none;
+    }
+
+    .github-corner .octo-arm {
+        -webkit-animation: octocat-wave .56s ease-in-out;
+        animation: octocat-wave .56s ease-in-out;
+    }
+}

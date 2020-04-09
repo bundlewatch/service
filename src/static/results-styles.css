@@ -1,18 +1,16 @@
-@import url("https://fonts.googleapis.com/css?family=Roboto+Mono|Source+Sans+Pro:300,400,600");
 * {
-  -webkit-font-smoothing: antialiased;
-  -webkit-overflow-scrolling: touch;
-  -webkit-tap-highlight-color: rgba(0,0,0,0);
-  -webkit-text-size-adjust: none;
-  -webkit-touch-callout: none;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+    -webkit-font-smoothing: antialiased;
+    -webkit-overflow-scrolling: touch;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    -webkit-text-size-adjust: none;
+    -webkit-touch-callout: none;
+    box-sizing: border-box;
 }
 html {
-  box-sizing: border-box;
+    box-sizing: border-box;
 }
-*, *:before, *:after {
-  box-sizing: inherit;
+*, *::before, *::after {
+    box-sizing: inherit;
 }
 html, body {
     margin: 0;
@@ -22,15 +20,21 @@ body {
     -moz-osx-font-smoothing: grayscale;
     -webkit-font-smoothing: antialiased;
     color: #36454f;
-    font-family: 'Source Sans Pro', 'Helvetica Neue', Arial, sans-serif;
+    font-family: "Source Sans Pro", "Helvetica Neue", Arial, sans-serif;
     font-size: 15px;
     letter-spacing: 0;
     background: #f7f7f7;
 }
+img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+    margin: 0 auto;
+}
 table {
     border-collapse: collapse;
     font-size: 14px;
-    width: 100%
+    width: 100%;
 }
 td, th {
     padding: 8px;
@@ -41,13 +45,13 @@ td, th {
 }
 .logo {
     display: block;
-    margin: 50px auto;
+    margin: 60px auto;
     text-align: center;
 }
 .container {
     margin: 0 12px;
 }
-@media(min-width: 1000px) {
+@media (min-width: 1000px) {
     .container {
         margin: 0 auto;
         width: 70%;
@@ -57,7 +61,7 @@ td, th {
     font-size: 25px;
 }
 .big-icon {
-    font-size: 32px!important;
+    font-size: 32px !important;
     margin-right: 8px;
 }
 .build-info {
@@ -114,21 +118,21 @@ a {
     color: #ffcd52;
 }
 .cell-fail {
-    color: #d54400
+    color: #d54400;
 }
 .cell-removed {
-    color: #4a81ea
+    color: #4a81ea;
 }
 .dark {
     color: #192235;
 }
 .light {
-    color: #969FA5;
+    color: #969fa5;
 }
 .card {
     min-width: 650px;
-    background: #FFF;
-    box-shadow: 0px 3px 5px 2px rgba(201, 214, 255, 0.15);
+    background: #fff;
+    box-shadow: 0 3px 5px 2px rgba(201, 214, 255, .15);
 }
 .progress-bar-container {
     background-color: #f4f6f8;
@@ -147,7 +151,7 @@ a {
 }
 .progress-bar-pass-negative {
     background-color: #000051;
-    opacity: 0.5;
+    opacity: .5;
     height: 12px;
 }
 .progress-bar-warn {
@@ -174,4 +178,51 @@ footer {
 
 .footer a {
     margin: 0 8px;
+}
+
+.github-corner:hover .octo-arm {
+    -webkit-animation: octocat-wave .56s ease-in-out;
+    animation: octocat-wave .56s ease-in-out;
+}
+
+@-webkit-keyframes octocat-wave {
+    0%,
+    100% {
+        transform: rotate(0);
+    }
+    20%,
+    60% {
+        transform: rotate(-25deg);
+    }
+    40%,
+    80% {
+        transform: rotate(10deg);
+    }
+}
+
+@keyframes octocat-wave {
+    0%,
+    100% {
+        transform: rotate(0);
+    }
+    20%,
+    60% {
+        transform: rotate(-25deg);
+    }
+    40%,
+    80% {
+        transform: rotate(10deg);
+    }
+}
+
+@media (max-width: 500px) {
+    .github-corner:hover .octo-arm {
+        -webkit-animation: none;
+        animation: none;
+    }
+
+    .github-corner .octo-arm {
+        -webkit-animation: octocat-wave .56s ease-in-out;
+        animation: octocat-wave .56s ease-in-out;
+    }
 }
