@@ -133,7 +133,10 @@ function createServerlessApp() {
                     })
                 }
             }
-            return res.render('setup-github', { token: result })
+            return res.render('setup-github', {
+                token: result,
+                clientId: process.env.GITHUB_CLIENT_ID,
+            })
         }),
     )
     app.get(
