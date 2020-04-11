@@ -34,6 +34,34 @@ The BundleWatch CLI app and Node API is at https://github.com/bundlewatch/bundle
 
 The BundleWatch.io documentation site is at https://github.com/bundlewatch/bundlewatch.io
 
+## How to set up your own instance
+
+1. Configure CI
+    - Use the [existing CircleCI config](https://github.com/bundlewatch/service/blob/master/.circleci/config.yml), or configure an equivalent.
+      - [GitHub Actions example](https://github.com/GoProperly/bundlewatch-service/blob/master/.github/workflows/deploy.yml)
+    - I [disabled use of coveralls](https://github.com/GoProperly/bundlewatch-service/commit/7aef7538c55f2d26a9779555830d57105d001713) in `JEST_ARGS` in `Makefile` since it is a third-party service that requires additional setup
+
+1. Create a GitHub OAuth application
+    - For a GitHub Organization: https://github.com/organizations/<ORG>/settings/applications/new
+    - Personal: https://github.com/settings/applications/new
+    - Set the "Authorization callback URL" to e.g. https://bundlewatch.example.org/setup-github
+    - Make note of client ID and client secret
+
+1. Configure environment variables in CI:
+    - AWS credentials for serverless deploy:
+      - `AWS_ACCESS_KEY_ID`
+      - `AWS_SECRET_ACCESS_KEY`
+    - GitHub OAuth application client secret:
+      - `GITHUB_CLIENT_SECRET`
+
+1. Customize `serverless.yml`
+    ```
+    custom:
+      githubClientId:
+        prod: '<GitHub OAuth application client ID>'
+      customDomain:
+        domainName: bundlewatch.example.org
+    ```
 
 ## Contributors
 
