@@ -2,7 +2,7 @@ name: Auto approve
 on: pull_request
 
 jobs:
-  build:
+  approve:
     if: github.actor == 'dependabot[bot]' || github.actor == 'dependabot-preview[bot]'
     runs-on: ubuntu-latest
     steps:
