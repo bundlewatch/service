@@ -1,0 +1,32 @@
+name: Test & Deploy
+
+on: push
+
+jobs:
+    deploy:
+        name: Test & Deploy
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v1
+            - uses: actions/cache@v1
+              with:
+                  path: ~/.npm
+                  key: ${{ runner.os }}-node-${{ hashFiles('**/yarn.lock') }}
+                  restore-keys: |
+                      ${{ runner.os }}-node-
+            - uses: actions/setup-node@v1
+              with:
+                  node-version: 12
+            - name: Install
+              run: make install-no-clean
+            - name: Lint
+              run: make lint
+            - name: Test
+              run: make test
+            - name: Build
+              run: make package
+            - name: Deploy
+              if: github.ref == 'refs/heads/master'
+              run: |
+                make install-deployment-deps
+                STAGE=prod make deploy
