@@ -30,7 +30,7 @@
             {{/token}}
             {{^token}}
                 <p>Setup bundlewatch on your Pull Requests by Authorizing bundlewatch on Github</p>
-                <a class="btn" data-title='Authorize on Github' href="https://github.com/login/oauth/authorize?scope=repo%3Astatus&client_id=04fcf325dd26ca2a159f"></a>
+                <a class="btn" data-title='Authorize on Github' href="https://github.com/login/oauth/authorize?scope=repo%3Astatus&client_id={{clientId}}"></a>
             {{/token}}
         </div>
         <p style="padding-top: 24px; text-align: right;">
