@@ -77,9 +77,7 @@ const fullResultItemSchema = Joi.object().keys({
 
 const resultsSchema = Joi.object()
     .keys({
-        fullResults: Joi.array()
-            .items(fullResultItemSchema)
-            .required(),
+        fullResults: Joi.array().items(fullResultItemSchema).required(),
         status: Joi.string().required(),
         summary: Joi.string().required(),
     })

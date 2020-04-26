@@ -2,7 +2,7 @@ const axios = require('axios')
 
 const logger = require('../../../logger')
 
-const getContextForFilePath = filePath => {
+const getContextForFilePath = (filePath) => {
     let context = 'bundlewatch'
     if (filePath) {
         const TRUNCATE_TO_LENGTH = 35

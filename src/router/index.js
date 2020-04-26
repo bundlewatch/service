@@ -19,7 +19,7 @@ const { bundlewatchAsync, STATUSES } = require('../app')
 const { protectedMiddleware } = require('./middleware/protectedMiddleware')
 const { getBranchFileDetails } = require('../app/getBranchFileDetails')
 
-const getMustachePropsFromStatus = status => {
+const getMustachePropsFromStatus = (status) => {
     if (status === STATUSES.PASS) {
         return {
             pass: true,
@@ -162,7 +162,7 @@ function createServerlessApp() {
             details.commitShaPretty = details.commitSha
                 ? details.commitSha.slice(0, 8)
                 : ''
-            results.fullResults.map(fileResult => {
+            results.fullResults.map((fileResult) => {
                 const newFileResult = Object.assign(
                     fileResult,
                     getMustachePropsFromStatus(fileResult.status),

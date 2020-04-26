@@ -81,7 +81,7 @@ const bundlewatchAsync = async ({
             })
 
             await Promise.all(
-                results.fullResults.map(result => {
+                results.fullResults.map((result) => {
                     if (result.status === STATUSES.FAIL) {
                         return githubService.fail({
                             message: result.message,
