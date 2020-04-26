@@ -33,7 +33,7 @@ provider:
   region: us-east-1
   runtime: nodejs12.x
   memorySize: 512
-  timeout: 30
+  timeout: 29
   iamRoleStatements:
     - Effect: Allow
       Action:
