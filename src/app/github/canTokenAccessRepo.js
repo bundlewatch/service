@@ -35,10 +35,10 @@ const canTokenAccessRepo = ({
         },
         timeout: 5000,
     })
-        .then(response => {
+        .then((response) => {
             return response.data
         })
-        .catch(error => {
+        .catch((error) => {
             if (error.response) {
                 console.error(
                     `GitHubService HTTP_${error.response.status} :: ${

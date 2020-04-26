@@ -13,7 +13,7 @@ const Store = dynamoose.model(
         repo: {
             type: String,
             hashKey: true,
-            default: model => `${model.repoOwner}/${model.repoName}`,
+            default: (model) => `${model.repoOwner}/${model.repoName}`,
         },
         repoBranch: {
             type: String,

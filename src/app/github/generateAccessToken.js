@@ -2,7 +2,7 @@ const axios = require('axios')
 
 const env = process.env
 
-const generateAccessToken = code => {
+const generateAccessToken = (code) => {
     if (process.env.IS_OFFLINE) {
         return Promise.resolve('adfas923n44a8c5c282342sadhjfgdhjag10df0df')
     }
@@ -21,7 +21,7 @@ const generateAccessToken = code => {
         },
         timeout: 10000,
     })
-        .then(response => {
+        .then((response) => {
             if (response.data.access_token) {
                 return response.data.access_token
             }
@@ -32,7 +32,7 @@ const generateAccessToken = code => {
                     : response.data,
             }
         })
-        .catch(error => {
+        .catch((error) => {
             console.error(error) // eslint-disable-line no-console
             return {
                 error: error.response.status || error.message,
