@@ -27,9 +27,9 @@ Array [
     "baseBranchSize": 0,
     "filePath": "path/to/unbound/file",
     "maxSize": null,
-    "message": "1KB > Infinity (no compression)",
+    "message": "1KB < Infinity (no compression)",
     "size": 1024,
-    "status": "fail",
+    "status": "pass",
   },
   Object {
     "baseBranchSize": 30,

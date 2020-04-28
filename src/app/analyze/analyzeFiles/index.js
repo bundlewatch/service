@@ -60,7 +60,7 @@ const analyzeFiles = ({
 
         const prettySize = bytes(maxSize) || 'Infinity'
 
-        if (size > maxSize) {
+        if (size > maxSize && typeof maxSize === 'number') {
             status = STATUSES.FAIL
             message += `> ${prettySize} `
         } else {
