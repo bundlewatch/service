@@ -58,10 +58,7 @@ const analyzeFiles = ({
         let status
         let message = `${bytes(size)} `
 
-        const prettySize =
-            maxSize === null || maxSize === Infinity
-                ? 'Infinity'
-                : bytes(maxSize)
+        const prettySize = bytes(maxSize) || 'Infinity'
 
         if (size > maxSize) {
             status = STATUSES.FAIL
