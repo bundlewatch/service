@@ -1,0 +1,43 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`analyzeFiles analyses files correctly 1`] = `
+Array [
+  Object {
+    "error": "Failed to compare",
+    "filePath": "path/to/errored/file",
+    "status": "fail",
+  },
+  Object {
+    "baseBranchSize": 0,
+    "filePath": "path/to/larger/file",
+    "maxSize": 50,
+    "message": "60B > 50B (no compression)",
+    "size": 60,
+    "status": "fail",
+  },
+  Object {
+    "baseBranchSize": 0,
+    "filePath": "path/to/smaller/file",
+    "maxSize": 50,
+    "message": "30B < 50B (no compression)",
+    "size": 30,
+    "status": "pass",
+  },
+  Object {
+    "baseBranchSize": 0,
+    "filePath": "path/to/unbound/file",
+    "maxSize": null,
+    "message": "1KB > Infinity (no compression)",
+    "size": 1024,
+    "status": "fail",
+  },
+  Object {
+    "baseBranchSize": 30,
+    "filePath": "path/to/removed/file",
+    "maxSize": 0,
+    "message": "path/to/removed/file: File removed (30B smaller than master) (no compression)",
+    "size": 0,
+    "status": "removed",
+  },
+]
+`;
