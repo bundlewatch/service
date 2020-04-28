@@ -3,6 +3,18 @@ const baseBranchFileDetails = {
         size: 30,
         compression: 'none',
     },
+    'path/to/larger/file': {
+        size: 40,
+    },
+    'path/to/equal/file': {
+        size: 50,
+    },
+    'path/to/smaller/file': {
+        size: 60,
+    },
+    'path/to/unbound/file': {
+        size: 512,
+    },
 }
 const currentBranchFileDetails = {
     'path/to/errored/file': {
@@ -13,6 +25,11 @@ const currentBranchFileDetails = {
     },
     'path/to/larger/file': {
         size: 60,
+        maxSize: 50,
+        compression: 'none',
+    },
+    'path/to/equal/file': {
+        size: 50,
         maxSize: 50,
         compression: 'none',
     },
