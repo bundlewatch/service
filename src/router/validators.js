@@ -15,7 +15,7 @@ const analyzeSchema = Joi.object().keys({
             /.+/,
             Joi.object({
                 compression: Joi.string().required(),
-                maxSize: Joi.number().required(),
+                maxSize: Joi.number().required().allow(null),
                 size: Joi.number().required(),
             }),
         )
@@ -35,7 +35,7 @@ const createStoreSchema = Joi.object().keys({
             /.+/,
             Joi.object({
                 compression: Joi.string().required(),
-                maxSize: Joi.number().required(),
+                maxSize: Joi.number().required().allow(null),
                 size: Joi.number().required(),
             }),
         )
@@ -69,7 +69,7 @@ const fullResultItemSchema = Joi.object().keys({
     compression: Joi.string().optional(),
     error: Joi.string().optional(),
     filePath: Joi.string().required(),
-    maxSize: Joi.number().optional(),
+    maxSize: Joi.number().optional().allow(null),
     message: Joi.string().optional(),
     size: Joi.number().optional(),
     status: Joi.string().required(),
