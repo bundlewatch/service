@@ -819,14 +819,14 @@
     node-fetch "^2.6.0"
     shortid "^2.2.14"
 
-"@serverless/components@^2.29.2":
-  version "2.30.1"
-  resolved "https://registry.yarnpkg.com/@serverless/components/-/components-2.30.1.tgz#cf52c625ce91f23a49cd79078e9ed807625fe3e1"
-  integrity sha512-blqZP6aRg9oj1A30ip2hndcvA1g+J8g8vFbUHtAfs5mp/r4KTD63tNagscSNKTSbc6csM3Z9w6yjW4KSarl8LQ==
+"@serverless/components@^2.30.2":
+  version "2.30.10"
+  resolved "https://registry.yarnpkg.com/@serverless/components/-/components-2.30.10.tgz#92b3278d27a68e7b2b542aea6f3c970ecac3a35f"
+  integrity sha512-F6Y9FBh7lvAyKOkctcd6qIBtGZHUu1X5HTxvrQMPK3QlzSeyPonKw5/Xh57rlyurbki0GzKtXFK6qH75ZnNUAw==
   dependencies:
     "@serverless/inquirer" "^1.1.0"
-    "@serverless/platform-client" "^0.25.4"
-    "@serverless/platform-client-china" "^1.0.5"
+    "@serverless/platform-client" "^0.25.7"
+    "@serverless/platform-client-china" "^1.0.12"
     "@serverless/platform-sdk" "^2.3.0"
     adm-zip "^0.4.14"
     ansi-escapes "^4.3.1"
@@ -838,12 +838,15 @@
     fs-extra "^8.1.0"
     globby "^10.0.2"
     graphlib "^2.1.8"
+    https-proxy-agent "^5.0.0"
+    ini "^1.3.5"
     js-yaml "^3.13.1"
     minimist "^1.2.5"
     moment "^2.24.0"
     open "^7.0.3"
     prettyoutput "^1.2.0"
     ramda "^0.26.1"
+    semver "^7.3.2"
     strip-ansi "^5.2.0"
     traverse "^0.6.6"
     uuid "^3.4.0"
@@ -860,13 +863,13 @@
     ramda "^0.26.1"
     semver "^6.1.1"
 
-"@serverless/enterprise-plugin@^3.6.6":
-  version "3.6.6"
-  resolved "https://registry.yarnpkg.com/@serverless/enterprise-plugin/-/enterprise-plugin-3.6.6.tgz#21e9875a694db8047665637e2c0362b185b153b7"
-  integrity sha512-ZkzHp8WVOQv2opdXSYES39uorZV3m61+QDPK5W2PtV6InddYlYNTVuhH8vIynNYFrK8tZ95ZjpPi0BQkQ8q2EQ==
+"@serverless/enterprise-plugin@^3.6.8":
+  version "3.6.10"
+  resolved "https://registry.yarnpkg.com/@serverless/enterprise-plugin/-/enterprise-plugin-3.6.10.tgz#0ffead38ebe627ef96695f9d0b8dc08a49bc3b34"
+  integrity sha512-z6/BKEfuuvgTqmFl7oCCNNfqL9QTZD/vPIsKjpbcZIo65qRFgbbMvpf+uVJKBwwDYHLKoLWyMHzpqqmZfa+W/A==
   dependencies:
     "@serverless/event-mocks" "^1.1.1"
-    "@serverless/platform-client" "^0.24.0"
+    "@serverless/platform-client" "^0.25.6"
     "@serverless/platform-sdk" "^2.3.0"
     chalk "^2.4.2"
     child-process-ext "^2.1.0"
@@ -911,14 +914,13 @@
     inquirer "^7.1.0"
     ncjsm "^4.0.1"
 
-"@serverless/platform-client-china@^1.0.5":
-  version "1.0.7"
-  resolved "https://registry.yarnpkg.com/@serverless/platform-client-china/-/platform-client-china-1.0.7.tgz#be4c9b7a923ed6a1186442d2e1041d8e0ddcaf8a"
-  integrity sha512-QbfdLfRy67cEC8p5s2OMOGgT7OvsiMsrSaloUAsZPSBGVEsOMj3ueBNwxrQNBQf9J2trFandnciA3vacSS8zlw==
+"@serverless/platform-client-china@^1.0.12":
+  version "1.0.12"
+  resolved "https://registry.yarnpkg.com/@serverless/platform-client-china/-/platform-client-china-1.0.12.tgz#d9b609add8c576fcc5f81a83da9da5f475783107"
+  integrity sha512-bfEunU+6cXCygTtXTGylu6c01BeN8S7uU8hbG5ZT8zGpE9ik2hIL7iHg+xIXxIsSBlzZn8cASbo0x/FXkm7//w==
   dependencies:
     "@serverless/utils-china" latest
     adm-zip "^0.4.13"
-    axios "^0.19.2"
     dotenv "^8.2.0"
     https-proxy-agent "^5.0.0"
     isomorphic-ws "^4.0.1"
@@ -930,10 +932,10 @@
     urlencode "^1.1.0"
     ws "^7.2.1"
 
-"@serverless/platform-client@^0.24.0":
-  version "0.24.0"
-  resolved "https://registry.yarnpkg.com/@serverless/platform-client/-/platform-client-0.24.0.tgz#1e0366e9bf22831d0f62f351280cdccffe0acc43"
-  integrity sha512-ppxR5wONzzxNSmt/9agfSzC0F4yrkHZWAR5IPLm4yj+dMxb+768XrbqBU6vnOfCcmjb89OX5Bk0GvyQh+T5gLw==
+"@serverless/platform-client@^0.25.6", "@serverless/platform-client@^0.25.7":
+  version "0.25.7"
+  resolved "https://registry.yarnpkg.com/@serverless/platform-client/-/platform-client-0.25.7.tgz#0c4ed0d8f235e5811e05a79a1cd2cb883806e87a"
+  integrity sha512-ZOKgT49qQPGjv0tDN46INO0gkc5syL2y5t0pau5ljQPtQpJzHrUL87xRlDj3BD+4Y9QFZV1UXXNsOQZsyCBsPw==
   dependencies:
     adm-zip "^0.4.13"
     axios "^0.19.2"
@@ -941,21 +943,7 @@
     isomorphic-ws "^4.0.1"
     js-yaml "^3.13.1"
     jwt-decode "^2.2.0"
-    querystring "^0.2.0"
-    traverse "^0.6.6"
-    ws "^7.2.1"
-
-"@serverless/platform-client@^0.25.4":
-  version "0.25.5"
-  resolved "https://registry.yarnpkg.com/@serverless/platform-client/-/platform-client-0.25.5.tgz#7a43a302cf9633db1caa18171acb5ba5e29e6c4f"
-  integrity sha512-29JV8XpJPTUSWgDwxhvZZ9fi9/5jCn1x5IeT+xEiEkpuXZU79wXlSfMfc8XtptOsDouZnOhBpKEZrItGp67CFw==
-  dependencies:
-    adm-zip "^0.4.13"
-    axios "^0.19.2"
-    https-proxy-agent "^5.0.0"
-    isomorphic-ws "^4.0.1"
-    js-yaml "^3.13.1"
-    jwt-decode "^2.2.0"
+    minimatch "^3.0.4"
     querystring "^0.2.0"
     traverse "^0.6.6"
     ws "^7.2.1"
@@ -1600,7 +1588,7 @@ aws-sdk@2.395.0:
     uuid "3.3.2"
     xml2js "0.4.19"
 
-aws-sdk@^2.490.0, aws-sdk@^2.660.0, aws-sdk@^2.671.0, aws-sdk@^2.7.0:
+aws-sdk@^2.490.0, aws-sdk@^2.665.0, aws-sdk@^2.671.0, aws-sdk@^2.7.0:
   version "2.671.0"
   resolved "https://registry.yarnpkg.com/aws-sdk/-/aws-sdk-2.671.0.tgz#2c6e164a0f540d6fc428c123f2994ac081663ff5"
   integrity sha512-i83+/TIOLlhAxvV2xVLz5+XGtNqJgQJwP/e8J49rzDkyMV6OE2FgxU8utujGrComrSJFpITqMFqug+ZfdHoLIQ==
@@ -4336,12 +4324,7 @@ got@^9.6.0:
     to-readable-stream "^1.0.0"
     url-parse-lax "^3.0.0"
 
-graceful-fs@^4.1.0, graceful-fs@^4.1.10, graceful-fs@^4.1.11, graceful-fs@^4.1.2, graceful-fs@^4.1.6, graceful-fs@^4.1.9, graceful-fs@^4.2.0, graceful-fs@^4.2.3:
-  version "4.2.3"
-  resolved "https://registry.yarnpkg.com/graceful-fs/-/graceful-fs-4.2.3.tgz#4a12ff1b60376ef09862c2093edd908328be8423"
-  integrity sha512-a30VEBm4PEdx1dRB7MFK7BejejvCvBronbLjht+sHuGYj8PHs7M/5Z+rt5lw551vZ7yfTCj4Vuyy3mSJytDWRQ==
-
-graceful-fs@^4.2.4:
+graceful-fs@^4.1.0, graceful-fs@^4.1.10, graceful-fs@^4.1.11, graceful-fs@^4.1.2, graceful-fs@^4.1.6, graceful-fs@^4.1.9, graceful-fs@^4.2.0, graceful-fs@^4.2.4:
   version "4.2.4"
   resolved "https://registry.yarnpkg.com/graceful-fs/-/graceful-fs-4.2.4.tgz#2256bde14d3632958c465ebc96dc467ca07a29fb"
   integrity sha512-WjKPNJF79dtJAVniUlGGWHYGz2jWxT6VhN/4m1NdkbZ2nOsEF+cI1Edgql5zCRhs/VsQYRvrXctxktVXZUkixw==
@@ -5704,7 +5687,7 @@ jsprim@^1.2.2:
     json-schema "0.2.3"
     verror "1.10.0"
 
-jszip@^3.2.2, jszip@^3.4.0:
+jszip@^3.2.2:
   version "3.4.0"
   resolved "https://registry.yarnpkg.com/jszip/-/jszip-3.4.0.tgz#1a69421fa5f0bb9bc222a46bca88182fba075350"
   integrity sha512-gZAOYuPl4EhPTXT0GjhI3o+ZAz3su6EhLrKUoAivcKqyqC7laS5JEv4XWZND9BgcDcF83vI85yGbDmDR6UhrIg==
@@ -7923,17 +7906,17 @@ serverless-offline@^6.1.5:
     velocityjs "^2.0.0"
     ws "^7.2.1"
 
-serverless@^1.68.0:
-  version "1.68.0"
-  resolved "https://registry.yarnpkg.com/serverless/-/serverless-1.68.0.tgz#ac72994f3cf7dcdb3f30c33bbea4b6e25171beca"
-  integrity sha512-CLA8K4B/oZm1LwgUDAfCHiVYGszveDSlAUr2mIdzdcVc3CLjzlRZn7IVipy3myXOc7/+kocxOqs3VXogm9A4Wg==
+serverless@^1.69.0:
+  version "1.69.0"
+  resolved "https://registry.yarnpkg.com/serverless/-/serverless-1.69.0.tgz#74f8dbdab0c4f4bfbc9482f98bb511ad6fdefb8c"
+  integrity sha512-af4gBZeto9JCkObSErzSXI+UcxoGNxUP4oQq7b/+QoCFa0NYjO4lCtW66MD6ONYg0YxDEukTQwzgkbD9VmunWg==
   dependencies:
     "@serverless/cli" "^1.4.0"
-    "@serverless/components" "^2.29.2"
-    "@serverless/enterprise-plugin" "^3.6.6"
+    "@serverless/components" "^2.30.2"
+    "@serverless/enterprise-plugin" "^3.6.8"
     archiver "^1.3.0"
     async "^1.5.2"
-    aws-sdk "^2.660.0"
+    aws-sdk "^2.665.0"
     bluebird "^3.7.2"
     boxen "^3.2.0"
     cachedir "^2.3.0"
@@ -7950,7 +7933,7 @@ serverless@^1.68.0:
     fs-extra "^0.30.0"
     get-stdin "^5.0.1"
     globby "^6.1.0"
-    graceful-fs "^4.2.3"
+    graceful-fs "^4.2.4"
     https-proxy-agent "^4.0.0"
     inquirer "^6.5.2"
     is-docker "^1.1.0"
@@ -7958,7 +7941,6 @@ serverless@^1.68.0:
     js-yaml "^3.13.1"
     json-cycle "^1.3.0"
     json-refs "^2.1.7"
-    jszip "^3.4.0"
     jwt-decode "^2.2.0"
     lodash "^4.17.15"
     memoizee "^0.4.14"
