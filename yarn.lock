@@ -7885,10 +7885,10 @@ serverless-dynamodb-local@^0.2.39:
     dynamodb-localhost "0.0.9"
     lodash "^4.17.0"
 
-serverless-http@^2.3.2:
-  version "2.3.2"
-  resolved "https://registry.yarnpkg.com/serverless-http/-/serverless-http-2.3.2.tgz#45c7f984adc82b4d8b5c88f11baec3dec373c999"
-  integrity sha512-tUUpj2USho2s+X+7js0KQZ2PWqdDNXKkiz9rdYqu3CG/3hsvMve9IBm/R6gILgijGgOfkCKSjsrPnPG08Y7M6g==
+serverless-http@^2.4.0:
+  version "2.4.0"
+  resolved "https://registry.yarnpkg.com/serverless-http/-/serverless-http-2.4.0.tgz#a38911b0db01089f8c56db1ebd8734321877a3f9"
+  integrity sha512-xvXa1eNiqQmBMUdY6NeYYZJ9uFBHe8OgZw6YFUtIkHrGbhvzVv9+LtqE9PsmqneqPWV00xuZVbSo/IuocpqFFw==
   optionalDependencies:
     "@types/aws-lambda" "^8.10.19"
 
