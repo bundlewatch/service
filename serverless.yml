@@ -1,5 +1,5 @@
 service: bundlewatch-service
-frameworkVersion: '=1.68.0'
+frameworkVersion: '>=1.0.0 <2.0.0'
 
 plugins:
   - serverless-dynamodb-local
