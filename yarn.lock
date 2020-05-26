@@ -7890,10 +7890,10 @@ serve-static@1.14.1:
     parseurl "~1.3.3"
     send "0.17.1"
 
-serverless-domain-manager@^4.1.0:
-  version "4.1.0"
-  resolved "https://registry.yarnpkg.com/serverless-domain-manager/-/serverless-domain-manager-4.1.0.tgz#0e8daf3a0aa21b41d6162c34607d35ac073d0cdd"
-  integrity sha512-8RK4qJ0pCoCSzj4eS32z49tKwymntO/dx7xQ3m2lYobaGtNNC0ESSdBAl1ILadyWJ0jzzZ1HysdDcZl+M+LMFQ==
+serverless-domain-manager@^4.1.1:
+  version "4.1.1"
+  resolved "https://registry.yarnpkg.com/serverless-domain-manager/-/serverless-domain-manager-4.1.1.tgz#3ce3119cfa6fd46a70578f5f1a6bbf0189f04b7b"
+  integrity sha512-9cQC+aj7FD82ca7SC1fWLKZzyDyRufj+ez0SC89VeNQ43UfugstSSCqbJ6nOWSgSeLQdEKZzukY61vcOF957LA==
   dependencies:
     aws-sdk "^2.490.0"
     chalk "^2.4.1"
