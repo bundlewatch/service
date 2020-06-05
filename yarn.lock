@@ -5204,6 +5204,11 @@ isurl@^1.0.0-alpha5:
     has-to-string-tag-x "^1.2.0"
     is-object "^1.0.1"
 
+java-invoke-local@0.0.6:
+  version "0.0.6"
+  resolved "https://registry.yarnpkg.com/java-invoke-local/-/java-invoke-local-0.0.6.tgz#0e04b20b5e306a1e8384846a9ac286790ee6d868"
+  integrity sha512-gZmQKe1QrfkkMjCn8Qv9cpyJFyogTYqkP5WCobX5RNaHsJzIV/6NvAnlnouOcwKr29QrxLGDGcqYuJ+ae98s1A==
+
 jest-changed-files@^26.0.1:
   version "26.0.1"
   resolved "https://registry.yarnpkg.com/jest-changed-files/-/jest-changed-files-26.0.1.tgz#1334630c6a1ad75784120f39c3aa9278e59f349f"
@@ -7974,10 +7979,10 @@ serverless-http@^2.5.0:
   optionalDependencies:
     "@types/aws-lambda" "^8.10.19"
 
-serverless-offline@^6.3.1:
-  version "6.3.1"
-  resolved "https://registry.yarnpkg.com/serverless-offline/-/serverless-offline-6.3.1.tgz#ccdeb2247241902d108e5cb793717077edaafaf9"
-  integrity sha512-CuVptFglgNbUy77JOHEeqv17acWCDu9X4boVAj1UHFNnmO4I+iLh1n9mu4uNRnSSbfsNUJNXh8r8NRzKpDEs6A==
+serverless-offline@^6.4.0:
+  version "6.4.0"
+  resolved "https://registry.yarnpkg.com/serverless-offline/-/serverless-offline-6.4.0.tgz#45d685ed1fce88bcfcaff93f876c17316be99d80"
+  integrity sha512-7lKvomXG7zOn+UZiL/rqnQcHziObc/NUaz70UD0RFWe9pgBfB5LCOVWKaZI5O/owjwZYaAbN2P6GXjfjpMS5UQ==
   dependencies:
     "@hapi/boom" "^7.4.11"
     "@hapi/h2o2" "^8.3.2"
@@ -7988,6 +7993,7 @@ serverless-offline@^6.3.1:
     execa "^4.0.0"
     extend "^3.0.2"
     fs-extra "^8.1.0"
+    java-invoke-local "0.0.6"
     js-string-escape "^1.0.1"
     jsonpath-plus "^3.0.0"
     jsonwebtoken "^8.5.1"
