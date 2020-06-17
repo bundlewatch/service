@@ -8024,10 +8024,10 @@ serverless-offline@^6.4.0:
     velocityjs "^2.0.0"
     ws "^7.2.1"
 
-serverless@^1.73.0:
-  version "1.73.0"
-  resolved "https://registry.yarnpkg.com/serverless/-/serverless-1.73.0.tgz#67252b8821dad26f6e3a4d5aaab1a5909eacdc41"
-  integrity sha512-ptScprMfsQqclgVzbmaTqyMkO7rggOf6kWw2Wa2ba7oq3HYcGQbRSCgTUW0QlR3HPYVt1pISsXTIoUDE16pMWw==
+serverless@^1.73.1:
+  version "1.73.1"
+  resolved "https://registry.yarnpkg.com/serverless/-/serverless-1.73.1.tgz#5de67609ba25269e641aaab347fb37e70ba13e42"
+  integrity sha512-8cBSUS8uGzI9/mYJqWfLsx/byIfUlpZS2gXpUP5yXu6rRuBpLAsg1V02rzjK+48t+3Sv5+qZCk1XRGbzoUTVGg==
   dependencies:
     "@serverless/cli" "^1.5.0"
     "@serverless/components" "^2.30.15"
