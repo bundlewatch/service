@@ -856,14 +856,14 @@
     node-fetch "^2.6.0"
     shortid "^2.2.14"
 
-"@serverless/components@^2.32.0":
-  version "2.32.0"
-  resolved "https://registry.yarnpkg.com/@serverless/components/-/components-2.32.0.tgz#535cd3584f63b82b1346620c9479aa4a3246c9d0"
-  integrity sha512-BkSC/5Ln/wfkxcReyqCwrJz+4gPdzS5w6nMQxXZrEfCPj/kND8+ryGmpE1X3zAQg54L+sRFELJB8Xfgg1E8c4w==
+"@serverless/components@^2.33.0":
+  version "2.33.0"
+  resolved "https://registry.yarnpkg.com/@serverless/components/-/components-2.33.0.tgz#15b81efd01826d265ebf1ea008385ba5c6e1d8d8"
+  integrity sha512-LTWJsq3rf9HY6ghy37cQX+wj6Nf37CcyYS/+uGEjYydTyxB0P4AHqnYqDTOVZyeyplvNWULi1UcPAJCFfWkIRQ==
   dependencies:
     "@serverless/inquirer" "^1.1.2"
     "@serverless/platform-client" "^1.0.6"
-    "@serverless/platform-client-china" "^1.0.18"
+    "@serverless/platform-client-china" "^1.0.28"
     "@serverless/platform-sdk" "^2.3.1"
     "@serverless/utils" "^1.1.0"
     adm-zip "^0.4.14"
@@ -954,19 +954,17 @@
     inquirer "^6.5.2"
     ncjsm "^4.0.1"
 
-"@serverless/platform-client-china@^1.0.18":
-  version "1.0.22"
-  resolved "https://registry.yarnpkg.com/@serverless/platform-client-china/-/platform-client-china-1.0.22.tgz#4ad933fbfc40683534568d10e8f79c1c08b05031"
-  integrity sha512-jqH8r9YzBHcDxOTY5ZxAYf0IV8Lo/DZ7AugpiLlXp44yeL+WELhiBYzVvKVk03vSkWbG5vVgqTU/RZyDXDaYCA==
+"@serverless/platform-client-china@^1.0.28":
+  version "1.0.30"
+  resolved "https://registry.yarnpkg.com/@serverless/platform-client-china/-/platform-client-china-1.0.30.tgz#607af7f7e422cada223fa0bb552db932b20fbd40"
+  integrity sha512-qkiSoe7aPaqLAywUgbREEgSWSgqpX9bC7rhOTd+lMSfHD0AsysscEWKfvlgZMCge3EbfULLbic4jBsAdN64RGA==
   dependencies:
-    "@serverless/utils-china" "^0.1.16"
+    "@serverless/utils-china" "^0.1.19"
     archiver "^4.0.1"
     dotenv "^8.2.0"
     fs-extra "^8.1.0"
     https-proxy-agent "^5.0.0"
-    isomorphic-ws "^4.0.1"
     js-yaml "^3.14.0"
-    jwt-decode "^2.2.0"
     minimatch "^3.0.4"
     pify "^5.0.0"
     querystring "^0.2.0"
@@ -1021,10 +1019,10 @@
     graphlib "^2.1.7"
     traverse "^0.6.6"
 
-"@serverless/utils-china@^0.1.16":
-  version "0.1.17"
-  resolved "https://registry.yarnpkg.com/@serverless/utils-china/-/utils-china-0.1.17.tgz#58d5f4dc35d87646c8c5b5aaa4f84601bc1b8172"
-  integrity sha512-GhveUbvj32whixPOztLhHJdLZUP5L3Ni+giOyM2vOl00Dnf1oklau2QCiDxvSWj5+ZlBGxyDMRJUXAfO1F6SPA==
+"@serverless/utils-china@^0.1.19":
+  version "0.1.20"
+  resolved "https://registry.yarnpkg.com/@serverless/utils-china/-/utils-china-0.1.20.tgz#81f649dc312e96b548d7d8387c2ff040f2cb9518"
+  integrity sha512-3HzKyK/9VJEdAxcTpV6WnVZZeucBDgtm9V0Xx1Ch+NbawUC3E0UeyQXicTU3v8jkXewaBfqnCEg3RqCxtw07DA==
   dependencies:
     "@tencent-sdk/capi" "^0.2.17"
     dijkstrajs "^1.0.1"
@@ -1699,7 +1697,7 @@ aws-sdk@2.395.0:
     uuid "3.3.2"
     xml2js "0.4.19"
 
-aws-sdk@^2.490.0, aws-sdk@^2.7.0, aws-sdk@^2.720.0, aws-sdk@^2.721.0:
+aws-sdk@^2.490.0, aws-sdk@^2.7.0, aws-sdk@^2.721.0:
   version "2.721.0"
   resolved "https://registry.yarnpkg.com/aws-sdk/-/aws-sdk-2.721.0.tgz#da9a66803e2a34da0f97d59c60933fa9e02eafe7"
   integrity sha512-loljx8gp4u/Y4nKO2mbcj3df8HpMkoxTFCYx5800IkLj4Y6yZqodxPTt0SZ5fHlQNx8TUtjwkmp3isBGtdEdyA==
@@ -7819,19 +7817,19 @@ serverless-offline@^6.5.0:
     velocityjs "^2.0.0"
     ws "^7.2.1"
 
-serverless@^1.77.0:
-  version "1.77.0"
-  resolved "https://registry.yarnpkg.com/serverless/-/serverless-1.77.0.tgz#10508255344ed00a07a2202a14f828ccac07a94b"
-  integrity sha512-S2/JJMd5AJnhhM5cQhYawW6fbzSDMbjNxotk+Mbbrcc0aDjgGb2s5pM6eiZ6algdfE6EiKarLYd2pLCegsCY3g==
+serverless@^1.77.1:
+  version "1.77.1"
+  resolved "https://registry.yarnpkg.com/serverless/-/serverless-1.77.1.tgz#7a2264f690b52499931e7425daf6f515a0173f01"
+  integrity sha512-K+NFc1NNkah5ilSi+GCn7D6XOr+x6ieWRZMx8mmCWshi4p/MiEZ8WZ4F2Viu5bRQ/3dmrjTMjMlc5PnTwHfZIg==
   dependencies:
     "@serverless/cli" "^1.5.1"
-    "@serverless/components" "^2.32.0"
+    "@serverless/components" "^2.33.0"
     "@serverless/enterprise-plugin" "^3.6.18"
     "@serverless/inquirer" "^1.1.2"
     "@serverless/utils" "^1.2.0"
     archiver "^3.1.1"
     async "^1.5.2"
-    aws-sdk "^2.720.0"
+    aws-sdk "^2.721.0"
     bluebird "^3.7.2"
     boxen "^3.2.0"
     cachedir "^2.3.0"
