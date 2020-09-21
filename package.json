@@ -35,7 +35,7 @@
         "lodash.merge": "^4.6.2",
         "mustache-express": "^1.3.0",
         "serverless-dynamodb-local": "^0.2.39",
-        "serverless-http": "^2.5.0"
+        "serverless-http": "^2.6.0"
     },
     "devDependencies": {
         "babel-eslint": "^10.1.0",
