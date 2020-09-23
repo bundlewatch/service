@@ -51,7 +51,7 @@
         "jest-junit": "^11.1.0",
         "lint-staged": "^10.4.0",
         "prettier": "^2.1.2",
-        "serverless": "^1.82.0",
+        "serverless": "^2.1.1",
         "serverless-domain-manager": "^4.2.3",
         "serverless-offline": "^6.7.0",
         "yarn-deduplicate": "^3.0.0"
