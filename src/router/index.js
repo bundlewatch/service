@@ -1,7 +1,7 @@
 const bodyParser = require('body-parser')
 const bytes = require('bytes')
 const express = require('express')
-const jsonpack = require('jsonpack/main')
+const lzString = require('lz-string')
 const mustacheExpress = require('mustache-express')
 const serverless = require('serverless-http')
 
@@ -143,7 +143,14 @@ function createServerlessApp() {
         '/results',
         asyncMiddleware(async (req, res) => {
             let { d } = req.query
-            const unpacked = jsonpack.unpack(d)
+            let unpacked = {}
+            try {
+                unpacked = JSON.parse(
+                    lzString.decompressFromEncodedURIComponent(d),
+                )
+            } catch (error) {
+                return res.status(500).json({ error })
+            }
             const validation = unpackedJsonSchema.validate(unpacked)
             if (validation.error) {
                 return res.status(422).json({ errors: validation.error })
