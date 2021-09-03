@@ -1,5 +1,5 @@
 const lodashMerge = require('lodash.merge')
-const jsonpack = require('jsonpack/main')
+const lzString = require('lz-string')
 const { shortenURL } = require('./shortenURL')
 
 const createURL = async ({
@@ -18,17 +18,18 @@ const createURL = async ({
         return strippedResult
     })
 
-    const packedJSON = jsonpack.pack({
-        details: {
-            repoOwner,
-            repoName,
-            repoCurrentBranch,
-            repoBranchBase,
-            commitSha,
-        },
-        results: strippedResultsForURL,
-    })
-    const urlResultData = encodeURIComponent(packedJSON)
+    const urlResultData = lzString.compressToEncodedURIComponent(
+        JSON.stringify({
+            details: {
+                repoOwner,
+                repoName,
+                repoCurrentBranch,
+                repoBranchBase,
+                commitSha,
+            },
+            results: strippedResultsForURL,
+        }),
+    )
     const longURL = `${bundlewatchServiceHost}/results?d=${urlResultData}`
     return shortenURL(longURL)
 }
