@@ -31,7 +31,7 @@ custom:
 provider:
     name: aws
     region: us-east-1
-    runtime: nodejs12.x
+    runtime: nodejs14.x
     memorySize: 512
     timeout: 29
     iamRoleStatements:
