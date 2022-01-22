@@ -7,7 +7,7 @@ plugins:
     - serverless-offline # must be last
 
 custom:
-    stage: ${opt:stage, self:provider.stage}
+    stage: ${opt:stage, 'dev'}
     storeTable: '${self:service}-store-table-${self:custom.stage}'
     dynamodb:
         start:
@@ -32,6 +32,7 @@ provider:
     name: aws
     region: us-east-1
     runtime: nodejs14.x
+    lambdaHashingVersion: '20201221'
     memorySize: 512
     timeout: 29
     iamRoleStatements:
