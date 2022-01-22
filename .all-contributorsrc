@@ -58,11 +58,23 @@
       "contributions": [
         "security"
       ]
+    },
+    {
+      "login": "charpeni",
+      "name": "Nicolas Charpentier",
+      "avatar_url": "https://avatars.githubusercontent.com/u/7189823?v=4",
+      "profile": "https://charpeni.com",
+      "contributions": [
+        "code",
+        "maintenance",
+        "security"
+      ]
     }
   ],
   "contributorsPerLine": 7,
   "projectName": "service",
   "projectOwner": "bundlewatch",
   "repoType": "github",
-  "repoHost": "https://github.com"
+  "repoHost": "https://github.com",
+  "skipCi": true
 }
