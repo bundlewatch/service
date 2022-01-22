@@ -1,5 +1,5 @@
 service: bundlewatch-service
-frameworkVersion: '>=1.0.0 <2.0.0'
+frameworkVersion: '2'
 
 plugins:
     - serverless-dynamodb-local
@@ -55,28 +55,28 @@ functions:
     expressRouter:
         handler: src/router/index.app
         events:
-            - http:
+            - httpApi:
                   path: /
                   method: get
-            - http:
+            - httpApi:
                   path: /store
                   method: post
-            - http:
+            - httpApi:
                   path: /store/lookup
                   method: post
-            - http:
+            - httpApi:
                   path: /setup-github
                   method: get
-            - http:
+            - httpApi:
                   path: /results
                   method: get
-            - http:
+            - httpApi:
                   path: /static/results-styles.css
                   method: get
-            - http:
+            - httpApi:
                   path: /static/setup-github-styles.css
                   method: get
-            - http:
+            - httpApi:
                   path: /analyze
                   method: post
 
