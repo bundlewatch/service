@@ -2,122 +2,112 @@ service: bundlewatch-service
 frameworkVersion: '>=1.0.0 <2.0.0'
 
 plugins:
-  - serverless-dynamodb-local
-  - serverless-domain-manager
-  - serverless-offline # must be last
+    - serverless-dynamodb-local
+    - serverless-domain-manager
+    - serverless-offline # must be last
 
 custom:
-  stage: ${opt:stage, self:provider.stage}
-  storeTable: '${self:service}-store-table-${self:custom.stage}'
-  dynamodb:
-    start:
-      port: 8000
-      migrate: true
-      inMemory: true
-  githubClientId:
-    dev: '04fcf325dd26ca2a159f'
-    stage: '04fcf325dd26ca2a159f'
-    prod: '04fcf325dd26ca2a159f'
-  githubClientSecret:
-    dev: ${env:GITHUB_CLIENT_SECRET}
-    stage: ${env:GITHUB_CLIENT_SECRET}
-    prod: ${env:GITHUB_CLIENT_SECRET}
-  customDomain:
-    domainName: service.bundlewatch.io
-    basePath: ''
-    stage: ${self:custom.stage}
-    createRoute53Record: true
+    stage: ${opt:stage, self:provider.stage}
+    storeTable: '${self:service}-store-table-${self:custom.stage}'
+    dynamodb:
+        start:
+            port: 8000
+            migrate: true
+            inMemory: true
+    githubClientId:
+        dev: '04fcf325dd26ca2a159f'
+        stage: '04fcf325dd26ca2a159f'
+        prod: '04fcf325dd26ca2a159f'
+    githubClientSecret:
+        dev: ${env:GITHUB_CLIENT_SECRET}
+        stage: ${env:GITHUB_CLIENT_SECRET}
+        prod: ${env:GITHUB_CLIENT_SECRET}
+    customDomain:
+        domainName: service.bundlewatch.io
+        basePath: ''
+        stage: ${self:custom.stage}
+        createRoute53Record: true
 
 provider:
-  name: aws
-  region: us-east-1
-  runtime: nodejs12.x
-  memorySize: 512
-  timeout: 29
-  iamRoleStatements:
-    - Effect: Allow
-      Action:
-        - dynamodb:Query
-        - dynamodb:Scan
-        - dynamodb:GetItem
-        - dynamodb:PutItem
-        - dynamodb:UpdateItem
-        - dynamodb:DeleteItem
-        - dynamodb:DescribeTable
-      Resource:
-        - { "Fn::GetAtt": ["StoreTable", "Arn" ] }
-  environment:
-    STORE_TABLE: ${self:custom.storeTable}
-    GITHUB_CLIENT_ID: ${self:custom.githubClientId.${self:custom.stage}}
-    GITHUB_CLIENT_SECRET: ${self:custom.githubClientSecret.${self:custom.stage}}
+    name: aws
+    region: us-east-1
+    runtime: nodejs12.x
+    memorySize: 512
+    timeout: 29
+    iamRoleStatements:
+        - Effect: Allow
+          Action:
+              - dynamodb:Query
+              - dynamodb:Scan
+              - dynamodb:GetItem
+              - dynamodb:PutItem
+              - dynamodb:UpdateItem
+              - dynamodb:DeleteItem
+              - dynamodb:DescribeTable
+          Resource:
+              - { 'Fn::GetAtt': ['StoreTable', 'Arn'] }
+    environment:
+        STORE_TABLE: ${self:custom.storeTable}
+        GITHUB_CLIENT_ID: ${self:custom.githubClientId.${self:custom.stage}}
+        GITHUB_CLIENT_SECRET: ${self:custom.githubClientSecret.${self:custom.stage}}
 
 functions:
-  expressRouter:
-    handler: src/router/index.app
-    events:
-      - http:
-          path: /
-          method: get
-      - http:
-          path: /store
-          method: post
-      - http:
-          path: /store/lookup
-          method: post
-      - http:
-          path: /setup-github
-          method: get
-      - http:
-          path: /results
-          method: get
-      - http:
-          path: /static/results-styles.css
-          method: get
-      - http:
-          path: /static/setup-github-styles.css
-          method: get
-      - http:
-          path: /analyze
-          method: post
-
-
+    expressRouter:
+        handler: src/router/index.app
+        events:
+            - http:
+                  path: /
+                  method: get
+            - http:
+                  path: /store
+                  method: post
+            - http:
+                  path: /store/lookup
+                  method: post
+            - http:
+                  path: /setup-github
+                  method: get
+            - http:
+                  path: /results
+                  method: get
+            - http:
+                  path: /static/results-styles.css
+                  method: get
+            - http:
+                  path: /static/setup-github-styles.css
+                  method: get
+            - http:
+                  path: /analyze
+                  method: post
 
 resources:
-  Resources:
-    StoreTable:
-      Type: 'AWS::DynamoDB::Table'
-      DeletionPolicy: Retain
-      Properties:
-        AttributeDefinitions:
-          -
-            AttributeName: repo
-            AttributeType: S
-          -
-            AttributeName: repoBranch
-            AttributeType: S
-          -
-            AttributeName: timestamp
-            AttributeType: S
-        KeySchema:
-          -
-            AttributeName: repo
-            KeyType: HASH
-          -
-            AttributeName: repoBranch
-            KeyType: RANGE
-        LocalSecondaryIndexes:
-          -
-            IndexName: timestamp
-            KeySchema:
-                -
-                    AttributeName: repo
-                    KeyType: HASH
-                -
-                    AttributeName: timestamp
-                    KeyType: RANGE
-            Projection:
-                ProjectionType: KEYS_ONLY
-        ProvisionedThroughput:
-          ReadCapacityUnits: 1
-          WriteCapacityUnits: 1
-        TableName: ${self:custom.storeTable}
+    Resources:
+        StoreTable:
+            Type: 'AWS::DynamoDB::Table'
+            DeletionPolicy: Retain
+            Properties:
+                AttributeDefinitions:
+                    - AttributeName: repo
+                      AttributeType: S
+                    - AttributeName: repoBranch
+                      AttributeType: S
+                    - AttributeName: timestamp
+                      AttributeType: S
+                KeySchema:
+                    - AttributeName: repo
+                      KeyType: HASH
+                    - AttributeName: repoBranch
+                      KeyType: RANGE
+                LocalSecondaryIndexes:
+                    - IndexName: timestamp
+                      KeySchema:
+                          - AttributeName: repo
+                            KeyType: HASH
+                          - AttributeName: timestamp
+                            KeyType: RANGE
+                      Projection:
+                          ProjectionType: KEYS_ONLY
+                ProvisionedThroughput:
+                    ReadCapacityUnits: 1
+                    WriteCapacityUnits: 1
+                TableName: ${self:custom.storeTable}
