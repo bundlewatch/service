@@ -8,8 +8,6 @@
 [![bundlewatch][bundlewatch]][bundlewatch-url]
 [![All Contributors](https://img.shields.io/badge/all_contributors-6-orange.svg?style=flat-square)](#contributors)
 
-[![deps][deps]][deps-url]
-[![dev-deps][dev-deps]][dev-deps-url]
 [![builds][builds]][builds-url]
 [![test][test]][test-url]
 <br>
@@ -60,12 +58,6 @@ Contributions of any kind are welcome! [Join us on Slack](https://join.slack.com
 [bundlewatch]: https://img.shields.io/badge/bundle-watched-blue.svg
 [bundlewatch-url]: https://bundlewatch.io
 
-[deps]: https://david-dm.org/bundlewatch/service/status.svg
-[deps-url]: https://david-dm.org/bundlewatch/service
-
-[dev-deps]: https://david-dm.org/bundlewatch/service/dev-status.svg
-[dev-deps-url]: https://david-dm.org/bundlewatch/service?type=dev
-
 [test]: https://coveralls.io/repos/github/bundlewatch/service/badge.svg?branch=master
 [test-url]: https://coveralls.io/github/bundlewatch/service?branch=master
 
@@ -73,4 +65,3 @@ Contributions of any kind are welcome! [Join us on Slack](https://join.slack.com
 [builds-url]: https://circleci.com/gh/bundlewatch/service
 
 [emojis]: https://github.com/kentcdodds/all-contributors#emoji-key
-
