@@ -55,28 +55,28 @@ functions:
     expressRouter:
         handler: src/router/index.app
         events:
-            - httpApi:
+            - http:
                   path: /
                   method: get
-            - httpApi:
+            - http:
                   path: /store
                   method: post
-            - httpApi:
+            - http:
                   path: /store/lookup
                   method: post
-            - httpApi:
+            - http:
                   path: /setup-github
                   method: get
-            - httpApi:
+            - http:
                   path: /results
                   method: get
-            - httpApi:
+            - http:
                   path: /static/results-styles.css
                   method: get
-            - httpApi:
+            - http:
                   path: /static/setup-github-styles.css
                   method: get
-            - httpApi:
+            - http:
                   path: /analyze
                   method: post
 
