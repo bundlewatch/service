@@ -52,7 +52,7 @@
         "lint-staged": "^10.5.4",
         "prettier": "^2.2.1",
         "serverless": "^3.39.0",
-        "serverless-domain-manager": "^5.4.1",
+        "serverless-domain-manager": "^7.3.8",
         "serverless-git-info": "^1.2.4",
         "serverless-offline": "^13.6.0",
         "yarn-deduplicate": "^3.1.0"
