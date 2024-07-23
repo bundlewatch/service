@@ -25,8 +25,8 @@
     },
     "dependencies": {
         "@hapi/joi": "^17.1.1",
-        "aws-sdk": "^2.852.0",
-        "axios": "^0.19.2",
+        "aws-sdk": "^2.1063.0",
+        "axios": "^0.28.0",
         "body-parser": "^1.18.2",
         "bytes": "^3.0.0",
         "dynamoose": "^1.11.1",
