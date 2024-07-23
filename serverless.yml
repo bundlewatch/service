@@ -4,6 +4,7 @@ frameworkVersion: '2'
 plugins:
     - serverless-dynamodb-local
     - serverless-domain-manager
+    - serverless-git-info
     - serverless-offline # must be last
 
 custom:
@@ -27,6 +28,7 @@ custom:
         basePath: ''
         stage: ${self:custom.stage}
         createRoute53Record: true
+    gitSha1: ${git:sha1} # git rev-parse --short HEAD
 
 provider:
     name: aws
@@ -51,6 +53,7 @@ provider:
         STORE_TABLE: ${self:custom.storeTable}
         GITHUB_CLIENT_ID: ${self:custom.githubClientId.${self:custom.stage}}
         GITHUB_CLIENT_SECRET: ${self:custom.githubClientSecret.${self:custom.stage}}
+        GIT_SHA1: ${self:custom.gitSha1}
 
 functions:
     expressRouter:

@@ -203,7 +203,11 @@ function createServerlessApp() {
                 return newFileResult
             })
             results.status = results.status.toUpperCase()
-            return res.render('results', { results, details })
+            return res.render('results', {
+                results,
+                details,
+                serverCommitSha: process.env.GIT_SHA1,
+            })
         }),
     )
 
