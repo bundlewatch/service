@@ -1,20 +1,23 @@
-@import url("https://fonts.googleapis.com/css?family=Roboto+Mono|Source+Sans+Pro:300,400,600");
+@import url('https://fonts.googleapis.com/css?family=Roboto+Mono|Source+Sans+Pro:300,400,600');
 * {
-  -webkit-font-smoothing: antialiased;
-  -webkit-overflow-scrolling: touch;
-  -webkit-tap-highlight-color: rgba(0,0,0,0);
-  -webkit-text-size-adjust: none;
-  -webkit-touch-callout: none;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+    -webkit-font-smoothing: antialiased;
+    -webkit-overflow-scrolling: touch;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    -webkit-text-size-adjust: none;
+    -webkit-touch-callout: none;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
 }
 html {
-  box-sizing: border-box;
+    box-sizing: border-box;
 }
-*, *:before, *:after {
-  box-sizing: inherit;
+*,
+*:before,
+*:after {
+    box-sizing: inherit;
 }
-html, body {
+html,
+body {
     margin: 0;
     padding: 0;
 }
@@ -30,9 +33,10 @@ body {
 table {
     border-collapse: collapse;
     font-size: 14px;
-    width: 100%
+    width: 100%;
 }
-td, th {
+td,
+th {
     padding: 8px;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -47,7 +51,7 @@ td, th {
 .container {
     margin: 0 12px;
 }
-@media(min-width: 1000px) {
+@media (min-width: 1000px) {
     .container {
         margin: 0 auto;
         width: 70%;
@@ -57,7 +61,7 @@ td, th {
     font-size: 25px;
 }
 .big-icon {
-    font-size: 32px!important;
+    font-size: 32px !important;
     margin-right: 8px;
 }
 .build-info {
@@ -114,20 +118,20 @@ a {
     color: #ffcd52;
 }
 .cell-fail {
-    color: #d54400
+    color: #d54400;
 }
 .cell-removed {
-    color: #4a81ea
+    color: #4a81ea;
 }
 .dark {
     color: #192235;
 }
 .light {
-    color: #969FA5;
+    color: #969fa5;
 }
 .card {
     min-width: 650px;
-    background: #FFF;
+    background: #fff;
     box-shadow: 0px 3px 5px 2px rgba(201, 214, 255, 0.15);
 }
 .progress-bar-container {
@@ -161,6 +165,7 @@ a {
 
 footer {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     text-align: center;
@@ -174,4 +179,9 @@ footer {
 
 .footer a {
     margin: 0 8px;
+}
+
+.server-commit-sha a {
+    color: #999999;
+    text-decoration-line: none;
 }
