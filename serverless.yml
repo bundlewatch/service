@@ -36,7 +36,6 @@ provider:
     name: aws
     region: us-east-1
     runtime: nodejs20.x
-    lambdaHashingVersion: '20201221'
     memorySize: 512
     timeout: 29
     iam:
