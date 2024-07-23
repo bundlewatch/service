@@ -8,4 +8,4 @@ if [[ -z $STAGE ]]; then
 fi
 
 run "./node_modules/.bin/serverless create_domain"
-run "./node_modules/.bin/serverless --stage=${STAGE} deploy"
+run "./node_modules/.bin/serverless deploy --stage ${STAGE}"
