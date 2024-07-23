@@ -28,6 +28,8 @@ custom:
         basePath: ''
         stage: ${self:custom.stage}
         createRoute53Record: true
+        endpointType: regional
+        apiType: http
     gitSha1: ${git:sha1} # git rev-parse --short HEAD
 
 provider:
