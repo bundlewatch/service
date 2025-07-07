@@ -274,3 +274,9 @@ footer {
         font-size: 13px;
     }
 }
+.file-path-cell {
+    max-width: 340px;
+    word-break: break-all;
+    white-space: normal;
+    overflow-wrap: anywhere;
+}
