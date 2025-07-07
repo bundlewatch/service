@@ -24,63 +24,134 @@ body {
 body {
     -moz-osx-font-smoothing: grayscale;
     -webkit-font-smoothing: antialiased;
-    color: #36454f;
-    font-family: 'Source Sans Pro', 'Helvetica Neue', Arial, sans-serif;
-    font-size: 15px;
-    letter-spacing: 0;
-    background: #f7f7f7;
+    color: #222;
+    font-family: 'Inter', 'Source Sans Pro', 'system-ui', 'Helvetica Neue',
+        Arial, sans-serif;
+    font-size: 16px;
+    background: #f7f8fa;
 }
 table {
-    border-collapse: collapse;
-    font-size: 14px;
+    border-collapse: separate;
+    border-spacing: 0;
     width: 100%;
-}
-td,
-th {
-    padding: 8px;
+    background: transparent;
+    border-radius: 12px;
     overflow: hidden;
-    text-overflow: ellipsis;
-    word-wrap: break-word;
-    max-width: 450px;
+    font-size: 15px;
+}
+th,
+td {
+    padding: 12px 10px;
+    text-align: left;
+    border-bottom: 1px solid #f0f0f0;
+}
+th {
+    background: #f7f8fa;
+    font-weight: 600;
+    color: #222;
+}
+tr:last-child td {
+    border-bottom: none;
+}
+tr:nth-child(even) td {
+    background: #fafbfc;
 }
 .logo {
+    text-align: center;
     display: block;
-    margin: 50px auto;
+    margin: 0 auto 32px auto;
     text-align: center;
 }
 .container {
-    margin: 0 12px;
+    margin: 32px auto 0 auto;
+    max-width: 1600px;
+    padding: 32px 16px 16px 16px;
+    background: #fff;
+    border-radius: 16px;
+    box-shadow: 0 4px 24px 0 rgba(0, 0, 0, 0.06);
+    min-height: 80vh;
 }
-@media (min-width: 1000px) {
+@media (max-width: 1100px) {
     .container {
-        margin: 0 auto;
-        width: 70%;
+        max-width: 98vw;
+        padding: 16px 2vw 0 2vw;
     }
 }
-.big {
-    font-size: 25px;
+header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 24px;
 }
-.big-icon {
-    font-size: 32px !important;
-    margin-right: 8px;
+.github-button-container {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    flex: 1;
+}
+.github-button {
+    display: inline-flex;
+    align-items: center;
+    background: #fff;
+    color: #0057ff;
+    font-weight: 600;
+    border-radius: 8px;
+    padding: 10px 20px;
+    text-decoration: none;
+    font-size: 16px;
+    box-shadow: 0 2px 8px 0 rgba(0, 87, 255, 0.08);
+    border: 1.5px solid #0057ff;
+    outline: none;
+    gap: 8px;
+    transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+}
+.github-button:hover {
+    background: #0057ff;
+    color: #fff;
+    box-shadow: 0 4px 16px 0 rgba(0, 87, 255, 0.15);
+}
+.card {
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.07);
+    margin-top: 32px;
+    padding: 0;
+    overflow-x: auto;
+}
+.table-wrapper {
+    width: 100%;
+}
+@media (max-width: 700px) {
+    .card {
+        min-width: unset;
+        margin-top: 16px;
+        padding: 0 0 8px 0;
+    }
 }
 .build-info {
-    min-width: 650px;
-    padding: 12px;
-    background: #fff;
-    min-height: 56px;
+    background: #f7f8fa;
+    border-radius: 8px;
+    margin-bottom: 16px;
+    padding: 16px 24px;
+    min-width: unset;
+    min-height: unset;
+    font-size: 18px;
+    font-weight: 500;
+    color: #222;
 }
 .build-info-text {
-    display: inline-flex;
-    vertical-align: middle;
+    display: flex;
+    align-items: center;
+    gap: 8px;
 }
 .repo-info {
-    padding: 12px;
+    padding: 0 0 16px 4px;
+    font-size: 15px;
+    color: #666;
 }
 a {
     color: #d54400;
 }
-
 .column-header {
     text-align: left;
 }
@@ -129,59 +200,77 @@ a {
 .light {
     color: #969fa5;
 }
-.card {
-    min-width: 650px;
-    background: #fff;
-    box-shadow: 0px 3px 5px 2px rgba(201, 214, 255, 0.15);
-}
-.progress-bar-container {
-    background-color: #f4f6f8;
-    height: 12px;
-}
-.progress-bar {
-    float: left;
-}
-.progress-bar-last-size {
-    background-color: #000051;
-    height: 12px;
-}
-.progress-bar-pass {
-    background-color: #38c099;
-    height: 12px;
-}
-.progress-bar-pass-negative {
-    background-color: #000051;
-    opacity: 0.5;
-    height: 12px;
-}
-.progress-bar-warn {
-    background-color: #ffcd52;
-    height: 12px;
-}
-.progress-bar-fail {
-    background-color: #d54400;
-    height: 12px;
-}
-
 footer {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     text-align: center;
-    height: 80px;
-    margin: 24px;
+    height: auto;
+    margin: 32px 0 0 0;
+    background: none;
 }
-
 .footer {
-    color: #d54400;
+    color: #0057ff;
+    font-size: 15px;
+    margin-bottom: 8px;
 }
-
 .footer a {
     margin: 0 8px;
+    color: #d54400;
+    text-decoration: underline;
+    font-weight: 500;
+    transition: color 0.2s;
 }
-
+.footer a:hover {
+    color: #a83200;
+}
 .server-commit-sha a {
-    color: #999999;
-    text-decoration-line: none;
+    color: #999;
+    text-decoration: none;
+    font-size: 13px;
+}
+.server-commit-sha a:hover {
+    color: #0057ff;
+}
+.progress-bar-container {
+    background-color: #f0f4fa;
+    height: 12px;
+    border-radius: 6px;
+    overflow: hidden;
+}
+.progress-bar {
+    float: left;
+    height: 12px;
+}
+.progress-bar-last-size {
+    background-color: #0057ff;
+    opacity: 0.3;
+}
+.progress-bar-pass {
+    background-color: #38c099;
+}
+.progress-bar-pass-negative {
+    background-color: #0057ff;
+    opacity: 0.5;
+}
+.progress-bar-warn {
+    background-color: #ffcd52;
+}
+.progress-bar-fail {
+    background-color: #d54400;
+}
+@media (max-width: 700px) {
+    th,
+    td {
+        padding: 8px 4px;
+        font-size: 13px;
+    }
+    .build-info {
+        padding: 10px 8px;
+        font-size: 15px;
+    }
+    .footer {
+        font-size: 13px;
+    }
 }
